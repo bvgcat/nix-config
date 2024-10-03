@@ -2,7 +2,9 @@
 
 {
   imports = [ 
-		./nvidia.nix
+		./common.nix
+		./modules/docker
+		./modules/nvidia.nix
 		./nixos-hardware/lenovo/legion/15arh05h/default.nix 
 	];
 
@@ -21,23 +23,15 @@
 		kdePackages.partitionmanager
 		kdePackages.kpmcore
     
+		clang-tools_18
+		gcc-arm-embedded-13
+		savvycan
+		stm32cubemx
+
 		looking-glass-client
 		qemu_full
     virt-manager
-		savvycan
 	];
-	
-	# for partition-manager
-	programs.partition-manager.enable = true;
-	services.dbus.packages = [ pkgs.libsForQt5.kpmcore ];
-
-	# for virtualistion
-	programs.virt-manager.enable = true;
-	specialisation."VFIO".configuration = {
-		system.nixos.tags = [ "with-vfio" ];
-		vfio.enable = true;
-		imports = [ ./virtualisation.nix ];
-	};
 
 	users.users.h = {
 		packages = with pkgs; [
@@ -49,9 +43,20 @@
 			tutanota-desktop
 		];
 	};
+
+	# for partition-manager
+	programs.partition-manager.enable = true;
+	services.dbus.packages = [ pkgs.libsForQt5.kpmcore ];
+
+	# for virtualistion
+	programs.virt-manager.enable = true;
+	specialisation."VFIO".configuration = {
+		system.nixos.tags = [ "with-vfio" ];
+		vfio.enable = true;
+		imports = [ ./virtualisation.nix ];
+	};
   
 	swapDevices = [
-    { device = "/swapfile"; size = 16*1024; } # higher priority -> prefer this. priority = 10;
-    #{ device = "/run/media/h/sdcard/swapfile"; size = 8*1000; priority = 0;}
+    { device = "/swapfile"; size = 16*1024; }
   ];
 }
