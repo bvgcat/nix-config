@@ -6,11 +6,13 @@ let
 in {
 	environment.systemPackages = with pkgs; [
 		appimage-run
+		baobab
 		bear
 		bootiso
     brave
 		ecryptfs
 		gdb
+		gnumake
 		gparted
 		iptsd
 		ncurses
@@ -18,7 +20,7 @@ in {
 		scrounge-ntfs
 		openocd
 		python3
-		gnumake
+		#qdirstat
 		usbutils
 		zsh
 
