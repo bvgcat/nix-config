@@ -20,8 +20,20 @@ in {
 		python3
 		gnumake
 		usbutils
-		vscodium
 		zsh
+
+		#vscodium
+		direnv
+		vscodium
+		(vscode-with-extensions.override {
+			vscode = vscodium;
+			vscodeExtensions = with vscode-extensions; [
+				jnoortheen.nix-ide      
+				llvm-vs-code-extensions.vscode-clangd
+				ms-azuretools.vscode-docker
+				ms-vscode-remote.remote-containers
+			];
+		})
 	];
 
 	users.users.h.packages = with pkgs; [

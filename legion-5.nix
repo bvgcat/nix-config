@@ -53,7 +53,7 @@
 	specialisation."VFIO".configuration = {
 		system.nixos.tags = [ "with-vfio" ];
 		vfio.enable = true;
-		imports = [ ./virtualisation.nix ];
+		imports = [ ./modules/virtualisation.nix ];
 	};
   
 	swapDevices = [
