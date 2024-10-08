@@ -46,7 +46,8 @@ in {
 		firefox
 		git
 		keepassxc
-		libreoffice  
+		libreoffice
+		notesnook
 		qalculate-gtk 
 		rpi-imager
 		signal-desktop
