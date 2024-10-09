@@ -7,8 +7,7 @@ in
 {
 	imports = [
 		./common.nix
-		./modules/docker.nix
-    ./nixos-hardware/microsoft/surface/surface-go/default.nix # surface go hardware
+		./nixos-hardware/microsoft/surface/surface-go/default.nix # surface go hardware
 	];
 
 	boot.supportedFilesystems = [ "ntfs" ];
