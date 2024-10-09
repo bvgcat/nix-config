@@ -4,6 +4,12 @@ let
 	pkgs-24 = import <nixos-24.05> {};
 	pkgs-unstable = import <nixos-unstable> {};
 in {
+
+	imports = [
+		./modules/docker.nix
+  	#./modules/ethersync.nix
+	];
+
 	environment.systemPackages = with pkgs; [
 		appimage-run
 		baobab

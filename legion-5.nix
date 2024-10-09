@@ -3,7 +3,6 @@
 {
   imports = [ 
 		./common.nix
-		./modules/docker
 		./modules/nvidia.nix
 		./nixos-hardware/lenovo/legion/15arh05h/default.nix 
 	];
