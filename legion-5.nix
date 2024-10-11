@@ -35,6 +35,7 @@
 	users.users.h = {
 		packages = with pkgs; [
 			android-tools
+			kicad
 			lshw
 			ffmpeg-full
 			pciutils
