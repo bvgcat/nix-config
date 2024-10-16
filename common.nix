@@ -6,6 +6,7 @@ let
 in {
 
 	imports = [
+		./modules/BSPrak.nix
 		./modules/docker.nix
   	#./modules/ethersync.nix
 	];
@@ -32,7 +33,7 @@ in {
 
 		#vscodium
 		direnv
-		vscodium
+		pkgs-24.vscodium
 		(vscode-with-extensions.override {
 			vscode = vscodium;
 			vscodeExtensions = with vscode-extensions; [
@@ -45,6 +46,7 @@ in {
 	];
 
 	users.users.h.packages = with pkgs; [
+		ausweisapp
 		brave
 		can-utils
 		discord
@@ -60,6 +62,7 @@ in {
 		spotify  
 		syncthing
 		teams-for-linux
+		tor-browser
 		thunderbird
 		ventoy-full
 		vlc
