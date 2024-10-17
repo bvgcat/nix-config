@@ -53,7 +53,7 @@ in {
 		fastfetch
 		firefox
 		git
-		joplin-desktop
+		unstable.joplin-desktop
 		keepassxc
 		libreoffice
 		notesnook
