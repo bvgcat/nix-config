@@ -56,7 +56,6 @@ in {
 		pkgs-unstable.joplin-desktop
 		keepassxc
 		libreoffice
-		notesnook
 		qalculate-gtk 
 		rpi-imager
 		signal-desktop
