@@ -6,7 +6,8 @@ let
 in {
 
 	imports = [
-		./modules/BSPrak.nix
+		./modules/24-WiSe/BSPrak.nix
+		./modules/24-WiSe/SWTPP.nix
 		./modules/docker.nix
   	#./modules/ethersync.nix
 	];
@@ -18,7 +19,6 @@ in {
 		bootiso
     brave
 		ecryptfs
-		gdb
 		gnumake
 		gparted
 		iptsd
@@ -26,7 +26,6 @@ in {
 		ntfs3g
 		scrounge-ntfs
 		openocd
-		python3
 		#qdirstat
 		usbutils
 		zsh
@@ -56,6 +55,7 @@ in {
 		pkgs-unstable.joplin-desktop
 		keepassxc
 		libreoffice
+		nextcloud-client
 		qalculate-gtk 
 		rpi-imager
 		signal-desktop
