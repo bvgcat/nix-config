@@ -6,10 +6,9 @@ let
 in {
 
 	imports = [
-		./modules/24-WiSe/BSPrak.nix
-		./modules/24-WiSe/SWTPP.nix
+		./nixos-tuberlin/BSPrak.nix
+		./nixos-tuberlin/SWTPP.nix
 		./modules/docker.nix
-  	#./modules/ethersync.nix
 	];
 
 	environment.systemPackages = with pkgs; [

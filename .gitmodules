@@ -4,3 +4,6 @@
 [submodule "nixos-modules"]
 	path = nixos-modules
 	url = git@git.tu-berlin.de:hamza.tmm/nixos-modules.git
+[submodule "nixos-tuberlin"]
+	path = nixos-tuberlin
+	url = git@git.tu-berlin.de:hamza.tmm/nixos-tuberlin.git

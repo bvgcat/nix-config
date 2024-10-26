@@ -19,9 +19,9 @@ in
 		gnome.adwaita-icon-theme
 	];
 
-	users.users.h.packages = with pkgs; [
-		pkgs-24.kicad-small
-		pkgs-24.signal-desktop
+	users.users.h.packages = with pkgs-24; [
+		kicad-small
+		signal-desktop
 	];
 
 	swapDevices = [
