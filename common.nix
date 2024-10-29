@@ -16,12 +16,11 @@ in {
 		baobab
 		bear
 		bootiso
-    brave
+   	brave
 		ecryptfs
 		gnumake
 		gparted
 		iptsd
-		ncurses
 		ntfs3g
 		scrounge-ntfs
 		openocd
@@ -32,15 +31,6 @@ in {
 		#vscodium
 		direnv
 		pkgs-24.vscodium
-		(vscode-with-extensions.override {
-			vscode = vscodium;
-			vscodeExtensions = with vscode-extensions; [
-				jnoortheen.nix-ide      
-				llvm-vs-code-extensions.vscode-clangd
-				ms-azuretools.vscode-docker
-				ms-vscode-remote.remote-containers
-			];
-		})
 	];
 
 	users.users.h.packages = with pkgs; [
