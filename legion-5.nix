@@ -1,6 +1,9 @@
 { config, lib, pkgs, ... }:
 
-{
+let
+	pkgs-24 = import <nixos-24.05> {};
+	pkgs-unstable = import <nixos-unstable> {};
+in {
   imports = [ 
 		./common.nix
 		./modules/nvidia.nix
@@ -12,10 +15,14 @@
 		fsType = "ntfs-3g"; 
 		options = [ "rw" "uid=h"];
 	};
+
+	boot.initrd.kernelModules = [
+    "snd_hda_intel"
+  ];
 	
 	#boot.kernelPackages = pkgs.linuxPackages_latest;
 	services.displayManager.defaultSession = "plasma";
-	
+
   environment.systemPackages = with pkgs; [
 		kdePackages.qtwebengine
 		kdePackages.plasma-browser-integration
@@ -27,9 +34,10 @@
 		savvycan
 		stm32cubemx
 
-		looking-glass-client
-		qemu_full
-    virt-manager
+		pkgs-unstable.libvirt
+		pkgs-unstable.qemu_full
+    pkgs-unstable.virt-manager
+		pkgs-unstable.OVMFFull
 	];
 
 	users.users.h = {
@@ -55,7 +63,22 @@
 		vfio.enable = true;
 		imports = [ ./modules/virtualisation.nix ];
 	};
-  
+
+	users.users.h.extraGroups = [ "qemu-libvirtd" "libvirtd" "disk" ];
+	virtualisation = with pkgs-unstable; {
+		spiceUSBRedirection.enable = true;
+		libvirtd = {
+			enable = true;
+			qemu = {
+				runAsRoot = true;
+				swtpm.enable = true;
+				ovmf.enable = true;
+			};
+			onBoot = "ignore";
+			onShutdown = "shutdown";
+		};
+	};
+
 	swapDevices = [
     { device = "/swapfile"; size = 8*1024; }
   ];
