@@ -9,6 +9,7 @@ in {
 		./nixos-tuberlin/BSPrak.nix
 		./nixos-tuberlin/SWTPP.nix
 		./modules/docker.nix
+		./modules/bash.nix
 	];
 
 	environment.systemPackages = with pkgs; [
