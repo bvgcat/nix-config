@@ -46,6 +46,7 @@ in {
 		keepassxc
 		libreoffice
 		nextcloud-client
+		obsidian
 		qalculate-gtk 
 		rpi-imager
 		signal-desktop
@@ -53,6 +54,7 @@ in {
 		syncthing
 		teams-for-linux
 		tor-browser
+		tree
 		thunderbird
 		ventoy-full
 		vlc
