@@ -16,8 +16,12 @@ in {
 		options = [ "rw" "uid=h"];
 	};
 
-	boot.initrd.kernelModules = [
-    "snd_hda_intel"
+	boot.kernelModules = [
+    	"snd_hda_intel"
+		"nvidia"
+		"nvidia_modeset"
+		"nvidia_uvm"
+		"nvidia_drm"
   ];
 	
 	#boot.kernelPackages = pkgs.linuxPackages_latest;
