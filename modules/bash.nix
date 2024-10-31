@@ -15,7 +15,7 @@ in {
       q = "exit ";
       c = "clear ";
 
-      home = "cd ";
+      h = "cd ";
       root = "cd /";
 
       update = "sudo nixos-rebuild switch -v ";
