@@ -49,7 +49,7 @@ in {
 			android-tools
 			kicad
 			lshw
-			ffmpeg-full
+			freecad
 			pciutils
 			tor-browser
 			tutanota-desktop
