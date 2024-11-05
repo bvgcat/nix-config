@@ -9,7 +9,8 @@ in
 		./common.nix
 		./nixos-hardware/microsoft/surface/surface-go/default.nix # surface go hardware
 	];
-
+	
+	boot.kernelModules = [ "snd_hda_intel" ];
 	boot.supportedFilesystems = [ "ntfs" ];
 	hardware.bluetooth.enable = true;
 
