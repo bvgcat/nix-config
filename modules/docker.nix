@@ -10,14 +10,14 @@
   users.users.h = {
     packages = with pkgs; [
       vscode
-      (vscode-with-extensions.override {
-        vscodeExtensions = with vscode-extensions; [    
-          jnoortheen.nix-ide      
-          llvm-vs-code-extensions.vscode-clangd
-          ms-azuretools.vscode-docker
-          ms-vscode-remote.remote-containers
-        ];
-      })
+      #(vscode-with-extensions.override {
+      #  vscodeExtensions = with vscode-extensions; [    
+        #  jnoortheen.nix-ide      
+        #  llvm-vs-code-extensions.vscode-clangd
+        #  ms-azuretools.vscode-docker
+        #  ms-vscode-remote.remote-containers
+      #  ];
+      #})
 		];
 	};
 }
