@@ -31,6 +31,7 @@ in {
 
 		#vscodium
 		direnv
+		pkgs-unstable.input-leap
 		pkgs-24.vscodium
 	];
 
