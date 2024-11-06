@@ -17,7 +17,7 @@ in {
 	};
 
 	boot.kernelModules = [
-    	"snd_hda_intel"
+    "snd_hda_intel"
 		"nvidia"
 		"nvidia_modeset"
 		"nvidia_uvm"
@@ -62,10 +62,17 @@ in {
 
 	# for virtualistion
 	programs.virt-manager.enable = true;
-	specialisation."VFIO".configuration = {
-		system.nixos.tags = [ "with-vfio" ];
-		vfio.enable = true;
-		imports = [ ./modules/virtualisation.nix ];
+	
+	specialisation = {
+		"VFIO".configuration = {
+			system.nixos.tags = [ "with-vfio" ];
+			vfio.enable = true;
+			imports = [ ./modules/virtualisation.nix ];
+		};
+		#"cosmic".configuration = {
+		#		system.nixos.tags = [ "cosmic" ];
+		#		imports = [ ./nixos-cosmic/nixos/default.nix ];
+		#};
 	};
 
 	users.users.h.extraGroups = [ "qemu-libvirtd" "libvirtd" "disk" ];

@@ -7,3 +7,6 @@
 [submodule "nixos-tuberlin"]
 	path = nixos-tuberlin
 	url = git@git.tu-berlin.de:hamza.tmm/nixos-tuberlin.git
+[submodule "nixos-cosmic"]
+	path = nixos-cosmic
+	url = https://github.com/lilyinstarlight/nixos-cosmic.git
