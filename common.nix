@@ -32,7 +32,7 @@ in {
 		#vscodium
 		direnv
 		pkgs-unstable.input-leap
-		pkgs-24.vscodium
+		vscodium
 	];
 
 	users.users.h.packages = with pkgs; [
@@ -49,6 +49,7 @@ in {
 		nextcloud-client
 		obsidian
 		qalculate-gtk 
+		rnote
 		rpi-imager
 		signal-desktop
 		spotify  
@@ -100,6 +101,12 @@ in {
 		dates = "weekly";
 		options = "--delete-older-than 7d";
   };
+
+	services.avahi = {
+		enable = true;
+		nssmdns4 = true;
+		openFirewall = true;
+	};
 
 	# STLink v3
 	# STLink v2 or smth
