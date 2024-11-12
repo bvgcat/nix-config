@@ -49,7 +49,7 @@ in {
 		nextcloud-client
 		obsidian
 		qalculate-gtk 
-		rnote
+		pkgs-unstable.rnote
 		rpi-imager
 		signal-desktop
 		spotify  
