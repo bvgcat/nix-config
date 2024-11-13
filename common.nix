@@ -1,7 +1,6 @@
 { config, pkgs, lib, ... }:
 
 let
-	pkgs-24 = import <nixos-24.05> {};
 	pkgs-unstable = import <nixos-unstable> {};
 in {
 
