@@ -10,3 +10,6 @@
 [submodule "nixos-cosmic"]
 	path = nixos-cosmic
 	url = https://github.com/lilyinstarlight/nixos-cosmic.git
+[submodule "nix-matlab"]
+	path = nix-matlab
+	url = https://gitlab.com/doronbehar/nix-matlab
