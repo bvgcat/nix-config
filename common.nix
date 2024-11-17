@@ -21,6 +21,7 @@ in {
 		gnumake
 		gparted
 		iptsd
+		nixfmt-rfc-style
 		ntfs3g
 		scrounge-ntfs
 		openocd
@@ -30,7 +31,7 @@ in {
 
 		#vscodium
 		direnv
-		pkgs-unstable.input-leap
+		input-leap
 		vscodium
 	];
 
@@ -46,6 +47,9 @@ in {
 		keepassxc
 		libreoffice
 		nextcloud-client
+		nixd
+		nixdoc
+		nixpkgs-lint-community
 		obsidian
 		qalculate-gtk 
 		pkgs-unstable.rnote
