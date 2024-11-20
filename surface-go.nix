@@ -14,14 +14,24 @@ in
 	boot.supportedFilesystems = [ "ntfs" ];
 	hardware.bluetooth.enable = true;
 
-	environment.systemPackages = with pkgs; [
-		#for xournalpp
-		binutils
-		gnome.adwaita-icon-theme
-	];
+	nixpkgs.config.packageOverrides = pkgs: {
+    intel-vaapi-driver = pkgs.intel-vaapi-driver.override { enableHybridCodec = true; };
+  };
+  hardware.opengl = { # hardware.graphics on unstable
+    enable = true;
+    extraPackages = with pkgs; [
+      intel-media-driver # LIBVA_DRIVER_NAME=iHD
+      intel-vaapi-driver # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
+      libvdpau-va-gl
+			vpl-gpu-rt
+    ];
+  };
+	environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; }; # Force intel-media-driver
 
-	users.users.h.packages = with pkgs-24; [
-		kicad-small
+	environment.systemPackages = with pkgs; [];
+
+	users.users.h.packages = with pkgs; [
+		pkgs-24.kicad-small
 		signal-desktop
 	];
 

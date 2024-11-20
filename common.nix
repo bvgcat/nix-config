@@ -1,8 +1,10 @@
 { config, pkgs, lib, ... }:
 
 let
+	pkgs-24 = import <nixos-24.05> {};
 	pkgs-unstable = import <nixos-unstable> {};
 in {
+	nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
 	imports = [
 		./nixos-tuberlin/BSPrak.nix
@@ -21,6 +23,7 @@ in {
 		gnumake
 		gparted
 		iptsd
+		#matlab
 		nixfmt-rfc-style
 		ntfs3g
 		scrounge-ntfs
@@ -92,7 +95,7 @@ in {
   networking.firewall.allowedUDPPorts = [ 21027 22000 ];
 
   # optimises the nix store
-  #nix.settings.auto-optimise-store = false; # optimise on build (slow)
+  nix.settings.auto-optimise-store = true; # optimise on build (slow)
   nix.optimise = {
     automatic = true;
     dates = [ "weekly" ]; # optimise periodically
