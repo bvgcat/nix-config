@@ -23,7 +23,7 @@ in {
 		"nvidia_uvm"
 		"nvidia_drm"
   ];
-	
+
 	#boot.kernelPackages = pkgs.linuxPackages_latest;
 	services.displayManager.defaultSession = "plasma";
 
@@ -35,6 +35,7 @@ in {
     
 		clang-tools_18
 		#gcc-arm-embedded-13
+		octaveFull
 		savvycan
 		stm32cubemx
 
@@ -47,7 +48,7 @@ in {
 	users.users.h = {
 		packages = with pkgs; [
 			android-tools
-			pkgs-24.kicad
+			#pkgs-24.kicad
 			lshw
 			freecad
 			pciutils
