@@ -4,7 +4,12 @@ let
 	pkgs-24 = import <nixos-24.05> {};
 	pkgs-unstable = import <nixos-unstable> {};
 in {
+	
 	nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+	services.flatpak.enable = true;
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  xdg.portal.config.common.default = "gtk";
 
 	imports = [
 		nixos-tuberlin/BSPrak.nix
@@ -23,7 +28,6 @@ in {
 		gnumake
 		gparted
 		iptsd
-		#matlab
 		nixfmt-rfc-style
 		ntfs3g
 		scrounge-ntfs
