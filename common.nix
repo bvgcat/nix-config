@@ -7,10 +7,10 @@ in {
 	nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
 	imports = [
-		./nixos-tuberlin/BSPrak.nix
-		./nixos-tuberlin/SWTPP.nix
-		./modules/docker.nix
-		./modules/bash.nix
+		nixos-tuberlin/BSPrak.nix
+		nixos-tuberlin/SWTPP.nix
+		modules/docker.nix
+		modules/bash.nix
 	];
 
 	environment.systemPackages = with pkgs; [
