@@ -34,7 +34,7 @@ in {
 		kdePackages.kpmcore
     
 		clang-tools_18
-		gcc-arm-embedded-13
+		#gcc-arm-embedded-13
 		savvycan
 		stm32cubemx
 
@@ -47,7 +47,7 @@ in {
 	users.users.h = {
 		packages = with pkgs; [
 			android-tools
-			kicad
+			pkgs-24.kicad
 			lshw
 			freecad
 			pciutils
