@@ -5,7 +5,7 @@ let
 	pkgs-unstable = import <nixos-unstable> {};
 in {
   imports = [ 
-		./common.nix
+		./modules/common.nix
 		./modules/nvidia.nix
 		./nixos-hardware/lenovo/legion/15arh05h/default.nix 
 	];
@@ -27,7 +27,7 @@ in {
 	#boot.kernelPackages = pkgs.linuxPackages_latest;
 	services.displayManager.defaultSession = "plasma";
 
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = with pkgs-unstable; [
 		kdePackages.qtwebengine
 		kdePackages.plasma-browser-integration
 		kdePackages.partitionmanager
@@ -37,16 +37,16 @@ in {
 		#gcc-arm-embedded-13
 		octaveFull
 		savvycan
-		stm32cubemx
+		pkgs.stm32cubemx
 
-		pkgs-unstable.libvirt
-		pkgs-unstable.qemu_full
-    pkgs-unstable.virt-manager
-		pkgs-unstable.OVMFFull
+		libvirt
+		qemu_full
+    virt-manager
+		OVMFFull
 	];
 
 	users.users.h = {
-		packages = with pkgs; [
+		packages = with pkgs-unstable; [
 			android-tools
 			#pkgs-24.kicad
 			lshw

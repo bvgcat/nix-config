@@ -12,13 +12,13 @@ in {
   	xdg.portal.config.common.default = "gtk";
 
 	imports = [
-		nixos-tuberlin/BSPrak.nix
-		nixos-tuberlin/SWTPP.nix
-		modules/docker.nix
-		modules/bash.nix
+		../nixos-tuberlin/BSPrak.nix
+		../nixos-tuberlin/SWTPP.nix
+		./docker.nix
+		./bash.nix
 	];
 
-	environment.systemPackages = with pkgs; [
+	environment.systemPackages = with pkgs-unstable; [
 		appimage-run
 		baobab
 		bear
@@ -42,11 +42,11 @@ in {
 		vscodium
 	];
 
-	users.users.h.packages = with pkgs; [
+	users.users.h.packages = with pkgs-unstable; [
 		ausweisapp
 		brave
 		can-utils
-		discord
+		pkgs.discord
 		fastfetch
 		firefox
 		git
@@ -57,12 +57,12 @@ in {
 		nixd
 		nixdoc
 		nixpkgs-lint-community
-		obsidian
+		pkgs.obsidian
 		qalculate-gtk 
 		pkgs-unstable.rnote
 		rpi-imager
 		signal-desktop
-		spotify  
+		pkgs.spotify  
 		syncthing
 		teams-for-linux
 		tor-browser

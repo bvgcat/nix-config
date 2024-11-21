@@ -6,7 +6,7 @@ let
 in
 {
 	imports = [
-		./common.nix
+		./modules/common.nix
 		./nixos-hardware/microsoft/surface/surface-go/default.nix # surface go hardware
 	];
 	
