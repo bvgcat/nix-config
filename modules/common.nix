@@ -14,11 +14,11 @@ in {
 	imports = [
 		../nixos-tuberlin/BSPrak.nix
 		../nixos-tuberlin/SWTPP.nix
-		./docker.nix
 		./bash.nix
+		./docker.nix
 	];
 
-	environment.systemPackages = with pkgs-unstable; [
+	environment.systemPackages = with pkgs; [
 		appimage-run
 		baobab
 		bear
@@ -42,11 +42,11 @@ in {
 		vscodium
 	];
 
-	users.users.h.packages = with pkgs-unstable; [
+	users.users.h.packages = with pkgs; [
 		ausweisapp
 		brave
 		can-utils
-		pkgs.discord
+		discord
 		fastfetch
 		firefox
 		git
@@ -57,12 +57,12 @@ in {
 		nixd
 		nixdoc
 		nixpkgs-lint-community
-		pkgs.obsidian
+		obsidian
 		qalculate-gtk 
 		pkgs-unstable.rnote
 		rpi-imager
 		signal-desktop
-		pkgs.spotify  
+		spotify  
 		syncthing
 		teams-for-linux
 		tor-browser

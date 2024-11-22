@@ -17,7 +17,7 @@ in {
 	};
 
 	boot.kernelModules = [
-    "snd_hda_intel"
+        "snd_hda_intel"
 		"nvidia"
 		"nvidia_modeset"
 		"nvidia_uvm"
@@ -27,7 +27,7 @@ in {
 	#boot.kernelPackages = pkgs.linuxPackages_latest;
 	services.displayManager.defaultSession = "plasma";
 
-  environment.systemPackages = with pkgs-unstable; [
+  environment.systemPackages = with pkgs; [
 		kdePackages.qtwebengine
 		kdePackages.plasma-browser-integration
 		kdePackages.partitionmanager
@@ -46,13 +46,12 @@ in {
 	];
 
 	users.users.h = {
-		packages = with pkgs-unstable; [
+		packages = with pkgs; [
 			android-tools
-			#pkgs-24.kicad
+			pkgs.kicad
 			lshw
-			freecad
+			pkgs-unstable.freecad
 			pciutils
-			tor-browser
 			tutanota-desktop
 		];
 	};
