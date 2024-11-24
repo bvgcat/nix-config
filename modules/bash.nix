@@ -15,7 +15,7 @@
       h = "cd ";
       root = "cd /";
 
-      rkde = "kquitapp5 plasmashell || killall plasmashell && kstart5 plasmashell";
+      rkde = "kstart5 plasmashell";
       clean = "sudo nix-store -v --optimise && sudo nix-store -v --gc && sudo nix-collect-garbage -v -d ";
       update = "sudo nixos-rebuild switch -v ";
       updatefast = "sudo nixos-rebuild switch --fast -v";
