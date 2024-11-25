@@ -13,6 +13,7 @@
       c = "clear ";
 
       h = "cd ";
+      uni = "cd /home/h/University/24-WiSe";
       root = "cd /";
 
       rkde = "kstart5 plasmashell";
