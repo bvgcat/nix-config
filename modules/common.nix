@@ -70,6 +70,7 @@ in {
 		thunderbird
 		ventoy-full
 		vlc
+		webex
 		xournalpp
 	];	
 
