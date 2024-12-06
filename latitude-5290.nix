@@ -10,13 +10,16 @@ in {
 		#./nixos-hardware/microsoft/surface/surface-go/default.nix # surface go hardware
 	];
 
-    boot.supportedFilesystems = [ "ntfs" ];
+	boot.kernelModules = [ "snd_hda_intel" ];
+  boot.supportedFilesystems = [ "ntfs" ];
 	hardware.bluetooth.enable = true;
 
     environment.systemPackages = with pkgs; [];
 
 	users.users.h.packages = with pkgs; [
+		pkgs-unstable.freecad
 		kicad
+		pkgs-unstable.octaveFull
 		signal-desktop
 	];
 
