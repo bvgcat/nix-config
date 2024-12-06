@@ -17,7 +17,7 @@ in {
 	};
 
 	boot.kernelModules = [
-        "snd_hda_intel"
+    "snd_hda_intel"
 		"nvidia"
 		"nvidia_modeset"
 		"nvidia_uvm"
@@ -35,7 +35,6 @@ in {
     
 		clang-tools_18
 		#gcc-arm-embedded-13
-		octaveFull
 		savvycan
 		pkgs.stm32cubemx
 
@@ -47,11 +46,9 @@ in {
 
 	users.users.h = {
 		packages = with pkgs; [
-			android-tools
-			pkgs.kicad
-			lshw
+			kicad
 			pkgs-unstable.freecad
-			pciutils
+			pkgs-unstable.octaveFull
 			tutanota-desktop
 		];
 	};
