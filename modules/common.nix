@@ -32,6 +32,7 @@ in {
 		ntfs3g
 		scrounge-ntfs
 		openocd
+		pciutils
 		#qdirstat
 		usbutils
 		zsh
