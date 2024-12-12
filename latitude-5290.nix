@@ -5,16 +5,17 @@ let
 	pkgs-unstable = import <nixos-unstable> {};
 in {
 
-  	imports = [
+	
+  imports = [
 		./modules/common.nix
-		#./nixos-hardware/microsoft/surface/surface-go/default.nix # surface go hardware
+		./nixos-hardware/dell/latitude/7280/default.nix # surface go hardware
 	];
 
 	boot.kernelModules = [ "snd_hda_intel" ];
   boot.supportedFilesystems = [ "ntfs" ];
 	hardware.bluetooth.enable = true;
 
-    environment.systemPackages = with pkgs; [];
+  environment.systemPackages = with pkgs; [];
 
 	users.users.h.packages = with pkgs; [
 		pkgs-unstable.freecad
