@@ -22,8 +22,8 @@ in {
 		appimage-run
 		baobab
 		bear
-		bootiso
-   	brave
+    bootiso
+    brave
 		ecryptfs
 		gnumake
 		gparted
@@ -48,9 +48,11 @@ in {
 		brave
 		can-utils
 		discord
+		element-desktop
 		fastfetch
 		firefox
 		git
+    imagemagick
 		pkgs-unstable.joplin-desktop
 		keepassxc
 		libreoffice
@@ -101,7 +103,6 @@ in {
   networking.firewall.allowedUDPPorts = [ 21027 22000 ];
 
   # optimises the nix store
-  nix.settings.auto-optimise-store = true; # optimise on build (slow)
   nix.optimise = {
     automatic = true;
     dates = [ "weekly" ]; # optimise periodically
