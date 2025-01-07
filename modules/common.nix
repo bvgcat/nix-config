@@ -8,8 +8,8 @@ in {
 	nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
 	services.flatpak.enable = true;
-  	xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-  	xdg.portal.config.common.default = "gtk";
+	xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+	xdg.portal.config.common.default = "gtk";
 
 	imports = [
 		../nixos-tuberlin/BSPrak.nix
@@ -33,6 +33,7 @@ in {
 		scrounge-ntfs
 		openocd
 		pciutils
+		powertop
 		#qdirstat
 		usbutils
 		zsh
@@ -51,6 +52,7 @@ in {
 		element-desktop
 		fastfetch
 		firefox
+		flatpak
 		git
     imagemagick
 		pkgs-unstable.joplin-desktop
