@@ -52,9 +52,9 @@ in {
 		element-desktop
 		fastfetch
 		firefox
-		flatpak
+		flatpak 
 		git
-    imagemagick
+    		imagemagick
 		pkgs-unstable.joplin-desktop
 		keepassxc
 		libreoffice
@@ -75,8 +75,6 @@ in {
 		thunderbird
 		ventoy-full
 		vlc
-		webex
-		xournalpp
 	];	
 
 	# for partition-manager
