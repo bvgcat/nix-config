@@ -49,6 +49,7 @@ in {
 		brave
 		can-utils
 		discord
+		drawio
 		element-desktop
 		fastfetch
 		firefox
