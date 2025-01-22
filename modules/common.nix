@@ -13,7 +13,7 @@ in {
 
 	imports = [
 		../nixos-tuberlin/BSPrak.nix
-		../nixos-tuberlin/SWTPP.nix
+		#../nixos-tuberlin/SWTPP.nix
 		./bash.nix
 		./docker.nix
 	];
@@ -55,7 +55,7 @@ in {
 		firefox
 		flatpak 
 		git
-    		imagemagick
+    imagemagick
 		pkgs-unstable.joplin-desktop
 		keepassxc
 		libreoffice
@@ -83,7 +83,6 @@ in {
 	services.dbus.packages = [ pkgs.libsForQt5.kpmcore ];
 
 	hardware.bluetooth.enable = true;
-	services.xserver.excludePackages = [ pkgs.xterm ];
 	boot.supportedFilesystems = [ "ntfs" ];
 
   # to enable kdeconnect
@@ -123,7 +122,7 @@ in {
 	};
 
 	# STLink v3
-	# STLink v2 or smth
+	# STLink v2
 	services.udev.extraRules = 	
 	''SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="374f", MODE="0666"
 		SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="374b", MODE="0666"'';
