@@ -33,14 +33,14 @@ in {
 		kdePackages.partitionmanager
 		kdePackages.kpmcore
     
-		clang-tools_18
-		#gcc-arm-embedded-13
+		clang-tools
+		gcc-arm-embedded
 		savvycan
 		pkgs.stm32cubemx
 
 		libvirt
 		qemu_full
-    virt-manager
+		virt-manager
 		OVMFFull
 	];
 
