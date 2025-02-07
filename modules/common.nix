@@ -1,8 +1,7 @@
 { config, pkgs, lib, ... }:
 
 let
-	pkgs-24 = import <nixos-24.05> {};
-	pkgs-unstable = import <nixos-unstable> {};
+	pkgs-24 = import <nixos-24.11> {};
 in {
 	
 	nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -30,7 +29,7 @@ in {
 		iptsd
 		nixfmt-rfc-style
 		ntfs3g
-		scrounge-ntfs
+		pkgs-24.scrounge-ntfs
 		openocd
 		pciutils
 		powertop
@@ -55,7 +54,7 @@ in {
 		firefox
 		flatpak 
 		git
-    imagemagick
+    		imagemagick
 		pkgs-unstable.joplin-desktop
 		keepassxc
 		libreoffice
@@ -65,7 +64,7 @@ in {
 		nixpkgs-lint-community
 		obsidian
 		qalculate-gtk 
-		pkgs-unstable.rnote
+		rnote
 		rpi-imager
 		signal-desktop
 		spotify  
