@@ -1,8 +1,7 @@
 { config, pkgs, lib, ... }:
 
 let
-	pkgs-24 = import <nixos-24.05> {};
-	pkgs-unstable = import <nixos-unstable> {};
+	pkgs-24 = import <nixos-24.11> {};
 in {
   imports = [
 		./modules/common.nix
@@ -36,40 +35,27 @@ in {
 			enable = true;
 			package = pkgs.power-profiles-daemon;
 		};
-		auto-cpufreq = {
-      enable = true;
-      settings = {
-        battery = {
-          governor = "powersave";
-          turbo = "never";
-        };
-        charger = {
-          governor = "performance";
-          turbo = "auto";
-        };
-      };
-    };
 	};
 
 	### Packages
   environment.systemPackages = with pkgs; [];
 
 	users.users.h.packages = with pkgs; [
-		pkgs-unstable.freecad
+		freecad
 		kicad
-		pkgs-unstable.octaveFull
+		octaveFull
 	];
 
-	#systemd.services.fprintd = {
-	#	wantedBy = [ "multi-user.target" ];
-	#	serviceConfig.Type = "simple";
-	#};
+	systemd.services.fprintd = {
+		wantedBy = [ "multi-user.target" ];
+		serviceConfig.Type = "simple";
+	};
 
-	#services.fprintd = {
-	#	enable = true;
- 	#	tod.enable = true;
-	#	tod.driver = pkgs-unstable.libfprint-2-tod1-broadcom;
-	#};
+	services.fprintd = {
+		enable = true;
+ 		tod.enable = true;
+		tod.driver = pkgs.libfprint-2-tod1-broadcom;
+	};
   swapDevices = [ { device = "/swapfile"; size = 8128; } ];
 }
 
