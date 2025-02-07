@@ -54,8 +54,8 @@ in {
 		firefox
 		flatpak 
 		git
-    		imagemagick
-		pkgs-unstable.joplin-desktop
+    imagemagick
+		joplin-desktop
 		keepassxc
 		libreoffice
 		nextcloud-client
