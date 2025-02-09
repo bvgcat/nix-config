@@ -38,7 +38,13 @@ in {
 	};
 
 	### Packages
-  environment.systemPackages = with pkgs; [];
+  environment.systemPackages = with pkgs; [
+		fprintd
+		fprintd-tod
+		libfprint-tod
+		libfprint-2-tod1-broadcom
+		maliit-keyboard
+	];
 
 	users.users.h.packages = with pkgs; [
 		freecad
@@ -46,6 +52,7 @@ in {
 		octaveFull
 	];
 
+	services.fwupd.enable = true;
 	systemd.services.fprintd = {
 		wantedBy = [ "multi-user.target" ];
 		serviceConfig.Type = "simple";
