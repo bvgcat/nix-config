@@ -56,7 +56,9 @@ in {
 		git
     imagemagick
 		joplin-desktop
+		kdePackages.kdenlive 
 		keepassxc
+		kstars
 		libreoffice
 		nextcloud-client
 		nixd
