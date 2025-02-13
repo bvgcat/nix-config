@@ -12,7 +12,7 @@ in {
 
 	boot = {
 		## to detect windows
-		kernelParams = [ "mem_sleep_default=deep" ];
+		kernelParams = [ "mem_sleep_default=s2idle" "acpi_enforce_resources=lax" "i915.enable_dc=0" ];
 		kernelPackages = pkgs.linuxPackages_latest;
 		kernelModules = [ "snd_hda_intel" ];
 		supportedFilesystems = [ "ntfs" ];
