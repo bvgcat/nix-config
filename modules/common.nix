@@ -11,7 +11,7 @@ in {
 	xdg.portal.config.common.default = "gtk";
 
 	imports = [
-		../nixos-tuberlin/BSPrak.nix
+		#../nixos-tuberlin/BSPrak.nix
 		#../nixos-tuberlin/SWTPP.nix
 		./bash.nix
 		./docker.nix
