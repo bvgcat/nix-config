@@ -23,7 +23,9 @@ in {
 		bear
     bootiso
     brave
+		clang-tools
 		ecryptfs
+		gcc-arm-embedded
 		gnumake
 		gparted
 		iptsd
@@ -33,11 +35,18 @@ in {
 		openocd
 		pciutils
 		powertop
+		power-profiles-daemon
+		savvycan
 		#qdirstat
 		usbutils
 		zsh
+		
+		#virtualisation
+		libvirt
+		qemu_full
+		virt-manager
+		OVMFFull
 
-		#vscodium
 		direnv
 		input-leap
 		vscodium
@@ -53,11 +62,13 @@ in {
 		fastfetch
 		firefox
 		flatpak 
+		freecad
 		git
     imagemagick
 		joplin-desktop
 		kdePackages.kdenlive 
 		keepassxc
+		kicad
 		kstars
 		libreoffice
 		nextcloud-client
@@ -65,6 +76,7 @@ in {
 		nixdoc
 		nixpkgs-lint-community
 		obsidian
+		octaveFull
 		qalculate-gtk 
 		rnote
 		rpi-imager

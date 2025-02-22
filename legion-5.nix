@@ -32,23 +32,10 @@ in {
 		kdePackages.plasma-browser-integration
 		kdePackages.partitionmanager
 		kdePackages.kpmcore
-    
-		clang-tools
-		gcc-arm-embedded
-		savvycan
-		pkgs.stm32cubemx
-
-		libvirt
-		qemu_full
-		virt-manager
-		OVMFFull
 	];
 
 	users.users.h = {
 		packages = with pkgs; [
-			kicad
-			pkgs-unstable.freecad
-			pkgs-unstable.octaveFull
 			tutanota-desktop
 		];
 	};
@@ -66,10 +53,6 @@ in {
 			vfio.enable = true;
 			imports = [ ./modules/virtualisation.nix ];
 		};
-		#"cosmic".configuration = {
-		#		system.nixos.tags = [ "cosmic" ];
-		#		imports = [ ./nixos-cosmic/nixos/default.nix ];
-		#};
 	};
 
 	users.users.h.extraGroups = [ "qemu-libvirtd" "libvirtd" "disk" ];
