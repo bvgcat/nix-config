@@ -39,10 +39,10 @@ in {
 
 	### Packages
   environment.systemPackages = with pkgs; [
-		fprintd
-		fprintd-tod
-		libfprint-tod
-		libfprint-2-tod1-broadcom
+	#	fprintd
+	#	fprintd-tod
+	#	libfprint-tod
+	#	libfprint-2-tod1-broadcom
 		maliit-keyboard
 	];
 
@@ -52,17 +52,17 @@ in {
 		octaveFull
 	];
 
-	services.fwupd.enable = true;
-	systemd.services.fprintd = {
-		wantedBy = [ "multi-user.target" ];
-		serviceConfig.Type = "simple";
-	};
+	#services.fwupd.enable = true;
+	#systemd.services.fprintd = {
+	#	wantedBy = [ "multi-user.target" ];
+	#	serviceConfig.Type = "simple";
+	#};
 
-	services.fprintd = {
-		enable = true;
- 		tod.enable = true;
-		tod.driver = pkgs.libfprint-2-tod1-broadcom;
-	};
+	#services.fprintd = {
+	#	enable = true;
+ 	#	tod.enable = true;
+	#	tod.driver = pkgs.libfprint-2-tod1-broadcom;
+	#};
   swapDevices = [ { device = "/swapfile"; size = 8128; } ];
 }
 
