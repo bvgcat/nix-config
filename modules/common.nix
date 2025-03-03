@@ -69,7 +69,7 @@ in {
 		kdePackages.kdenlive 
 		keepassxc
 		kicad
-		kstars
+		pkgs.kstars
 		libreoffice
 		nextcloud-client
 		nixd
