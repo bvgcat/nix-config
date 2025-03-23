@@ -37,7 +37,7 @@ in {
 		powertop
 		power-profiles-daemon
 		savvycan
-		#qdirstat
+		qdirstat
 		usbutils
 		zsh
 		
@@ -53,7 +53,10 @@ in {
 	];
 
 	users.users.h.packages = with pkgs; [
+		kdePackages.kdenlive 
+		anki
 		ausweisapp
+		blender
 		brave
 		can-utils
 		discord
@@ -65,8 +68,7 @@ in {
 		freecad
 		git
     imagemagick
-		joplin-desktop
-		kdePackages.kdenlive 
+		#joplin-desktop
 		keepassxc
 		kicad
 		libreoffice
@@ -76,18 +78,19 @@ in {
 		nixpkgs-lint-community
 		obsidian
 		octaveFull
-		qalculate-gtk 
+		qalculate-qt 
 		rnote
 		rpi-imager
 		signal-desktop
 		spotify  
 		syncthing
-		teams-for-linux
+		#teams-for-linux
 		tor-browser
 		tree
 		thunderbird
 		ventoy-full
 		vlc
+		xournalpp
 	];	
 
 	# for partition-manager
