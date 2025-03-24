@@ -26,10 +26,10 @@ in {
 		appimage-run
 		baobab
 		bear
-		bootiso
+		bootiso 
 		brave
 		clang-tools
-		ecryptfs
+		pkgs-24.ecryptfs
 		gcc-arm-embedded
 		gnumake
 		gparted
