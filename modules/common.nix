@@ -18,11 +18,16 @@ in {
 	];
 
 	environment.systemPackages = with pkgs; [
+		kdePackages.qtwebengine
+		kdePackages.plasma-browser-integration
+		kdePackages.partitionmanager
+		kdePackages.kpmcore
+
 		appimage-run
 		baobab
 		bear
-    bootiso
-    brave
+		bootiso
+		brave
 		clang-tools
 		ecryptfs
 		gcc-arm-embedded
@@ -60,6 +65,7 @@ in {
 		brave
 		can-utils
 		discord
+		doxygen_gui
 		drawio
 		element-desktop
 		fastfetch
@@ -67,8 +73,9 @@ in {
 		flatpak 
 		freecad
 		git
-    imagemagick
-		#joplin-desktop
+		imagemagick
+		joplin-desktop
+		kdePackages.kdenlive 
 		keepassxc
 		kicad
 		libreoffice
@@ -78,7 +85,7 @@ in {
 		nixpkgs-lint-community
 		obsidian
 		octaveFull
-		qalculate-qt 
+		qalculate-qt
 		rnote
 		rpi-imager
 		signal-desktop
@@ -95,7 +102,6 @@ in {
 
 	# for partition-manager
 	programs.partition-manager.enable = true;
-	services.dbus.packages = [ pkgs.libsForQt5.kpmcore ];
 
 	hardware.bluetooth.enable = true;
 	boot.supportedFilesystems = [ "ntfs" ];
@@ -115,20 +121,20 @@ in {
 		user = "h";
 	};
 	networking.firewall.allowedTCPPorts = [ 8384 22000 ];
-  networking.firewall.allowedUDPPorts = [ 21027 22000 ];
+    networking.firewall.allowedUDPPorts = [ 21027 22000 ];
 
-  # optimises the nix store
-  nix.optimise = {
-    automatic = true;
-    dates = [ "weekly" ]; # optimise periodically
-  };
+    # optimises the nix store
+    nix.optimise = {
+        automatic = true;
+        dates = [ "weekly" ]; # optimise periodically
+    };
 
-  # automation of garbage collection
-  nix.gc = {
-		automatic = true;
-		dates = "weekly";
-		options = "--delete-older-than 7d";
-  };
+    # automation of garbage collection
+    nix.gc = {
+        automatic = true;
+        dates = "weekly";
+        options = "--delete-older-than 7d";
+    };
 
 	services.avahi = {
 		enable = true;

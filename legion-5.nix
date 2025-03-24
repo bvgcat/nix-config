@@ -28,10 +28,7 @@ in {
 	services.displayManager.defaultSession = "plasma";
 
   environment.systemPackages = with pkgs; [
-		kdePackages.qtwebengine
-		kdePackages.plasma-browser-integration
-		kdePackages.partitionmanager
-		kdePackages.kpmcore
+    
 	];
 
 	users.users.h = {
@@ -39,10 +36,6 @@ in {
 			tutanota-desktop
 		];
 	};
-
-	# for partition-manager
-	programs.partition-manager.enable = true;
-	services.dbus.packages = [ pkgs.libsForQt5.kpmcore ];
 
 	# for virtualistion
 	programs.virt-manager.enable = true;
