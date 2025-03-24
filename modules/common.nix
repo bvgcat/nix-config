@@ -31,6 +31,8 @@ in {
 		clang-tools
 		pkgs-24.ecryptfs
 		gcc-arm-embedded
+		glib
+		glibc
 		gnumake
 		gparted
 		iptsd
@@ -92,6 +94,7 @@ in {
 		spotify  
 		syncthing
 		#teams-for-linux
+		texliveFull
 		tor-browser
 		tree
 		thunderbird
