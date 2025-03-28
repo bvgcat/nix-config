@@ -46,11 +46,7 @@ in {
 		maliit-keyboard
 	];
 
-	users.users.h.packages = with pkgs; [
-		freecad
-		kicad
-		octaveFull
-	];
+	users.users.h.packages = with pkgs; [];
 
 	#services.fwupd.enable = true;
 	#systemd.services.fprintd = {
