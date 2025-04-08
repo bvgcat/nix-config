@@ -1,17 +1,26 @@
 { config, lib, pkgs, ... }:
 
 let
-	pkgs-24 = import <nixos-24.05> {};
-	pkgs-unstable = import <nixos-unstable> {};
+	pkgs-24 = import <nixos-24.11> {};
 in
 {
 	imports = [
-		./modules/common.nix
+		#./modules/common.nix
 		./nixos-hardware/microsoft/surface/surface-go/default.nix # surface go hardware
+		(modulesPath + "/installer/scan/not-detected.nix")
+    (modulesPath + "/profiles/qemu-guest.nix")
+    ./disk-config.nix
 	];
 	
 	boot.kernelModules = [ "snd_hda_intel" ];
 	boot.supportedFilesystems = [ "ntfs" ];
+	services.openssh.enable = true;
+	boot.loader.grub = {
+    # no need to set devices, disko will add all devices that have a EF02 partition to the list already
+    # devices = [ ];
+    efiSupport = true;
+    efiInstallAsRemovable = true;
+  };
 	hardware.bluetooth.enable = true;
 
 	nixpkgs.config.packageOverrides = pkgs: {
@@ -28,8 +37,16 @@ in
   };
 	environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; }; # Force intel-media-driver
 
-	environment.systemPackages = with pkgs; [];
+  environment.systemPackages = map lib.lowPrio [
+    pkgs.curl
+    pkgs.gitMinimal
+  ];
 
+  users.users.root.openssh.authorizedKeys.keys = [
+    # change this to your ssh key
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINej8Vqt3lEBNDErxejC1ADYDehGVLWjMgJ/ANFE+U+k nixos@latitude-5290"
+  ];
+	
 	users.users.h.packages = with pkgs; [
 		pkgs-24.kicad-small
 	];

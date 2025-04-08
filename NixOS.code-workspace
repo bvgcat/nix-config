@@ -1,9 +1,11 @@
 {
 	"folders": [
 		{
+			"name": "nix-config",
 			"path": "."
 		},
 		{
+			"name": "nixos",
 			"path": "../../../etc/nixos"
 		}
 	],
