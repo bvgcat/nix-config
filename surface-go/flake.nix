@@ -8,7 +8,6 @@
     {
       nixpkgs,
       disko,
-      nixos-facter-modules,
       ...
     }:
     {
@@ -19,7 +18,7 @@
         modules = [
           disko.nixosModules.disko
           ./configuration.nix
-          ./hardware-configuration.nix
+          #./hardware-configuration.nix
         ];
       };
     };
