@@ -8,6 +8,7 @@
   disko.devices = {
     disk = {
       main = {
+        device = "/dev/mmcblk0";
         type = "disk";
         content = {
           type = "gpt";

@@ -8,7 +8,6 @@
     ./disk-config.nix
   ];
 
-
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
 
@@ -96,7 +95,6 @@
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINej8Vqt3lEBNDErxejC1ADYDehGVLWjMgJ/ANFE+U+k nixos@latitude-5290"
   ];
 
-  disko.devices.disk.main.device = "/dev/mmcblk0";
 	boot.kernelModules = [ "snd_hda_intel" ];
 	hardware.bluetooth.enable = true;
   networking.hostName = "surface-go"; # Define your hostname.

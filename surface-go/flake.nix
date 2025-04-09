@@ -9,11 +9,12 @@
     {
       nixpkgs,
       disko,
+      nixos-hardware,
       ...
     }:
     {
       # Use this for all other targets
-      # nixos-anywhere --flake .#generic --generate-hardware-config nixos-generate-config ./hardware-configuration.nix <hostname>
+      # nixos-anywhere --flake .#surface-go --generate-hardware-config nixos-generate-config ./hardware-configuration.nix <hostname>
       nixosConfigurations.surface-go = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
