@@ -57,7 +57,7 @@
   };
 
   # Configure console keymap
-  console.keyMap = "gb";
+  console.keyMap = "us";
 
   security.rtkit.enable = true;
   services.pipewire = {
@@ -79,9 +79,9 @@
 
   services.openssh.enable = true;
 
-  environment.systemPackages = map lib.lowPrio [
-    pkgs.curl
-    pkgs.gitMinimal
+  environment.systemPackages = with pkgs; [
+    curl
+    git
   ];
 
   users.users.user = {
