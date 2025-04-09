@@ -5,7 +5,7 @@
 
 	];
 
-	users.users.h.packages = with pkgs; [
+	users.users.user.packages = with pkgs; [
 		firefox
 		spotify  
 		syncthing
@@ -14,7 +14,7 @@
   # make systemd service start automatically
 	services.syncthing = {
 		enable = true;
-		configDir = "/home/h/.config/syncthing";
+		configDir = "/home/user/.config/syncthing";
 		user = "user";
 	};
 	networking.firewall.allowedTCPPorts = [ 8384 22000 ];
