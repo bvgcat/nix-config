@@ -15,7 +15,7 @@
 	services.syncthing = {
 		enable = true;
 		configDir = "/home/h/.config/syncthing";
-		user = "h";
+		user = "user";
 	};
 	networking.firewall.allowedTCPPorts = [ 8384 22000 ];
 	networking.firewall.allowedUDPPorts = [ 21027 22000 ];
