@@ -1,3 +1,5 @@
+# USAGE in your configuration.nix.
+# Update devices to match your hardware.
 # {
 #  imports = [ ./disko-config.nix ];
 #  disko.devices.disk.main.device = "/dev/sda";
@@ -6,12 +8,15 @@
   disko.devices = {
     disk = {
       main = {
-        device = "/dev/mmcblk0";
         type = "disk";
         content = {
           type = "gpt";
           partitions = {
             boot = {
+              size = "1M";
+              type = "EF02"; # for grub MBR
+            };
+            ESP = {
               size = "2G";
               type = "EF00";
               content = {
@@ -24,16 +29,9 @@
             root = {
               size = "100%";
               content = {
-                type = "luks";
-                name = "crypted";
-                settings = {
-                  allowDiscards = true;
-                };
-                content = {
-                  type = "filesystem";
-                  format = "ext4";
-                  mountpoint = "/";
-                };
+                type = "filesystem";
+                format = "ext4";
+                mountpoint = "/";
               };
             };
           };
