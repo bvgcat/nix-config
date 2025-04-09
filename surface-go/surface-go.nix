@@ -4,7 +4,6 @@
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
     (modulesPath + "/profiles/qemu-guest.nix")
-    ./nixos-hardware/microsoft/surface/surface-go/default.nix
     ./hardware-configuration.nix
     ./disk-config.nix
   ];
@@ -28,18 +27,38 @@
     LC_TIME = "de_DE.UTF-8";
   };
 
-  # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
+  services.xserver = {
+    enable = true;
+    displayManager.gdm.enable = true;
+    desktopManager.gnome.enable = true;
+  };
+
+  environment.gnome.excludePackages = (with pkgs; [
+    atomix # puzzle game
+    cheese # webcam tool
+    epiphany # web browser
+    evince # document viewer
+    geary # email reader
+    gedit # text editor
+    gnome-characters
+    gnome-music
+    gnome-photos
+    gnome-terminal
+    gnome-tour
+    hitori # sudoku game
+    iagno # go game
+    tali # poker game
+    totem # video player
+  ]);
 
   # Configure keymap in X11
-  services.xserver = {
-    layout = "de";
-    xkbVariant = "";
+  services.xserver.xkb = {
+    layout = "gb";
+    variant = "";
   };
 
   # Configure console keymap
-  console.keyMap = "de";
+  console.keyMap = "gb";
 
   security.rtkit.enable = true;
   services.pipewire = {
@@ -66,18 +85,25 @@
     pkgs.gitMinimal
   ];
 
+  users.users.user = {
+    isNormalUser = true;
+    description = "user";
+    extraGroups = [ "networkmanager" "wheel" ];
+  };
+
   users.users.root.openssh.authorizedKeys.keys = [
     # change this to your ssh key
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINej8Vqt3lEBNDErxejC1ADYDehGVLWjMgJ/ANFE+U+k nixos@latitude-5290"
   ];
+
   disko.devices.disk.main.device = "/dev/mmcblk0";
 	boot.kernelModules = [ "snd_hda_intel" ];
 	hardware.bluetooth.enable = true;
   networking.hostName = "surface-go"; # Define your hostname.
-	services.openssh.enable = true;
-  system.stateVersion = "24.11";
 
 	swapDevices = [
     { device = "/swapfile"; size = 4*1024; }
   ];
+
+  system.stateVersion = "24.11";
 }
