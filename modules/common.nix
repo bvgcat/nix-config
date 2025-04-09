@@ -3,7 +3,6 @@
 let
 	pkgs-24 = import <nixos-24.11> {};
 in {
-	
 	nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
 	services.flatpak.enable = true;

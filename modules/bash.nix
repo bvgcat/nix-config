@@ -21,6 +21,7 @@
       update = "sudo nixos-rebuild switch -v ";
       updatefast = "sudo nixos-rebuild switch --fast -v";
       upgrade = "sudo nixos-rebuild switch --upgrade-all -v";
+      upgradesurface = "nixos-rebuild --target-host root@192.168.0.200 switch --flake /home/h/nix-config/surface-go";
     };
   };
 }
