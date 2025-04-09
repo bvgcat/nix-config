@@ -104,6 +104,23 @@ in {
 		vlc
 		xournalpp
 	];	
+	
+	i18n.extraLocaleSettings = {
+		LC_ALL = "en_US.UTF-8";
+		LC_CTYPE = "de_DE.UTF-8";
+		LC_ADDRESS = "de_DE.UTF-8";
+		LC_IDENTIFICATION = "de_DE.UTF-8";
+		LC_MEASUREMENT = "de_DE.UTF-8";
+		LC_MESSAGES = "de_DE.UTF-8";
+		LC_MONETARY = "de_DE.UTF-8";
+		LC_NAME = "de_DE.UTF-8";
+		LC_NUMERIC = "de_DE.UTF-8";
+		LC_PAPER = "de_DE.UTF-8";
+		LC_TELEPHONE = "de_DE.UTF-8";
+		LC_TIME = "de_DE.UTF-8";
+		LC_COLLATE = "de_DE.UTF-8";
+	};
+
 
 	# for partition-manager
 	programs.partition-manager.enable = true;
@@ -111,7 +128,7 @@ in {
 	hardware.bluetooth.enable = true;
 	boot.supportedFilesystems = [ "ntfs" ];
 
-  # to enable kdeconnect
+  	# to enable kdeconnect
 	programs.kdeconnect.enable = true;
 	programs.steam = {
 		enable = true;
@@ -126,20 +143,20 @@ in {
 		user = "h";
 	};
 	networking.firewall.allowedTCPPorts = [ 8384 22000 ];
-    networking.firewall.allowedUDPPorts = [ 21027 22000 ];
+	networking.firewall.allowedUDPPorts = [ 21027 22000 ];
 
-    # optimises the nix store
-    nix.optimise = {
-        automatic = true;
-        dates = [ "weekly" ]; # optimise periodically
-    };
+	# optimises the nix store
+	nix.optimise = {
+		automatic = true;
+		dates = [ "weekly" ]; # optimise periodically
+	};
 
-    # automation of garbage collection
-    nix.gc = {
-        automatic = true;
-        dates = "weekly";
-        options = "--delete-older-than 7d";
-    };
+	# automation of garbage collection
+	nix.gc = {
+		automatic = true;
+		dates = "weekly";
+		options = "--delete-older-than 7d";
+	};
 
 	services.avahi = {
 		enable = true;
