@@ -6,6 +6,7 @@
     (modulesPath + "/profiles/qemu-guest.nix")
     ./hardware-configuration.nix
     ./disk-config.nix
+    ./part-db.nix
     #"${builtins.fetchGit { url = "https://github.com/NixOS/nixos-hardware.git"; }}/microsoft/surface/surface-go"
   ];
 
