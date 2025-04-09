@@ -67,6 +67,7 @@ in {
 		brave
 		can-utils
 		discord
+		disko
 		doxygen_gui
 		drawio
 		element-desktop
@@ -84,6 +85,7 @@ in {
 		nextcloud-client
 		nixd
 		nixdoc
+		nixos-anywhere
 		nixpkgs-lint-community
 		obsidian
 		octaveFull

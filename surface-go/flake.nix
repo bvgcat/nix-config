@@ -19,7 +19,7 @@
           disko.nixosModules.disko
           ./configuration.nix
           ./disk-config.nix
-          #./hardware-configuration.nix
+          ./hardware-configuration.nix
         ];
       };
     };
