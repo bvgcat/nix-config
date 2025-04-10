@@ -1,6 +1,3 @@
-[submodule "nixos-hardware"]
-	path = nixos-hardware
-	url = https://github.com/NixOS/nixos-hardware.git
 [submodule "nixos-modules"]
 	path = nixos-modules
 	url = git@git.tu-berlin.de:hamza.tmm/nixos-modules.git
