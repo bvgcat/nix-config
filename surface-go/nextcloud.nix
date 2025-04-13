@@ -1,26 +1,31 @@
 { config, pkgs, lib, ... }:
 
 {
+  users.groups.nextcloud = {};
+  # Ensure user exists
+  users.users.nextcloud = {
+    isSystemUser = true;
+    group = "nextcloud";
+    packages = with pkgs; [
+      cron
+      nextcloud31
+    ];	
+    openssh.authorizedKeys.keys = [
+      # change this to your ssh key
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINej8Vqt3lEBNDErxejC1ADYDehGVLWjMgJ/ANFE+U+k nixos@latitude-5290"
+    ];
+  };
+
   environment.etc."nextcloud-admin-pass".text = "PWD";
   services.nextcloud = {
     enable = true;
     configureRedis = true;
     package = pkgs.nextcloud31;
-    hostName = "localhost";
+    hostName = "192.168.0.200";
     config.adminpassFile = "/etc/nextcloud-admin-pass";
     config.dbtype = "pgsql";
     
     maxUploadSize = "10G";
-    
-    ensureUsers = {
-      admin = {
-        email = "hamzatamim.ht@gamil.com";
-      };
-      #mira = {
-      #  email = "mira@localhost";
-      #  passwordFile = "/etc/nextcloud-user-pass";
-      #};
-    };
 
     settings = {
       mail_smtpmode = "sendmail";
