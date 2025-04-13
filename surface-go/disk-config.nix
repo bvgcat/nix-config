@@ -18,7 +18,7 @@
               type = "EF02"; # for grub MBR
             };
             ESP = {
-              size = "2G";
+              size = "1G";
               type = "EF00";
               content = {
                 type = "filesystem";
@@ -31,7 +31,7 @@
               size = "100%";
               content = {
                 type = "filesystem";
-                format = "ext4";
+                format = "zfs";
                 mountpoint = "/";
               };
             };
