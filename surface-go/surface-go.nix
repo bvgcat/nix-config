@@ -8,7 +8,8 @@
     ./disk-config.nix
     ./part-db.nix
     ./pkgs.nix
-    ./nextcloud.nix
+    ../modules/bash.nix
+    #./nextcloud.nix
     #"${builtins.fetchGit { url = "https://github.com/NixOS/nixos-hardware.git"; }}/microsoft/surface/surface-go"
   ];
 
@@ -30,29 +31,11 @@
     LC_TIME = "de_DE.UTF-8";
   };
 
-  services.xserver = {
-    enable = true;
-    displayManager.gdm.enable = true;
-    desktopManager.gnome.enable = true;
+  services = {
+    #xserver.enable = true;
+    displayManager.sddm.enable = true;
+    desktopManager.plasma6.enable = true;
   };
-
-  environment.gnome.excludePackages = (with pkgs; [
-    atomix # puzzle game
-    cheese # webcam tool
-    epiphany # web browser
-    evince # document viewer
-    geary # email reader
-    gedit # text editor
-    gnome-characters
-    gnome-music
-    gnome-photos
-    gnome-terminal
-    gnome-tour
-    hitori # sudoku game
-    iagno # go game
-    tali # poker game
-    totem # video player
-  ]);
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -87,18 +70,6 @@
     curl
     git
   ];
-
-  users.users = {
-    surface-go = {
-      isNormalUser = true;
-      description = "surface-go";
-      extraGroups = [ "networkmanager" "wheel" ];
-    };
-    root.openssh.authorizedKeys.keys = [
-      # change this to your ssh key
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINej8Vqt3lEBNDErxejC1ADYDehGVLWjMgJ/ANFE+U+k nixos@latitude-5290"
-    ];
-  };
 
 	boot.kernelModules = [ "snd_hda_intel" ];
 	hardware.bluetooth.enable = true;
