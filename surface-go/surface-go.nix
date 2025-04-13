@@ -70,6 +70,13 @@
     git
   ];
 
+  users.users = {
+    root.openssh.authorizedKeys.keys = [
+      # change this to your ssh key
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINej8Vqt3lEBNDErxejC1ADYDehGVLWjMgJ/ANFE+U+k nixos@latitude-5290"
+    ];
+  };
+
 	boot.kernelModules = [ "snd_hda_intel" ];
 	hardware.bluetooth.enable = true;
   networking.hostName = "surface-go"; # Define your hostname.
