@@ -5,14 +5,14 @@ let
 in {
   imports = [
 		./modules/common.nix
-		./nixos-hardware/dell/latitude/7280/default.nix # surface go hardware
+		./nixos-hardware/dell/latitude/5490/default.nix # surface go hardware
 	];
 
 	### Hardware
 
 	boot = {
 		## to detect windows
-		kernelParams = [ "mem_sleep_default=s2idle" "acpi_enforce_resources=lax" "i915.enable_dc=0" ];
+		kernelParams = [ "mem_sleep_default=deep" "acpi_enforce_resources=lax" "i915.enable_dc=0" ];
 		kernelPackages = pkgs.linuxPackages_latest;
 		kernelModules = [ "snd_hda_intel" ];
 		supportedFilesystems = [ "ntfs" ];
@@ -20,15 +20,13 @@ in {
 		
 	hardware.bluetooth.enable = true;
   hardware.enableAllFirmware = true;
-	hardware.opengl = {
+	hardware.graphics = {
     enable = true;
     extraPackages = with pkgs; [
-			intel-media-driver # LIBVA_DRIVER_NAME=iHD
-      onevpl-intel-gpu  # for newer GPUs on NixOS <= 24.05
+			intel-media-driver 	# LIBVA_DRIVER_NAME=iHD
+      vpl-gpu-rt  				# for newer GPUs on NixOS <= 24.05
     ];
   };
-	environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; }; # Force intel-media-driver
-
 	services = {
     thermald.enable = true;
     power-profiles-daemon = {

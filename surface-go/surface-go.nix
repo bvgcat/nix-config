@@ -88,16 +88,17 @@
     git
   ];
 
-  users.users.user = {
-    isNormalUser = true;
-    description = "user";
-    extraGroups = [ "networkmanager" "wheel" ];
+  users.users = {
+    surface-go = {
+      isNormalUser = true;
+      description = "surface-go";
+      extraGroups = [ "networkmanager" "wheel" ];
+    };
+    root.openssh.authorizedKeys.keys = [
+      # change this to your ssh key
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINej8Vqt3lEBNDErxejC1ADYDehGVLWjMgJ/ANFE+U+k nixos@latitude-5290"
+    ];
   };
-
-  users.users.root.openssh.authorizedKeys.keys = [
-    # change this to your ssh key
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINej8Vqt3lEBNDErxejC1ADYDehGVLWjMgJ/ANFE+U+k nixos@latitude-5290"
-  ];
 
 	boot.kernelModules = [ "snd_hda_intel" ];
 	hardware.bluetooth.enable = true;

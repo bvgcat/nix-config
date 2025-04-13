@@ -9,11 +9,17 @@ in {
 	xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 	xdg.portal.config.common.default = "gtk";
 
+	boot.loader= {
+		systemd-boot.enable = true;
+		efi = {
+			canTouchEfiVariables = true;
+		};
+	};
+	
 	imports = [
 		#../nixos-tuberlin/BSPrak.nix
 		#../nixos-tuberlin/SWTPP.nix
 		./bash.nix
-		./docker.nix
 	];
 
 	environment.systemPackages = with pkgs; [
@@ -33,6 +39,7 @@ in {
 		glib
 		glibc
 		gnumake
+		gnupg
 		gparted
 		iptsd
 		nixfmt-rfc-style
@@ -40,6 +47,7 @@ in {
 		pkgs-24.scrounge-ntfs
 		openocd
 		pciutils
+		pinentry-all
 		powertop
 		power-profiles-daemon
 		savvycan
@@ -91,7 +99,8 @@ in {
 		qalculate-qt
 		rnote
 		rpi-imager
-		signal-desktop
+		signal-desktop-bin
+		sops
 		spotify  
 		syncthing
 		#teams-for-linux
