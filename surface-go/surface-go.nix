@@ -63,8 +63,6 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  services.openssh.enable = true;
-
   environment.systemPackages = with pkgs; [
     curl
     git
