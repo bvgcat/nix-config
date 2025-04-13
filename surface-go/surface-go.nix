@@ -7,7 +7,6 @@
     ./hardware-configuration.nix
     ./disk-config.nix
     ./part-db.nix
-    ./pkgs.nix
     ../modules/bash.nix
     #./nextcloud.nix
     #"${builtins.fetchGit { url = "https://github.com/NixOS/nixos-hardware.git"; }}/microsoft/surface/surface-go"

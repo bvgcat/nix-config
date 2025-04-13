@@ -35,18 +35,11 @@
     enable = true;
     package = pkgs.postgresql_17;
 
-    
-    #authentication = ''
-    #  # type  database  DBuser    origin-address  auth-method
-    #  local   all       all                       peer
-    #  host    part-db   part-db   127.0.0.1/32    scram-sha-256
-    #  host    part-db   part-db   ::1/128         scram-sha-256
-    #'';
-
-    #initialScript = pkgs.writeText "postgres-init-script" ''
-    #  CREATE ROLE "part-db" WITH LOGIN PASSWORD 'password';
-    #  CREATE DATABASE "part-db" OWNER "part-db";
-    #  GRANT ALL PRIVILEGES ON DATABASE "part-db" TO "part-db";
-    #'';
+    authentication = ''
+      # type  database  DBuser    origin-address  auth-method
+      local   all       all                       peer
+      host    part-db   part-db   127.0.0.1/32    scram-sha-256
+      host    part-db   part-db   ::1/128         scram-sha-256
+    '';
   };
 }
