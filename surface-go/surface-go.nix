@@ -9,7 +9,6 @@
     ./part-db.nix
     ../modules/bash.nix
     #./nextcloud.nix
-    #"${builtins.fetchGit { url = "https://github.com/NixOS/nixos-hardware.git"; }}/microsoft/surface/surface-go"
   ];
 
   # Set your time zone.
