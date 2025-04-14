@@ -31,7 +31,7 @@
               size = "100%";
               content = {
                 type = "filesystem";
-                format = "zfs";
+                format = "ext4";
                 mountpoint = "/";
               };
             };
