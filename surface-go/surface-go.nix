@@ -68,6 +68,7 @@
   ];
   
   services.openssh.enable = true;
+  boot.initrd.network.ssh.enable = true;
   users.users = {
     root.openssh.authorizedKeys.keys = [
       # change this to your ssh key
