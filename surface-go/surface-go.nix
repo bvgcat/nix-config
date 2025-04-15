@@ -52,23 +52,26 @@
     pulse.enable = true;
   };
 
-  boot.loader.grub = {
-    # no need to set devices, disko will add all devices that have a EF02 partition to the list already
-    # devices = [ ];
-    efiSupport = true;
-    efiInstallAsRemovable = true;
+  boot.loader= {
+		systemd-boot.enable = true;
+		efi = {
+			canTouchEfiVariables = true;
+		};
   };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  environment.systemPackages = with pkgs; [
-    curl
-    git
-  ];
+  systemd.services.suspend = {
+    enable = false;
+  };
   
   services.openssh.enable = true;
   boot.initrd.network.ssh.enable = true;
+  systemd.services.NetworkManager = {
+    wantedBy = [ "multi-user.target" ];
+  };
+
   users.users = {
     root.openssh.authorizedKeys.keys = [
       # change this to your ssh key
@@ -78,7 +81,7 @@
 
 	boot.kernelModules = [ "snd_hda_intel" ];
 	hardware.bluetooth.enable = true;
-  networking.hostName = "surface-go"; # Define your hostname.
+  networking.hostName = "part-db-terminal"; # Define your hostname.
 
 	swapDevices = [
     { device = "/swapfile"; size = 4*1024; }
