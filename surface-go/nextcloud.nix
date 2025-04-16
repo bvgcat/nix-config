@@ -1,54 +1,51 @@
 { config, pkgs, lib, ... }:
 
+let
+    name = "nixtcloud";
+in
 {
-  users.groups.nextcloud = {};
-  # Ensure user exists
-  users.users.nextcloud = {
-    isSystemUser = true;
-    group = "nextcloud";
-    packages = with pkgs; [
-      cron
-      nextcloud31
-    ];	
-    openssh.authorizedKeys.keys = [
-      # change this to your ssh key
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINej8Vqt3lEBNDErxejC1ADYDehGVLWjMgJ/ANFE+U+k nixos@latitude-5290"
-    ];
+  #### Defining the admin password file. This file is used to set the admin password for the nextcloud instance. ####
+  environment.etc."nixos/adminpass.txt" = { 
+    text = ''admin'';
+    mode = "0644";
+    group = "wheel";
   };
 
-  environment.etc."nextcloud-admin-pass".text = "PWD";
   services.nextcloud = {
     enable = true;
-    configureRedis = true;
-    package = pkgs.nextcloud31;
-    hostName = "192.168.0.200";
-    config.adminpassFile = "/etc/nextcloud-admin-pass";
-    config.dbtype = "pgsql";
-    
-    maxUploadSize = "10G";
-
-    settings = {
-      mail_smtpmode = "sendmail";
-      mail_sendmailmode = "pipe";
+    package = pkgs.nextcloud30;
+    hostName = name;
+    database.createLocally = true;
+    config = {
+      dbtype = "pgsql";
+      adminuser = "admin";
+      adminpassFile = "/etc/nixos/adminpass.txt";
     };
-
-    settings.enabledPreviewProviders = [
-      "OC\\Preview\\BMP"
-      "OC\\Preview\\GIF"
-      "OC\\Preview\\JPEG"
-      "OC\\Preview\\Krita"
-      "OC\\Preview\\MarkDown"
-      "OC\\Preview\\MP3"
-      "OC\\Preview\\OpenDocument"
-      "OC\\Preview\\PNG"
-      "OC\\Preview\\TXT"
-      "OC\\Preview\\XBitmap"
-      "OC\\Preview\\HEIC"
-    ];
-
+    settings = {
+      trusted_domains = [ "${name}.local" ];
+      default_phone_region = "DE"; ### you can change this to your country code
+      log_type = "file";
+      loglevel = 4;
+      nginx.recommendedHttpHeaders =  true;
+      nginx.hstsMaxAge = 15553000000;
+      maintenance_window_start = 1;
+      quota_include_external_storage = true;
+    };
+    maxUploadSize = "5000M";
+    appstoreEnable = true;
     extraAppsEnable = true;
-    extraApps = {
-      inherit (config.services.nextcloud.package.packages.apps) news contacts calendar tasks;
+    configureRedis = true;
+    caching.apcu = true;
+    caching.redis = true;
+    caching.memcached = false;
+    phpOptions = {  		
+      "opcache.fast_shutdown" = "1";
+      "opcache.interned_strings_buffer" = "10";
+      "opcache.max_accelerated_files" = "10000";
+      "opcache.memory_consumption" = "128";
+      "opcache.revalidate_freq" = "1";
+      output_buffering = "0";
+      short_open_tag = "Off"; 
     };
   };
 }
