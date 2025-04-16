@@ -4,8 +4,8 @@ let
 	pkgs-24 = import <nixos-24.11> {};
 in {
   imports = [
-		./modules/common.nix
-		./nixos-hardware/dell/latitude/5490/default.nix # surface go hardware
+		./modules/default.nix
+		<nixos-hardware/dell/latitude/5490> # surface go hardware
 	];
 
 	boot = {
@@ -20,7 +20,6 @@ in {
 	hardware.graphics = {
     enable = true;
     extraPackages = with pkgs; [
-			intel-media-driver 	# LIBVA_DRIVER_NAME=iHD
       vpl-gpu-rt  				# for newer GPUs on NixOS <= 24.05
     ];
   };
