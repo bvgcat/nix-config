@@ -4,6 +4,8 @@
 #  imports = [ ./disko-config.nix ];
 #  disko.devices.disk.main.device = "/dev/sda";
 # }
+# https://gist.github.com/Kidsan/d61ecaabc971569e9f915e62732ccc54 check this for zfs at some point
+# https://github.com/nix-community/disko-templates/blob/main/zfs-impermanence/disko-config.nix
 {
   disko.devices = {
     disk = {
