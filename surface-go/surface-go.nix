@@ -30,8 +30,11 @@
   };
 
   services = {
-    #xserver.enable = true;
-    displayManager.sddm.enable = true;
+    displayManager = {
+      sddm.enable = true;
+      autoLogin.enable = true;
+      autoLogin.user = "partdb-terminal";
+    };
     desktopManager.plasma6.enable = true;
   };
 
@@ -52,12 +55,12 @@
     pulse.enable = true;
   };
 
-  boot.loader= {
+	boot.loader= {
 		systemd-boot.enable = true;
 		efi = {
 			canTouchEfiVariables = true;
 		};
-  };
+	};
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -65,7 +68,7 @@
   systemd.services.suspend = {
     enable = false;
   };
-  
+
   services.openssh.enable = true;
   boot.initrd.network.ssh.enable = true;
   systemd.services.NetworkManager = {
@@ -77,11 +80,24 @@
       # change this to your ssh key
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINej8Vqt3lEBNDErxejC1ADYDehGVLWjMgJ/ANFE+U+k nixos@latitude-5290"
     ];
+    partdb-terminal = {
+      isNormalUser = true;
+      group = "users";
+      password = "";
+      openssh.authorizedKeys.keys = [
+        # change this to your ssh key
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINej8Vqt3lEBNDErxejC1ADYDehGVLWjMgJ/ANFE+U+k nixos@latitude-5290"
+      ];
+    };
   };
+
+  environment.systemPackages = with pkgs; [
+    php
+	];
 
 	boot.kernelModules = [ "snd_hda_intel" ];
 	hardware.bluetooth.enable = true;
-  networking.hostName = "part-db-terminal"; # Define your hostname.
+  networking.hostName = "partdb-terminal"; # Define your hostname.
 
 	swapDevices = [
     { device = "/swapfile"; size = 4*1024; }
