@@ -13,13 +13,15 @@
     };
     
     # setting php-fpm.conf options
-    virtualHost = "part-db.bvgcat.top";
+    virtualHost = "localhost:8000";
     poolConfig = {};
   };
 
-  services.postgresql = {
+  services = {
+    postgresql = {
     enable = true;
     package = pkgs.postgresql_17;
+    #dataDir = "";
 
     authentication = ''
       # type  database  DBuser    origin-address  auth-method
@@ -27,8 +29,27 @@
       host    part-db   part-db   127.0.0.1/32    scram-sha-256
       host    part-db   part-db   ::1/128         scram-sha-256
     '';
+    };
+    postgresqlBackup = {
+      enable = true;
+      startAt = "*-*-* 03:00:00";
+      databases = [ "part-db" ];
+      #location = "";
+    };
   };
 
+  services.nginx = {
+    enable = true;
+    virtualHosts = {
+      "localhost:8000" = {
+        root = "${config.services.part-db.package}/public";
+        serverName = "part-db.bvgcat.top";
+      };
+      #"nextcloud" = {
+      #  
+      #};
+    };
+  };
   # allow the ports used for php through
 	networking.firewall.allowedTCPPorts = [ 80 443 ];
 	networking.firewall.allowedUDPPorts = [ 80 443 ];
