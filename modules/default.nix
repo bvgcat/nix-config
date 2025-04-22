@@ -5,7 +5,6 @@ let
 in {
   imports = [
     ./bash.nix 
-    ./common.nix
   ];
 
   time.timeZone = "Europe/Berlin";
