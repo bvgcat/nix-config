@@ -17,7 +17,7 @@
     }:
     {
       # Use this for all other targets
-      # nixos-anywhere --flake .#surface-go --generate-hardware-config nixos-generate-config ./hardware-configuration.nix <hostname>
+      # nixos-anywhere --flake .#partdb-terminal --generate-hardware-config nixos-generate-config ./surface-go/hardware-configuration.nix nixos@192.168.0.4
       nixosConfigurations.partdb-terminal = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
@@ -25,6 +25,7 @@
           nixos-hardware.nixosModules.microsoft-surface-go
           ./surface-go/hardware-configuration.nix
           ./surface-go.nix
+          ./surface-go/disk-config.nix
           ./modules/bash.nix
           ./modules/default.nix
           ./surface-go/part-db.nix

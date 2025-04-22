@@ -60,7 +60,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    #php
+    git
 	];
 
 	boot.kernelModules = [ "snd_hda_intel" ];

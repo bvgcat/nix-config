@@ -42,10 +42,6 @@
     isNormalUser = true;
     description = "h";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      kdePackages.kate
-    #  thunderbird
-    ];
   };
 
 	#services.fwupd.enable = true;
