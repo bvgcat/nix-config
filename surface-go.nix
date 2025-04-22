@@ -8,7 +8,6 @@
     ./disk-config.nix
     ./part-db.nix
     ../modules/bash.nix
-    #./nextcloud.nix
   ];
 
   # Set your time zone.
