@@ -35,6 +35,7 @@
           nixos-hardware.nixosModules.lenovo-legion-15arh05h
           ./legion-5.nix
           ./modules/default.nix
+          ./modules/common.nix
           ./legion-5/hardware-configuration.nix
         ];
       };
