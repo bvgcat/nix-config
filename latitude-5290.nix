@@ -8,6 +8,9 @@ in {
 		<nixos-hardware/dell/latitude/5490> # surface go hardware
 	];
 
+	networking.hostName = "latitude-5290"; # Define your hostname.
+	services.xserver.enable = true;
+
 	boot = {
 		kernelParams = [ "mem_sleep_default=deep" "acpi_enforce_resources=lax" "i915.enable_dc=0" ];
 		kernelPackages = pkgs.linuxPackages_latest;
@@ -40,7 +43,15 @@ in {
 		maliit-keyboard
 	];
 
-	users.users.h.packages = with pkgs; [];
+	users.users.h = {
+    isNormalUser = true;
+    description = "h";
+    extraGroups = [ "networkmanager" "wheel" ];
+    packages = with pkgs; [
+      kdePackages.kate
+    #  thunderbird
+    ];
+  };
 
 	#services.fwupd.enable = true;
 	#systemd.services.fprintd = {
@@ -54,5 +65,8 @@ in {
 	#	tod.driver = pkgs.libfprint-2-tod1-broadcom;
 	#};
   swapDevices = [ { device = "/swapfile"; size = 8128; } ];
+
+	system.stateVersion = "24.05"; # Did you read the comment?
+
 }
 
