@@ -1,9 +1,6 @@
 { config, pkgs, lib, ... }:
 
 {
-  imports = [
-    ./bash.nix 
-  ];
 	services.openssh.enable = true;
 
   time.timeZone = "Europe/Berlin";

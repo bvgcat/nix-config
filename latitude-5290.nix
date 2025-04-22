@@ -2,8 +2,10 @@
 
 {
 	networking.hostName = "latitude-5290"; # Define your hostname.
-	services.xserver.enable = true;
-
+  services.xserver = {
+		enable = true;
+		xkb.layout = "de";
+	};
 	boot = {
 		kernelParams = [ "mem_sleep_default=deep" "acpi_enforce_resources=lax" "i915.enable_dc=0" ];
 		kernelPackages = pkgs.linuxPackages_latest;

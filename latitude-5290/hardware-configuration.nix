@@ -17,6 +17,13 @@
     { device = "/dev/disk/by-uuid/7a228fce-fbbf-458b-9cd9-fac6f83ff1b9";
       fsType = "ext4";
     };
+  
+  fileSystems."/boot" =
+  { 
+    device = "/dev/disk/by-uuid/3361-5CAC";
+    fsType = "vfat";
+    options = [ "fmask=0022" "dmask=0022" ];
+  };
 
   boot.initrd.luks.devices."luks-3ed663a6-6024-485a-bfcd-aef0cebbb213".device = "/dev/disk/by-uuid/3ed663a6-6024-485a-bfcd-aef0cebbb213";
 

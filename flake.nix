@@ -24,7 +24,7 @@
           disko.nixosModules.disko
           nixos-hardware.nixosModules.microsoft-surface-go
           ./surface-go/hardware-configuration.nix
-          ./surface-go/surface-go.nix
+          ./surface-go.nix
         ];
       };
 
@@ -34,8 +34,9 @@
           nixos-hardware.nixosModules.lenovo-legion-15arh05h
           ./legion-5/hardware-configuration.nix
           ./legion-5.nix
-          ./modules/default.nix
+          ./modules/bash.nix
           ./modules/common.nix
+          ./modules/default.nix
         ];
       };
 
