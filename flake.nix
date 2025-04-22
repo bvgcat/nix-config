@@ -4,6 +4,7 @@
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    nix-config.url = "github:bvgcat/nix-config";
   };
 
   outputs =
@@ -11,6 +12,7 @@
       nixpkgs,
       disko,
       nixos-hardware,
+      nix-config,
       ...
     }:
     {
@@ -21,9 +23,9 @@
         modules = [
           disko.nixosModules.disko
           nixos-hardware.nixosModules.microsoft-surface-go
-          ./surface-go.nix
-          ./disk-config.nix
-          ./hardware-configuration.nix
+          nix-config
+          ./surface-go/surface-go.nix
+          ./surface-go/hardware-configuration.nix
         ];
       };
     };
