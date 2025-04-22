@@ -23,9 +23,8 @@
         modules = [
           disko.nixosModules.disko
           nixos-hardware.nixosModules.microsoft-surface-go
-          #nix-config
-          ./surface-go/surface-go.nix
           ./surface-go/hardware-configuration.nix
+          ./surface-go/surface-go.nix
         ];
       };
 
@@ -33,10 +32,21 @@
         system = "x86_64-linux";
         modules = [
           nixos-hardware.nixosModules.lenovo-legion-15arh05h
+          ./legion-5/hardware-configuration.nix
           ./legion-5.nix
           ./modules/default.nix
           ./modules/common.nix
-          ./legion-5/hardware-configuration.nix
+        ];
+      };
+
+        nixosConfigurations.latitude-5290 = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          nixos-hardware.nixosModules.lenovo-legion-15arh05h
+          ./latitude-5290/hardware-configuration.nix
+          ./latitude-5290.nix
+          ./modules/default.nix
+          ./modules/common.nix
         ];
       };
     };
