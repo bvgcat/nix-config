@@ -1,8 +1,6 @@
 { config, pkgs, lib, ... }:
 
-let
-	#pkgs-24 = import <nixos-24.11> {};
-in {
+{
 	environment.systemPackages = with pkgs; [
 		kdePackages.qtwebengine
 		kdePackages.plasma-browser-integration
@@ -16,10 +14,11 @@ in {
 		brave
 		clang-tools
 		#pkgs-24.ecryptfs
-		gcc-arm-embedded
+		#gcc-arm-embedded
 		glib
 		glibc
 		gnumake
+		
 		gnupg
 		gparted
 		#input-leap
