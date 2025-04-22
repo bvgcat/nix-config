@@ -5,6 +5,7 @@ let
 	pkgs-unstable = import <nixos-unstable> {};
 in {
   imports = [ 
+		./legion-5/hardware-configuration.nix
 		./modules/common.nix
 		./modules/nvidia.nix
 		./nixos-hardware/lenovo/legion/15arh05h/default.nix 
@@ -24,19 +25,6 @@ in {
 		"nvidia_drm"
   ];
 
-	#boot.kernelPackages = pkgs.linuxPackages_latest;
-	services.displayManager.defaultSession = "plasma";
-
-  environment.systemPackages = with pkgs; [
-    
-	];
-
-	users.users.h = {
-		packages = with pkgs; [
-			tutanota-desktop
-		];
-	};
-
 	# for virtualistion
 	programs.virt-manager.enable = true;
 	
@@ -48,7 +36,6 @@ in {
 		};
 	};
 
-	users.users.h.extraGroups = [ "qemu-libvirtd" "libvirtd" "disk" ];
 	virtualisation = with pkgs-unstable; {
 		spiceUSBRedirection.enable = true;
 		libvirtd = {
@@ -66,4 +53,41 @@ in {
 	swapDevices = [
     { device = "/swapfile"; size = 8*1024; }
   ];
+
+  networking.hostName = "legion-5"; # Define your hostname.
+  networking.networkmanager.enable = true;
+
+  # Set your time zone.
+
+  # Select internationalisation properties.
+  i18n.defaultLocale = "en_US.UTF-8";
+
+  # Enable the X11 windowing system.
+  services.xserver.enable = true;
+
+  services.xserver = {
+    xkb.layout = "de";
+    xkb.variant = "";
+  };
+
+  console.keyMap = "de";
+
+
+  services.pulseaudio.enable = false;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+  };
+
+  # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.users.h = {
+    isNormalUser = true;
+    description = "h";
+    extraGroups = [ "networkmanager" "wheel" "qemu-libvirtd" "libvirtd" "disk"];
+  };
+  
+  system.stateVersion = "23.11"; # Did you read the comment?
 }

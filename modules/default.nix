@@ -8,7 +8,9 @@ in {
     ./common.nix
   ];
 
+  time.timeZone = "Europe/Berlin";
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nixpkgs.config.allowUnfree = true;
 
 	services.flatpak.enable = true;
 	xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
@@ -24,11 +26,17 @@ in {
 	hardware.bluetooth.enable = true;
 	boot.supportedFilesystems = [ "ntfs" ];
 
+  services.printing.enable = true;
+
 	programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
   };
 
+  # Enable the KDE Plasma Desktop Environment.
+  services.displayManager.sddm.enable = true;
+  services.desktopManager.plasma6.enable = true;
+	
 	# optimises the nix store
 	nix.optimise = {
 		automatic = true;

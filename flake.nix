@@ -4,7 +4,7 @@
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    nix-config.url = "github:bvgcat/nix-config";
+    #nix-config.url = "github:bvgcat/nix-config";
   };
 
   outputs =
@@ -12,7 +12,7 @@
       nixpkgs,
       disko,
       nixos-hardware,
-      nix-config,
+      #nix-config,
       ...
     }:
     {
@@ -23,9 +23,19 @@
         modules = [
           disko.nixosModules.disko
           nixos-hardware.nixosModules.microsoft-surface-go
-          nix-config
+          #nix-config
           ./surface-go/surface-go.nix
           ./surface-go/hardware-configuration.nix
+        ];
+      };
+
+      nixosConfigurations.Legion-5 = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          nixos-hardware.nixosModules.lenovo-legion-15arh05h
+          ./legion-5.nix
+          ./modules/default.nix
+          ./legion-5/hardware-configuration.nix
         ];
       };
     };
