@@ -22,6 +22,7 @@ in {
 		gnumake
 		gnupg
 		gparted
+		#input-leap
 		iptsd
 		nixfmt-rfc-style
 		ntfs3g
@@ -43,7 +44,6 @@ in {
 		OVMFFull
 
 		direnv
-		input-leap
 		vscodium
 	];
 
