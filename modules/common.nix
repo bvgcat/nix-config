@@ -77,6 +77,7 @@ in {
 		nixpkgs-lint-community
 		obsidian
 		octaveFull
+		pinentry-all
 		qalculate-qt
 		rnote
 		rpi-imager
@@ -93,7 +94,7 @@ in {
 		vlc
 		xournalpp
 	];	
-	
+
 	# for partition-manager
 	programs.partition-manager.enable = true;
 

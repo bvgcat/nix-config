@@ -8,7 +8,6 @@
     ./disk-config.nix
     ./part-db.nix
     ../modules/bash.nix
-    ./nginx.nix
     #./nextcloud.nix
   ];
 

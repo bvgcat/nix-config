@@ -24,6 +24,11 @@ in {
 	hardware.bluetooth.enable = true;
 	boot.supportedFilesystems = [ "ntfs" ];
 
+	programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
+
 	# optimises the nix store
 	nix.optimise = {
 		automatic = true;
@@ -36,7 +41,6 @@ in {
 		dates = "weekly";
 		options = "--delete-older-than 7d";
 	};
-
 
 	i18n.extraLocaleSettings = {
 		LC_ALL = "en_US.UTF-8";
