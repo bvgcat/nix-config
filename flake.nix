@@ -25,6 +25,9 @@
           nixos-hardware.nixosModules.microsoft-surface-go
           ./surface-go/hardware-configuration.nix
           ./surface-go.nix
+          ./modules/bash.nix
+          ./modules/default.nix
+          ./surface-go/part-db.nix
         ];
       };
 
@@ -46,6 +49,7 @@
           nixos-hardware.nixosModules.dell-latitude-5490
           ./latitude-5290/hardware-configuration.nix
           ./latitude-5290.nix
+          ./modules/bash.nix
           ./modules/default.nix
           ./modules/common.nix
         ];
