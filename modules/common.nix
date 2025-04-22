@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 
 let
-	pkgs-24 = import <nixos-24.11> {};
+	#pkgs-24 = import <nixos-24.11> {};
 in {
 	environment.systemPackages = with pkgs; [
 		kdePackages.qtwebengine
@@ -15,7 +15,7 @@ in {
 		bootiso 
 		brave
 		clang-tools
-		pkgs-24.ecryptfs
+		#pkgs-24.ecryptfs
 		gcc-arm-embedded
 		glib
 		glibc
@@ -25,7 +25,7 @@ in {
 		iptsd
 		nixfmt-rfc-style
 		ntfs3g
-		pkgs-24.scrounge-ntfs
+		#pkgs-24.scrounge-ntfs
 		openocd
 		pciutils
 		pinentry-all
