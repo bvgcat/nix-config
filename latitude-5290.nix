@@ -5,7 +5,6 @@ let
 in {
   imports = [
 		./modules/default.nix
-		<nixos-hardware/dell/latitude/5490> # surface go hardware
 	];
 
 	networking.hostName = "latitude-5290"; # Define your hostname.
