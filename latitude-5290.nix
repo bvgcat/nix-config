@@ -1,12 +1,6 @@
 { config, pkgs, lib, ... }:
 
-let
-	pkgs-24 = import <nixos-24.11> {};
-in {
-  imports = [
-		./modules/default.nix
-	];
-
+{
 	networking.hostName = "latitude-5290"; # Define your hostname.
 	services.xserver.enable = true;
 
