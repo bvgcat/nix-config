@@ -1,14 +1,9 @@
 { config, lib, pkgs, ... }:
 
-let
-	pkgs-24 = import <nixos-24.05> {};
-	pkgs-unstable = import <nixos-unstable> {};
-in {
+{
   imports = [ 
-		./legion-5/hardware-configuration.nix
 		./modules/common.nix
-		./modules/nvidia.nix
-		./nixos-hardware/lenovo/legion/15arh05h/default.nix 
+		#./modules/nvidia.nix
 	];
 
 	fileSystems."/run/media/h/windows" =
@@ -36,7 +31,7 @@ in {
 		};
 	};
 
-	virtualisation = with pkgs-unstable; {
+	virtualisation = with pkgs; {
 		spiceUSBRedirection.enable = true;
 		libvirtd = {
 			enable = true;
