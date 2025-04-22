@@ -28,7 +28,7 @@
         ];
       };
 
-      nixosConfigurations.Legion-5 = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.legion-5 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           nixos-hardware.nixosModules.lenovo-legion-15arh05h
