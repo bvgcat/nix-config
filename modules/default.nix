@@ -6,6 +6,7 @@ in {
   imports = [
     ./bash.nix 
   ];
+	services.openssh.enable = true;
 
   time.timeZone = "Europe/Berlin";
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -21,12 +22,14 @@ in {
 			canTouchEfiVariables = true;
 		};
 	};
-
+	
+	networking.networkmanager.enable = true;
 	hardware.bluetooth.enable = true;
 	boot.supportedFilesystems = [ "ntfs" ];
 
   services.printing.enable = true;
-
+	
+  programs.firefox.enable = true;
 	programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
