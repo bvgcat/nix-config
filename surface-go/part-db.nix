@@ -35,9 +35,7 @@ in {
       
       virtualHost = "${virtualhost}";
       # setting php-fpm.conf options
-      poolConfig = {
-        listen = "8000";
-      };
+      poolConfig = {};
     };
 
     postgresql = {

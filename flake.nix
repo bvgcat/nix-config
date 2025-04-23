@@ -1,6 +1,7 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    #nixpkgs-24.url = "github:NixOS/nixpkgs/nixpkgs-24.11";
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
@@ -24,10 +25,10 @@
           disko.nixosModules.disko
           nixos-hardware.nixosModules.microsoft-surface-go
           ./surface-go/hardware-configuration.nix
-          ./surface-go.nix
           ./surface-go/disk-config.nix
           ./modules/bash.nix
           ./modules/default.nix
+          ./surface-go.nix
           ./surface-go/part-db.nix
         ];
       };

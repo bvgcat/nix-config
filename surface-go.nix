@@ -37,8 +37,29 @@
 
   services.openssh.enable = true;
   boot.initrd.network.ssh.enable = true;
-  systemd.services.NetworkManager = {
-    wantedBy = [ "multi-user.target" ];
+  systemd = {
+    services = {
+      NetworkManager = {
+        wantedBy = [ "multi-user.target" ];
+      };
+      kiosk-firefox = {
+        description = "Firefox in kiosk mode";
+        wantedBy = [ "graphical.target" ];
+        after = [ "graphical.target" ];
+        
+        serviceConfig = {
+          ExecStart = "${pkgs.firefox}/bin/firefox -kiosk localhost";
+          Restart = "on-failure";
+          RestartSec = 5;
+          User = "partdb-terminal"; # <- Change to your desired user
+          Environment = [
+            "MOZ_ENABLE_WAYLAND=1"
+            "WAYLAND_DISPLAY=wayland-0"
+            "XDG_RUNTIME_DIR=/run/user/1000" # ← very important
+          ];
+        };
+      };
+    };
   };
 
   users.users = {
