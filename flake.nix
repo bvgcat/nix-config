@@ -23,13 +23,13 @@
         system = "x86_64-linux";
         modules = [
           disko.nixosModules.disko
-          nixos-hardware.nixosModules.microsoft-surface-go
-          ./surface-go/hardware-configuration.nix
           ./surface-go/disk-config.nix
-          ./modules/bash.nix
-          ./modules/default.nix
+          #nixos-hardware.nixosModules.microsoft-surface-go
+          ./surface-go/hardware-configuration.nix
           ./surface-go.nix
           ./surface-go/part-db.nix
+          ./modules/bash.nix
+          ./modules/default.nix
         ];
       };
 
@@ -40,8 +40,8 @@
           ./legion-5/hardware-configuration.nix
           ./legion-5.nix
           ./modules/bash.nix
-          ./modules/common.nix
           ./modules/default.nix
+          ./modules/common.nix
         ];
       };
 

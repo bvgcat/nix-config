@@ -5,7 +5,7 @@
   programs.bash = { 
     #shellInit = {
     #  "export PATH=$HOME/arm/bin:$PATH"
-    #  "export LD_LIBRARY_PATH=$NIX_LD_LIBRARY_PATH:$LD_LIBRARY_PATH"
+
     #};
     
     shellAliases = {
@@ -22,7 +22,8 @@
       updatefast = "sudo nixos-rebuild switch --fast -v";
       upgrade = "sudo nixos-rebuild switch --upgrade-all -v";
       upgradeflake = "sudo nixos-rebuild switch --flake /home/h/nix-config";
-      upgradesurface = "nixos-rebuild --target-host root@192.168.0.200 switch --flake /home/h/nix-config";
+      uptermlocal = "nixos-rebuild --target-host root@192.168.0.200 switch --flake /home/h/nix-config";
+      uptermexternal = "nixos-rebuild --build-host root@192.168.0.200 --target-host root@192.168.0.200 switch --flake .#partdb-terminal";
     };
   };
 }
