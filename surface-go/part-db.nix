@@ -4,7 +4,7 @@ let
   virtualhost = "localhost";
 in {
   # https://github.com/NixOS/nixpkgs/blob/31180a926e448a45fc371f1f37e5fbaefb4bbe12/nixos/modules/services/web-apps/part-db.nix#L25
-  users.users.part-db.packages = with pkgs; [
+  users.users.partdb-terminal.packages = with pkgs; [
     certbot-full
   ];
 
@@ -35,7 +35,7 @@ in {
       
       virtualHost = "${virtualhost}";
       # setting php-fpm.conf options
-      poolConfig = {};
+      #poolConfig = {};
     };
 
     postgresql = {
