@@ -81,7 +81,9 @@
   };
 
   environment.systemPackages = with pkgs; [
+    cheese
     git
+    libsForQt5.kamoso
 	];
 
 	boot.kernelModules = [ "snd_hda_intel" ];
