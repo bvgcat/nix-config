@@ -48,6 +48,8 @@ in {
       local   all       all                       peer
       host    part-db   part-db   127.0.0.1/32    scram-sha-256
       host    part-db   part-db   ::1/128         scram-sha-256
+      host    all       root      127.0.0.1/32    scram-sha-256
+      host    all       root      ::1/128         scram-sha-256
     '';
     };
 
