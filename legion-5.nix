@@ -29,6 +29,13 @@
 			vfio.enable = true;
 			imports = [ ./modules/virtualisation.nix ];
 		};
+		"cosmic".configuration = {
+			services.desktopManager.cosmic.enable = true;
+			services.displayManager.cosmic-greeter.enable = true;
+
+			services.displayManager.sddm.enable = lib.mkForce false;
+			services.desktopManager.plasma6.enable = lib.mkForce false;
+		};
 	};
 
 	virtualisation = with pkgs; {
