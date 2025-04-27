@@ -1,4 +1,9 @@
-{ modulesPath, lib, pkgs, ... }:
+{
+  modulesPath,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   imports = [
@@ -6,13 +11,13 @@
     (modulesPath + "/profiles/qemu-guest.nix")
   ];
 
-  networking.hostName = "partdb-terminal"; # Define your hostname.
+  networking.hostName = "homeserver"; # Define your hostname.
 
   services = {
     displayManager = {
       sddm.enable = true;
       autoLogin.enable = true;
-      autoLogin.user = "partdb-terminal";
+      autoLogin.user = "homeserver";
     };
     desktopManager.plasma6.enable = true;
   };
@@ -31,10 +36,6 @@
     pulse.enable = true;
   };
 
-  systemd.services.suspend = {
-    enable = false;
-  };
-
   services.openssh.enable = true;
   boot.initrd.network.ssh.enable = true;
   systemd = {
@@ -42,22 +43,8 @@
       NetworkManager = {
         wantedBy = [ "multi-user.target" ];
       };
-      kiosk-firefox = {
-        description = "Firefox in kiosk mode";
-        wantedBy = [ "graphical.target" ];
-        after = [ "graphical.target" ];
-        
-        serviceConfig = {
-          ExecStart = "${pkgs.firefox}/bin/firefox -kiosk localhost";
-          Restart = "on-failure";
-          RestartSec = 5;
-          User = "partdb-terminal"; # <- Change to your desired user
-          Environment = [
-            "MOZ_ENABLE_WAYLAND=1"
-            "WAYLAND_DISPLAY=wayland-0"
-            "XDG_RUNTIME_DIR=/run/user/1000" # ← very important
-          ];
-        };
+      suspend = {
+        enable = false;
       };
     };
   };
@@ -81,15 +68,17 @@
   };
 
   environment.systemPackages = with pkgs; [
-    cheese
     git
     libsForQt5.kamoso
-	];
+  ];
 
-	boot.kernelModules = [ "snd_hda_intel" ];
+  boot.kernelModules = [ "snd_hda_intel" ];
 
-	swapDevices = [
-    { device = "/swapfile"; size = 4*1024; }
+  swapDevices = [
+    {
+      device = "/swapfile";
+      size = 4 * 1024;
+    }
   ];
 
   system.stateVersion = "24.11";

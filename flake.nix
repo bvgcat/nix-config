@@ -5,7 +5,6 @@
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    #nix-config.url = "github:bvgcat/nix-config";
   };
 
   outputs =
@@ -13,6 +12,7 @@
       nixpkgs,
       disko,
       nixos-hardware,
+      nixpkgs-24,
       #nix-config,
       ...
     }:
@@ -22,12 +22,13 @@
       nixosConfigurations.partdb-terminal = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
+          #nixos-hardware.nixosModules.microsoft-surface-go
           disko.nixosModules.disko
           ./surface-go/disk-config.nix
-          #nixos-hardware.nixosModules.microsoft-surface-go
           ./surface-go/hardware-configuration.nix
           ./surface-go.nix
-          ./surface-go/part-db.nix
+          ./surface-go/homepage-dashboard.nix
+          #./surface-go/nextcloud.nix
           ./modules/bash.nix
           ./modules/default.nix
         ];
@@ -45,7 +46,7 @@
         ];
       };
 
-        nixosConfigurations.latitude-5290 = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.latitude-5290 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           nixos-hardware.nixosModules.dell-latitude-5490

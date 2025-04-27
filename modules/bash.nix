@@ -1,13 +1,18 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
 
-  programs.bash = { 
+  programs.bash = {
     #shellInit = {
     #  "export PATH=$HOME/arm/bin:$PATH"
 
     #};
-    
+
     shellAliases = {
       q = "exit ";
       c = "clear ";
