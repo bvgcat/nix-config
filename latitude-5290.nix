@@ -57,9 +57,29 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "qemu-libvirtd"
+      "libvirtd"
+      "disk"
     ];
   };
 
+
+  # for virtualistion
+  programs.virt-manager.enable = true;
+  virtualisation = {
+    spiceUSBRedirection.enable = true;
+    libvirtd = {
+      enable = true;
+      qemu = {
+        runAsRoot = true;
+        swtpm.enable = true;
+        ovmf.enable = true;
+      };
+      onBoot = "ignore";
+      onShutdown = "shutdown";
+    };
+  };
+  
   #services.fwupd.enable = true;
   #systemd.services.fprintd = {
   #	wantedBy = [ "multi-user.target" ];
