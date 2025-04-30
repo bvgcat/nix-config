@@ -60,7 +60,6 @@
     can-utils
     discord
     disko
-    doxygen_gui
     drawio
     element-desktop
     fastfetch
@@ -71,7 +70,6 @@
     freecad
     git
     imagemagick
-    joplin-desktop
     kdePackages.kdenlive
     keepassxc
     kicad
