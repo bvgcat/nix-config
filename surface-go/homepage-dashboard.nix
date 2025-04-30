@@ -9,7 +9,7 @@
 
   services.homepage-dashboard = {
     enable = true;
-    listenPort = "8080";
+    listenPort = 8080;
     allowedHosts = "";
     openFirewall = false;
     bookmarks = [ ];
