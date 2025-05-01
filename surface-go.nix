@@ -15,7 +15,7 @@
 
   services = {
     displayManager = {
-      sddm.enable = true;
+      sddm.enable = false;
       autoLogin.enable = true;
       autoLogin.user = "homeserver";
     };
@@ -68,6 +68,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    certbot-full
     git
     libsForQt5.kamoso
   ];
