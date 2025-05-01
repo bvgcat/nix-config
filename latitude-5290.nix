@@ -17,9 +17,7 @@
 
   boot = {
     kernelParams = [
-      "mem_sleep_default=deep"
-      "acpi_enforce_resources=lax"
-      "i915.enable_dc=0"
+      "mem_sleep_default=s2idle"
     ];
     kernelPackages = pkgs.linuxPackages_latest;
     kernelModules = [ "snd_hda_intel" ];
@@ -63,7 +61,6 @@
     ];
   };
 
-
   # for virtualistion
   programs.virt-manager.enable = true;
   virtualisation = {
@@ -80,17 +77,17 @@
     };
   };
   
-  #services.fwupd.enable = true;
-  #systemd.services.fprintd = {
-  #	wantedBy = [ "multi-user.target" ];
-  #	serviceConfig.Type = "simple";
-  #};
+  services.fwupd.enable = true;
+  systemd.services.fprintd = {
+  	wantedBy = [ "multi-user.target" ];
+  	serviceConfig.Type = "simple";
+  };
 
-  #services.fprintd = {
-  #	enable = true;
-  #	tod.enable = true;
-  #	tod.driver = pkgs.libfprint-2-tod1-broadcom;
-  #};
+  services.fprintd = {
+  	enable = true;
+  	tod.enable = true;
+  	tod.driver = pkgs.libfprint-2-tod1-broadcom;
+  };
   swapDevices = [
     {
       device = "/swapfile";
