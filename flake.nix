@@ -49,7 +49,7 @@
       nixosConfigurations.latitude-5290 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          nixos-hardware.nixosModules.dell-latitude-5490
+          #nixos-hardware.nixosModules.dell-latitude-5490
           ./latitude-5290/hardware-configuration.nix
           ./latitude-5290.nix
           ./modules/bash.nix
