@@ -18,7 +18,7 @@
     bootiso
     brave
     clang-tools
-    #pkgs-24.ecryptfs
+    ecryptfs
     #gcc-arm-embedded
     glib
     glibc
@@ -30,7 +30,6 @@
     iptsd
     nixfmt-rfc-style
     ntfs3g
-    #pkgs-24.scrounge-ntfs
     openocd
     pciutils
     pinentry-all
