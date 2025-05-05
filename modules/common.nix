@@ -19,7 +19,7 @@
     brave
     clang-tools
     ecryptfs
-    #gcc-arm-embedded
+    gcc-arm-embedded
     glib
     glibc
     gnumake
