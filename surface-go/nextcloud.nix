@@ -7,7 +7,6 @@
 let
   service = "nextcloud";
   cfg = config.homelab.services.${service};
-  homelab = config.homelab;
 in
 {
   options.homelab.services.${service} = {
@@ -19,7 +18,7 @@ in
     };
     adminuser = lib.mkOption {
       type = lib.types.str;
-      default = "notthebee";
+      default = service;
     };
     configDir = lib.mkOption {
       type = lib.types.str;
@@ -27,7 +26,7 @@ in
     };
     url = lib.mkOption {
       type = lib.types.str;
-      default = "cloud.${homelab.baseDomain}";
+      default = "127.0.0.1:8083";
     };
     homepage.name = lib.mkOption {
       type = lib.types.str;
@@ -47,7 +46,7 @@ in
     };
   };
   config = lib.mkIf cfg.enable {
-    services.nginx.virtualHosts."${config.services.nextcloud.hostName}".listen = [
+    services.nginx.virtualHosts."${config.services.${service}.hostName}".listen = [
       {
         addr = "127.0.0.1";
         port = 8083;
@@ -78,8 +77,6 @@ in
       maxUploadSize = "50G";
       settings = {
         overwriteprotocol = "https";
-        overwritehost = "cloud.${homelab.baseDomain}";
-        overwrite.cli.url = "https://cloud.${homelab.baseDomain}";
         mail_smtpmode = "sendmail";
         mail_sendmailmode = "pipe";
         enabledPreviewProviders = [
@@ -101,8 +98,8 @@ in
         dbuser = "nextcloud";
         dbhost = "/run/postgresql";
         dbname = "nextcloud";
-        adminuser = cfg.adminuser;
-        adminpassFile = cfg.adminpassFile;
+        #adminuser = cfg.adminuser;
+        #adminpassFile = cfg.adminpassFile;
       };
     };
   };

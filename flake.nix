@@ -19,7 +19,7 @@
     {
       # Use this for all other targets
       # nixos-anywhere --flake .#partdb-terminal --generate-hardware-config nixos-generate-config ./surface-go/hardware-configuration.nix nixos@192.168.0.4
-      nixosConfigurations.partdb-terminal = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.homeserver = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           #nixos-hardware.nixosModules.microsoft-surface-go
@@ -28,7 +28,6 @@
           ./surface-go/hardware-configuration.nix
           ./surface-go.nix
           ./surface-go/homepage-dashboard.nix
-          #./surface-go/nextcloud.nix
           ./modules/bash.nix
           ./modules/default.nix
         ];

@@ -5,19 +5,23 @@
   ...
 }:
 
+let 
+  hostname = "homeserver";
+in
 {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
     (modulesPath + "/profiles/qemu-guest.nix")
+    ./surface-go/nextcloud.nix
   ];
 
-  networking.hostName = "homeserver"; # Define your hostname.
+  networking.hostName = "${hostname}"; # Define your hostname.
 
   services = {
     displayManager = {
-      sddm.enable = false;
+      sddm.enable = true;
       autoLogin.enable = true;
-      autoLogin.user = "homeserver";
+      autoLogin.user = "${hostname}";
     };
     desktopManager.plasma6.enable = true;
   };
@@ -55,8 +59,9 @@
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINej8Vqt3lEBNDErxejC1ADYDehGVLWjMgJ/ANFE+U+k nixos@latitude-5290"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILiPoFO8It22YQ9Vbp0sfLnP6+LKAUL2niAuYpaXSiLU nixos@legion-5"
     ];
-    partdb-terminal = {
+    ${hostname} = {
       isNormalUser = true;
+      uid = 1000;
       group = "users";
       password = "";
       openssh.authorizedKeys.keys = [

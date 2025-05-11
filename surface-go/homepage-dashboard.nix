@@ -41,7 +41,7 @@
         enable = false;
       };
       open-homepage = {
-        description = "Firefox in kiosk mode";
+        description = "Homepage Dashboard";
         wantedBy = [ "graphical.target" ];
         after = [ "graphical.target" ];
 
@@ -49,7 +49,7 @@
           ExecStart = "${pkgs.firefox}/bin/firefox -kiosk http://localhost:8080";
           Restart = "on-failure";
           RestartSec = 5;
-          User = "partdb-terminal"; # <- Change to your desired user
+          User = "homeserver";
           Environment = [
             "MOZ_ENABLE_WAYLAND=1"
             "WAYLAND_DISPLAY=wayland-0"
