@@ -43,6 +43,7 @@
     #virtualisation
     libvirt
     qemu_full
+    spice-vdagent
     virt-manager
     OVMFFull
 
