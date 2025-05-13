@@ -70,10 +70,12 @@
     freecad
     git
     imagemagick
+    inkscape
     kdePackages.kdenlive
     keepassxc
     kicad
     libreoffice
+    marksman
     nextcloud-client
     nixd
     nixdoc
