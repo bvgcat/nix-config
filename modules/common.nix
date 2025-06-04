@@ -96,7 +96,7 @@
     tor-browser
     tree
     thunderbird
-    ventoy-full
+    #ventoy-full
     vlc
     xournalpp
   ];
