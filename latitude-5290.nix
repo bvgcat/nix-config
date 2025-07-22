@@ -24,6 +24,15 @@
     supportedFilesystems = [ "ntfs" ];
   };
 
+  fileSystems."/run/media/h/windows" = {
+    device = "/dev/nvme0n1p3";
+    fsType = "ntfs-3g";
+    options = [
+      "rw"
+      "uid=h"
+    ];
+  };
+
   hardware.bluetooth.enable = true;
   hardware.enableAllFirmware = true;
   hardware.graphics = {
@@ -58,6 +67,9 @@
       "qemu-libvirtd"
       "libvirtd"
       "disk"
+    ];
+    packages = with pkgs; [
+      kicad-small
     ];
   };
 
