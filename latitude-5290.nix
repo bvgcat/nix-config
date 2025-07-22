@@ -68,9 +68,6 @@
       "libvirtd"
       "disk"
     ];
-    packages = with pkgs; [
-      kicad-small
-    ];
   };
 
   # for virtualistion
