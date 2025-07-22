@@ -26,7 +26,7 @@
 
     gnupg
     gparted
-    #input-leap
+    input-leap
     iptsd
     nixfmt-rfc-style
     ntfs3g
@@ -35,6 +35,7 @@
     pinentry-all
     powertop
     power-profiles-daemon
+    samba   #matlab in bottles
     savvycan
     qdirstat
     usbutils
@@ -84,6 +85,7 @@
     obsidian
     octaveFull
     pinentry-all
+    python3
     qalculate-qt
     rnote
     rpi-imager
@@ -98,6 +100,7 @@
     thunderbird
     #ventoy-full
     vlc
+    wineWowPackages.stable   
     xournalpp
   ];
 
