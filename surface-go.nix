@@ -5,7 +5,7 @@
   ...
 }:
 
-let 
+let
   hostname = "homeserver";
 in
 {
@@ -15,12 +15,17 @@ in
     ./surface-go/nextcloud.nix
   ];
 
+  sops.secrets.duckdns = {
+    sopsFile = ./secrets/secrets.yaml;
+  };
+
   networking.hostName = "${hostname}"; # Define your hostname.
 
   services = {
     displayManager = {
       sddm.enable = true;
       autoLogin.enable = true;
+      sddm.autoLogin.relogin = true;
       autoLogin.user = "${hostname}";
     };
     desktopManager.plasma6.enable = true;
@@ -40,6 +45,23 @@ in
     pulse.enable = true;
   };
 
+  services.godns = {
+    enable = true;
+    settings = {
+      provider = "DuckDNS";
+      login_token = config.sops.secrets.duckdns;
+      domains = [
+        {
+          domain_name = "duckdns.org";
+          sub_domains = [ "hs-bvgcat" ];
+        }
+      ];
+      resolver = "1.1.1.1";
+      ip_urls = [ "https://api.ip.sb/ip" ];
+      ip_type = "IPv4";
+      interval = 3000;
+    };
+  };
   services.openssh.enable = true;
   boot.initrd.network.ssh.enable = true;
   systemd = {
@@ -77,6 +99,7 @@ in
     git
     libsForQt5.kamoso
   ];
+  programs.kdeconnect.enable = true;
 
   boot.kernelModules = [ "snd_hda_intel" ];
 

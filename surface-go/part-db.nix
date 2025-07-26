@@ -10,19 +10,8 @@ let
 in
 {
   # https://github.com/NixOS/nixpkgs/blob/31180a926e448a45fc371f1f37e5fbaefb4bbe12/nixos/modules/services/web-apps/part-db.nix#L25
-  users.users.partdb-terminal.packages = with pkgs; [
-    certbot-full
-  ];
   systemd = {
     services = {
-      NetworkManager = {
-        wantedBy = [ "multi-user.target" ];
-      };
-
-      suspend = {
-        enable = false;
-      };
-
       kiosk-firefox = {
         description = "Firefox in kiosk mode";
         wantedBy = [ "graphical.target" ];

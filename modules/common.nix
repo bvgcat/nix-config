@@ -35,7 +35,7 @@
     pinentry-all
     powertop
     power-profiles-daemon
-    samba   #matlab in bottles
+    samba # matlab in bottles
     savvycan
     qdirstat
     usbutils
@@ -43,7 +43,7 @@
 
     #virtualisation
     libvirt
-    qemu_full
+    qemu
     spice-vdagent
     virt-manager
     OVMFFull
@@ -56,13 +56,13 @@
     kdePackages.kdenlive
     anki
     ausweisapp
-    blender
+    #blender
     brave
     can-utils
     discord
     disko
     drawio
-    element-desktop
+    #element-desktop
     fastfetch
     firefox
     # With this
@@ -70,8 +70,7 @@
     flatpak
     freecad
     git
-    imagemagick
-    inkscape
+    #imagemagick
     kdePackages.kdenlive
     keepassxc
     kicad
@@ -81,10 +80,8 @@
     nixd
     nixdoc
     nixos-anywhere
-    nixpkgs-lint-community
     obsidian
     octaveFull
-    pinentry-all
     python3
     qalculate-qt
     rnote
@@ -100,7 +97,7 @@
     thunderbird
     #ventoy-full
     vlc
-    wineWowPackages.stable   
+    wineWowPackages.stable
     xournalpp
   ];
 

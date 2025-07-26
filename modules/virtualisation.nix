@@ -32,12 +32,12 @@ in
           "vfio_iommu_type1"
         ];
 
-        kernelParams =
-          [
-            # enable IOMMU
-            "${platform}_iommu=on"
-          ]
-          ++ lib.optional cfg.enable
+        kernelParams = [
+          # enable IOMMU
+          "${platform}_iommu=on"
+        ]
+        ++
+          lib.optional cfg.enable
             # isolate the GPU
             ("vfio-pci.ids=" + lib.concatStringsSep "," vfioIds);
       };
