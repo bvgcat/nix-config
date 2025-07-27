@@ -6,7 +6,7 @@
 }:
 
 let
-  port = 8080;
+  port = 8082;
   portstr = toString port;
 in
 {
@@ -17,21 +17,100 @@ in
 
     # The following options were what I planned to add.
     # https://gethomepage.dev/latest/configs/settings/
-    settings = { };
+    settings = {
+      layout = [
+        {
+          Glances = {
+            header = false;
+            style = "row";
+            columns = 4;
+          };
+        }
+        {
+          Arr = {
+            header = true;
+            style = "column";
+          };
+        }
+        {
+          Downloads = {
+            header = true;
+            style = "column";
+          };
+        }
+        {
+          Media = {
+            header = true;
+            style = "column";
+          };
+        }
+        {
+          Services = {
+            header = true;
+            style = "column";
+          };
+        }
+      ];
+      headerStyle = "clean";
+      statusStyle = "dot";
+      hideVersion = "true";
+    };
 
     # https://gethomepage.dev/latest/configs/bookmarks/
     bookmarks = [ ];
 
     # https://gethomepage.dev/latest/configs/services/
-    services = [ ];
+    services = [
+      {
+        "Links" = [
+          {
+            "animekai.to" = {
+              description = "Current best Anime website";
+              href = "https://animekai.to/";
+            };
+          }
+        ];
+      }
+      {
+        "Services" = [
+          {
+            "Nextcloud" = {
+              description = "Current best Anime website";
+              href = "https://localhost";
+            };
+          }
+        ];
+      }
+    ];
 
     # https://gethomepage.dev/latest/configs/service-widgets/
     widgets = [
       {
+        openmeteo = {
+          label = "Berlin";
+          timezone = "Europe/Berlin"; # optional
+          units = "metric"; # or imperial
+          cache = 5; # Time in minutes to cache API responses, to stay within limits
+          #format: # optional, Intl.NumberFormat options
+          #  maximumFractionDigits: 1
+        };
+      }
+      {
         resources = {
           cpu = true;
+          cputemp = true;
           disk = "/";
           memory = true;
+          uptime = true;
+          refresh = 1000;
+          network = true;
+        };
+      }
+      {
+        search = {
+          provider = "duckduckgo";
+          target = "_blank";
+          showSearchSuggestions = true;
         };
       }
     ];
@@ -43,19 +122,12 @@ in
     docker = { };
 
     # https://gethomepage.dev/latest/configs/custom-css-js/
-
     customJS = "";
     customCSS = "";
   };
 
   systemd = {
     services = {
-      NetworkManager = {
-        wantedBy = [ "multi-user.target" ];
-      };
-      suspend = {
-        enable = false;
-      };
       open-homepage = {
         description = "Homepage Dashboard";
         wantedBy = [ "graphical.target" ];

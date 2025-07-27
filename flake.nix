@@ -29,9 +29,11 @@
           disko.nixosModules.disko
           ./secrets/sops.nix
           ./surface-go/disk-config.nix
+          ./surface-go/duckdns.nix
           ./surface-go/hardware-configuration.nix
-          ./surface-go.nix
           ./surface-go/homepage-dashboard.nix
+          ./surface-go/nextcloud.nix
+          ./surface-go.nix
           ./modules/bash.nix
           ./modules/default.nix
         ];

@@ -9,9 +9,9 @@
 {
   services = {
     nginx.virtualHosts = {
-      "cloud.example.com" = {
-        forceSSL = true;
-        enableACME = true;
+      "localhost" = {
+        forceSSL = false;
+        enableACME = false;
       };
 
       #"onlyoffice.example.com" = {
@@ -22,7 +22,7 @@
 
     nextcloud = {
       enable = true;
-      hostName = "cloud.example.com";
+      hostName = "localhost";
 
       # Need to manually increment with every major upgrade.
       package = pkgs.nextcloud31;
@@ -35,8 +35,7 @@
 
       # Increase the maximum file upload size to avoid problems uploading videos.
       maxUploadSize = "16G";
-      https = true;
-      enableBrokenCiphersForSSE = false;
+      https = false;
 
       autoUpdateApps.enable = true;
       extraAppsEnable = true;
@@ -54,12 +53,13 @@
       };
 
       config = {
-        overwriteProtocol = "https";
-        defaultPhoneRegion = "DE";
+        #overwriteprotocol = "http";
         dbtype = "pgsql";
         adminuser = "admin";
-        adminpassFile = "/path/to/nextcloud-admin-pass";
+        adminpassFile = config.sops.secrets.adminpass.path;
       };
+
+      settings.default_phone_region = "DE";
     };
 
     #onlyoffice = {

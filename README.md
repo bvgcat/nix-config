@@ -9,4 +9,3 @@
 - [ ] fix this shit 
 ### spotify.nix
 - [ ] see if the app works too, better than browser
-### 

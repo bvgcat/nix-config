@@ -1,5 +1,6 @@
 {
   modulesPath,
+  config,
   lib,
   pkgs,
   ...
@@ -14,10 +15,6 @@ in
     (modulesPath + "/profiles/qemu-guest.nix")
     ./surface-go/nextcloud.nix
   ];
-
-  sops.secrets.duckdns = {
-    sopsFile = ./secrets/secrets.yaml;
-  };
 
   networking.hostName = "${hostname}"; # Define your hostname.
 
@@ -45,23 +42,6 @@ in
     pulse.enable = true;
   };
 
-  services.godns = {
-    enable = true;
-    settings = {
-      provider = "DuckDNS";
-      login_token = config.sops.secrets.duckdns;
-      domains = [
-        {
-          domain_name = "duckdns.org";
-          sub_domains = [ "hs-bvgcat" ];
-        }
-      ];
-      resolver = "1.1.1.1";
-      ip_urls = [ "https://api.ip.sb/ip" ];
-      ip_type = "IPv4";
-      interval = 3000;
-    };
-  };
   services.openssh.enable = true;
   boot.initrd.network.ssh.enable = true;
   systemd = {
@@ -95,9 +75,12 @@ in
   };
 
   environment.systemPackages = with pkgs; [
+    kdePackages.plasma-browser-integration
     certbot-full
     git
+    input-leap
     libsForQt5.kamoso
+    spotify
   ];
   programs.kdeconnect.enable = true;
 

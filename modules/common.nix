@@ -12,6 +12,7 @@
     kdePackages.partitionmanager
     kdePackages.kpmcore
 
+    age
     appimage-run
     baobab
     bear
@@ -37,6 +38,7 @@
     power-profiles-daemon
     samba # matlab in bottles
     savvycan
+    sops
     qdirstat
     usbutils
     zsh
