@@ -80,6 +80,7 @@ in
     git
     input-leap
     libsForQt5.kamoso
+    openssl
     spotify
   ];
   programs.kdeconnect.enable = true;

@@ -8,7 +8,7 @@
 {
   services.duckdns = {
     enable = true;
-    tokenFile = config.sops.secrets.duckdns.path;
+    tokenFile = "/run/secrets/duckdns";
     domains = [ "hs-bvgcat" ];
   };
 }

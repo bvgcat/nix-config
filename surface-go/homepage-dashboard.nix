@@ -14,7 +14,7 @@ in
 
     # These options were already present in my configuration.
     enable = true;
-
+    allowedHosts = "localhost:8082,127.0.0.1:8082,home.bvgcat.de"; 
     # The following options were what I planned to add.
     # https://gethomepage.dev/latest/configs/settings/
     settings = {
@@ -75,8 +75,8 @@ in
         "Services" = [
           {
             "Nextcloud" = {
-              description = "Current best Anime website";
-              href = "https://localhost";
+              description = "My Nextlcloud instance :)";
+              href = "http://localhost";
             };
           }
         ];
@@ -134,7 +134,7 @@ in
         after = [ "graphical.target" ];
 
         serviceConfig = {
-          ExecStart = "${pkgs.firefox}/bin/firefox -kiosk http://localhost:${portstr}";
+          ExecStart = "${pkgs.firefox}/bin/firefox http://localhost:${portstr}";
           Restart = "on-failure";
           RestartSec = 5;
           User = "homeserver";
