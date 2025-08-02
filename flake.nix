@@ -24,11 +24,14 @@
       nixosConfigurations.homeserver = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ({ ... }: {
-            _module.args = {
-             homeserver = "homeserver";
-            };
-          })
+          (
+            { ... }:
+            {
+              _module.args = {
+                user = "homeserver";
+              };
+            }
+          )
           #nixos-hardware.nixosModules.microsoft-surface-go
           sops-nix.nixosModules.sops
           disko.nixosModules.disko
@@ -37,8 +40,10 @@
           ./surface-go/duckdns.nix
           ./surface-go/hardware-configuration.nix
           ./surface-go/homepage-dashboard.nix
+          ./surface-go/immich.nix
           ./surface-go/nextcloud.nix
           ./surface-go/nginx.nix
+          ./surface-go/spotify.nix
           ./surface-go/syncthing.nix
           ./surface-go.nix
           ./modules/bash.nix

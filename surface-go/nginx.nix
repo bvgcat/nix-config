@@ -1,4 +1,21 @@
 {
+  self,
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+
+{
+  networking = {
+    firewall.allowedTCPPorts = [
+      80
+      443
+      8082
+      8384
+    ];
+    tempAddresses = "disabled";
+  };
   services.nginx = {
     enable = true;
 
@@ -8,33 +25,89 @@
     virtualHosts = {
       "cloud.bvgcat.de" = {
         enableACME = true;
-        forceSSL = true;
-        locations."/".proxyPass = "https://unix:/run/nextcloud/nextcloud.sock";
+        addSSL = true;
+
+        # PHP files
+        locations."~ \.php$" = {
+          extraConfig = ''
+            include ${pkgs.nginx}/conf/fastcgi_params;
+            fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+            fastcgi_pass unix:/run/phpfpm/nextcloud.sock;
+          '';
+        };
+
+        # Disable .htaccess etc.
+        locations."~ /\.ht" = {
+          return = "404";
+        };
+      };
+
+      "bvgcat.de" = {
+        enableACME = true;
+        addSSL = true;
+        serverAliases = [ "home.bvgcat.de" ];
+        locations."/".proxyPass = "http://localhost:8082";
       };
 
       "sync.bvgcat.de" = {
         enableACME = true;
         addSSL = true;
-        locations."/".proxyPass = "https://unix:/run/syncthing/syncthing.sock";
+        locations."/".proxyPass = "https://localhost:8384";
       };
 
-      "home.bvgcat.de" = {
+      "immich.bvgcat.de" = {
         enableACME = true;
         addSSL = true;
-        locations."/".proxyPass = "http://localhost:8082";
+        locations."/".proxyPass = "http://localhost:2283";
       };
-
-      # Example for another subdomain
-      # "onlyoffice.example.com" = {
-      #   enableACME = true;
-      #   forceSSL = true;
-      #   addSSL = true;
-      # };
     };
+  };
+
+  systemd = {
+    services.update-ddns = {
+      description = "DynamicDNS Update";
+      path = with pkgs; [ 
+        curl 
+        iproute2
+        gawk
+      ];
+      script = ''
+        IP6=$(ip -6 addr show dev wlp1s0 scope global | grep inet6 | awk '{print $2}' | cut -d/ -f1 | head -n1)
+        PASSWORD=$(cat ${config.sops.secrets.ddns-cloud.path})
+        curl -s "https://dynamicdns.key-systems.net/update.php?hostname=cloud.bvgcat.de&password=$PASSWORD&ip=$IP6"
+        PASSWORD=$(cat ${config.sops.secrets.ddns-sync.path})
+        curl -s "https://dynamicdns.key-systems.net/update.php?hostname=sync.bvgcat.de&password=$PASSWORD&ip=$IP6"
+        PASSWORD=$(cat ${config.sops.secrets.ddns-home.path}) 
+        curl -s "https://dynamicdns.key-systems.net/update.php?hostname=home.bvgcat.de&password=$PASSWORD&ip=$IP6"        
+        '';
+      serviceConfig = {
+        Type = "oneshot";
+      };
+    };
+    #timers.update-ddns = {
+    #  wantedBy = [ "timers.target" ];
+    #  timerConfig = {
+    #    OnBootSec = "5min";
+    #    OnUnitActiveSec = "60min";
+    #    Unit = "update-ddns.service";
+    #  };
+    #};
   };
 
   security.acme = {
     acceptTerms = true;
     defaults.email = "hamzatamim.ht@gmail.com";
   };
+
+  environment.systemPackages = with pkgs; [
+    curl
+    iproute2
+    gawk
+  ];
 }
+
+# PASSWORD=$(cat ${config.sops.secrets.ddns-sync.path})
+# curl -6 -s "https://dynamicdns.key-systems.net/update.php?hostname=sync.bvgcat.de&password=$PASSWORD&ip=auto"
+# PASSWORD=$(cat ${config.sops.secrets.ddns-home.path}) 
+# curl -6 -s "https://dynamicdns.key-systems.net/update.php?hostname=home.bvgcat.de&password=$PASSWORD&ip=auto"        
+        

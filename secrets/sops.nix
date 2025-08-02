@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   # SOPS configuration: point to your age private key file
@@ -10,6 +15,9 @@
     secrets = {
       duckdns.key = "duckdns";
       adminpasss.key = "adminpass";
+      ddns-cloud.key = "ddns-cloud";
+      ddns-home.key = "ddns-home";
+      ddns-sync.key = "ddns-sync";
     };
   };
 
@@ -19,4 +27,3 @@
     sops
   ];
 }
-

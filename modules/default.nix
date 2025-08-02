@@ -27,6 +27,12 @@
   };
 
   networking.networkmanager.enable = true;
+  networking.nameservers = [ "1.1.1.1" "2606:4700:4700::1111" ]; # Cloudflare IPv4 + IPv6
+  services.resolved = {
+    enable = true;
+    fallbackDns = [ "1.1.1.1" "2606:4700:4700::1111" ];
+    dnssec = "false"; # if your router breaks DNSSEC (optional)
+  };
   hardware.bluetooth.enable = true;
   boot.supportedFilesystems = [ "ntfs" ];
 

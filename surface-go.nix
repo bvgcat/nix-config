@@ -77,6 +77,7 @@ in
   environment.systemPackages = with pkgs; [
     kdePackages.plasma-browser-integration
     certbot-full
+    curl
     git
     input-leap
     libsForQt5.kamoso

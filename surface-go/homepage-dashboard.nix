@@ -14,7 +14,8 @@ in
 
     # These options were already present in my configuration.
     enable = true;
-    allowedHosts = "localhost:8082,127.0.0.1:8082,home.bvgcat.de"; 
+    allowedHosts = "localhost:8082,home.bvgcat.de,bvgcat.de";
+    openFirewall = true;
     # The following options were what I planned to add.
     # https://gethomepage.dev/latest/configs/settings/
     settings = {
@@ -76,7 +77,13 @@ in
           {
             "Nextcloud" = {
               description = "My Nextlcloud instance :)";
-              href = "http://localhost";
+              href = "https://cloud.bvgcat.de";
+            };
+          }
+          {
+            "Syncthing" = {
+              description = "Syncthing Web portal";
+              href = "https://sync.bvgcat.de";
             };
           }
         ];
@@ -126,25 +133,25 @@ in
     customCSS = "";
   };
 
-  systemd = {
-    services = {
-      open-homepage = {
-        description = "Homepage Dashboard";
-        wantedBy = [ "graphical.target" ];
-        after = [ "graphical.target" ];
+  #systemd = {
+  #  services = {
+  #    open-homepage = {
+  #      description = "Homepage Dashboard";
+  #      wantedBy = [ "graphical.target" ];
+  #      after = [ "graphical.target" ];
 
-        serviceConfig = {
-          ExecStart = "${pkgs.firefox}/bin/firefox http://localhost:${portstr}";
-          Restart = "on-failure";
-          RestartSec = 5;
-          User = "homeserver";
-          Environment = [
-            "MOZ_ENABLE_WAYLAND=1"
-            "WAYLAND_DISPLAY=wayland-0"
-            "XDG_RUNTIME_DIR=/run/user/1001" # ← very important
-          ];
-        };
-      };
-    };
-  };
+  #      serviceConfig = {
+  #        ExecStart = "${pkgs.firefox}/bin/firefox http://localhost:${portstr}";
+  #        Restart = "on-failure";
+  #        RestartSec = 5;
+  #        User = "homeserver";
+  #        Environment = [
+  #          "MOZ_ENABLE_WAYLAND=1"
+  #          "WAYLAND_DISPLAY=wayland-0"
+  #          "XDG_RUNTIME_DIR=/run/user/1001" # ← very important
+  #        ];
+  #      };
+  #    };
+  #  };
+  #};
 }

@@ -10,8 +10,8 @@
   services = {
     nextcloud = {
       enable = true;
-      hostName = "localhost";
-
+      hostName = "cloud.bvgcat.de";
+      settings.trusted_domains = [ "localhost" ];
       # Need to manually increment with every major upgrade.
       package = pkgs.nextcloud31;
 

@@ -58,10 +58,9 @@
     kdePackages.kdenlive
     anki
     ausweisapp
-    #blender
     brave
     can-utils
-    discord
+    #discord
     disko
     drawio
     #element-desktop
@@ -93,14 +92,13 @@
     spotify
     syncthing
     #teams-for-linux
-    texliveFull
+    texliveMinimal
     tor-browser
     tree
     thunderbird
     #ventoy-full
     vlc
     wineWowPackages.stable
-    xournalpp
   ];
 
   programs.firefox = {

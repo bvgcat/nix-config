@@ -51,10 +51,10 @@
 
   ### Packages
   environment.systemPackages = with pkgs; [
-    #	fprintd
-    #	fprintd-tod
-    #	libfprint-tod
-    #	libfprint-2-tod1-broadcom
+    fprintd
+    fprintd-tod
+    libfprint-tod
+    libfprint-2-tod1-broadcom
     maliit-keyboard
   ];
 
