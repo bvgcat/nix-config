@@ -14,9 +14,14 @@
     # Define secrets paths that sops-nix should decrypt
     secrets = {
       duckdns.key = "duckdns";
-      adminpasss.key = "adminpass";
+
+      nc-adminpass.key = "nc-adminpass";
+      nc-userpass.key = "nc-userpass";
+
+      ddns-main.key = "ddns-main";
       ddns-cloud.key = "ddns-cloud";
       ddns-home.key = "ddns-home";
+      ddns-immich.key = "ddns-immich";
       ddns-sync.key = "ddns-sync";
     };
   };

@@ -132,26 +132,4 @@ in
     customJS = "";
     customCSS = "";
   };
-
-  #systemd = {
-  #  services = {
-  #    open-homepage = {
-  #      description = "Homepage Dashboard";
-  #      wantedBy = [ "graphical.target" ];
-  #      after = [ "graphical.target" ];
-
-  #      serviceConfig = {
-  #        ExecStart = "${pkgs.firefox}/bin/firefox http://localhost:${portstr}";
-  #        Restart = "on-failure";
-  #        RestartSec = 5;
-  #        User = "homeserver";
-  #        Environment = [
-  #          "MOZ_ENABLE_WAYLAND=1"
-  #          "WAYLAND_DISPLAY=wayland-0"
-  #          "XDG_RUNTIME_DIR=/run/user/1001" # ← very important
-  #        ];
-  #      };
-  #    };
-  #  };
-  #};
 }

@@ -55,6 +55,13 @@ in
     };
   };
 
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [
+      vpl-gpu-rt
+    ];
+  };
+
   users.users = {
     root.openssh.authorizedKeys.keys = [
       # change this to your ssh key
