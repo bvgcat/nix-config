@@ -6,6 +6,9 @@
   ...
 }:
 
+let 
+  port = 8384;
+in
 {
   services.syncthing = {
     enable = true;
@@ -13,7 +16,7 @@
     user = user;
     configDir = "/home/${user}/.config/syncthing";
     databaseDir = "/home/${user}/syncthing";
-    guiAddress = "[::]:8384";
+    guiAddress = "[::]:" + toString port;
     settings = {
       devices = {
         "XQ-DC54" = {
@@ -32,4 +35,6 @@
     };
     openDefaultPorts = true;
   };
+
+  networking.firewall.allowedTCPPorts = [ port ];
 }

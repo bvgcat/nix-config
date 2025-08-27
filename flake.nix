@@ -1,7 +1,7 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nixpkgs-24.url = "github:NixOS/nixpkgs/nixpkgs-24.11-darwin";
+    nixpkgs-master.url = "github:NixOS/nixpkgs/master";
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
@@ -11,27 +11,28 @@
   outputs =
     {
       nixpkgs,
+      nixpkgs-master,
       disko,
       nixos-hardware,
-      nixpkgs-24,
       sops-nix,
       #nix-config,
       ...
     }:
     {
       # Use this for all other targets
-      # nixos-anywhere --flake .#partdb-terminal --generate-hardware-config nixos-generate-config ./surface-go/hardware-configuration.nix nixos@192.168.0.4
+      # nixos-anywhere --flake ./nix-config#homeserver --generate-hardware-config nixos-generate-config ./surface-go/hardware-configuration.nix nixos@192.168.178.200
       nixosConfigurations.homeserver = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          (
-            { ... }:
-            {
-              _module.args = {
-                user = "homeserver";
+          ({ ... }: {
+            _module.args = {
+              user = "homeserver";
+              hostname = "homeserver";
+              pkgs-master = import nixpkgs-master {
+                system = "x86_64-linux";
               };
-            }
-          )
+            };
+          })
           #nixos-hardware.nixosModules.microsoft-surface-go
           sops-nix.nixosModules.sops
           disko.nixosModules.disko
@@ -41,9 +42,11 @@
           ./surface-go/hardware-configuration.nix
           ./surface-go/homepage-dashboard.nix
           ./surface-go/immich.nix
+          ./surface-go/networking.nix
           ./surface-go/nextcloud.nix
           ./surface-go/nginx.nix
           ./surface-go/spotify.nix
+          ./surface-go/ssh.nix
           ./surface-go/syncthing.nix
           ./surface-go.nix
           ./modules/bash.nix

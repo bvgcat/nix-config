@@ -2,21 +2,28 @@
   config,
   lib,
   pkgs,
+  user,
+  pkgs-master,
   ...
 }:
 
+let
+  sdcardpath = "/run/media/${user}/sdcard";
+  port = 2283;
+in
 {
   services = {
     immich = {
       enable = true;
-      port = 2283;
+      port = port;
       host = "localhost";
+      group = "services";
       package = pkgs.immich;
       openFirewall = true;
       redis.enable = true;
       accelerationDevices = null; # enable all
-      #mediaLocation = ;
-
+      mediaLocation = "${sdcardpath}" + "/immich";
+      
       #  https://immich.app/docs/install/config-file/
       #settings = ;
 

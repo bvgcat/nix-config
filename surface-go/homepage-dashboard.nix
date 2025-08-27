@@ -7,9 +7,9 @@
 
 let
   port = 8082;
-  portstr = toString port;
 in
 {
+  networking.firewall.allowedTCPPorts = [ port ];
   services.homepage-dashboard = {
 
     # These options were already present in my configuration.
@@ -70,18 +70,35 @@ in
               href = "https://animekai.to/";
             };
           }
+          {
+            "FRITZ!Box" = {
+              description = "Current best Anime website";
+              href = "https://192.168.178.1/";
+            };
+          }
         ];
+
       }
       {
         "Services" = [
           {
+            "Immich" = {
+              name = "Immich";
+              icon = "immich.svg";
+              description = "Self-hosted photo and video management solution";
+              href = "https://immich.bvgcat.de";
+            };
+          }
+          {
             "Nextcloud" = {
+              icon = "nextcloud.svg";
               description = "My Nextlcloud instance :)";
               href = "https://cloud.bvgcat.de";
             };
           }
           {
             "Syncthing" = {
+              icon = "syncthing.svg";
               description = "Syncthing Web portal";
               href = "https://sync.bvgcat.de";
             };

@@ -13,46 +13,42 @@ in
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
     (modulesPath + "/profiles/qemu-guest.nix")
-    ./surface-go/nextcloud.nix
   ];
 
-  networking.hostName = "${hostname}"; # Define your hostname.
-
+  # Configure keymap in X11
+  security.rtkit.enable = true;
   services = {
+    desktopManager.plasma6.enable = true;
     displayManager = {
       sddm.enable = true;
       autoLogin.enable = true;
       sddm.autoLogin.relogin = true;
       autoLogin.user = "${hostname}";
     };
-    desktopManager.plasma6.enable = true;
-  };
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "gb";
-    variant = "";
-  };
-
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
-
-  services.openssh.enable = true;
-  boot.initrd.network.ssh.enable = true;
-  systemd = {
-    services = {
-      NetworkManager = {
-        wantedBy = [ "multi-user.target" ];
-      };
-      suspend = {
-        enable = false;
-      };
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
     };
+    logind.settings.Login = {
+      HandleLidSwitch = "lock";
+      HandleLidSwitchDocked = "lock";
+      HandleLidSwitchExternalPower = "lock";
+    };
+    xserver.xkb = {
+      layout = "gb";
+      variant = "";
+    };
+  };
+  
+  systemd = {
+    sleep.extraConfig = ''
+      AllowSuspend=no
+      AllowHibernation=no
+      AllowHybridSleep=no
+      AllowSuspendThenHibernate=no
+    '';
   };
 
   hardware.graphics = {
@@ -62,38 +58,19 @@ in
     ];
   };
 
-  users.users = {
-    root.openssh.authorizedKeys.keys = [
-      # change this to your ssh key
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINej8Vqt3lEBNDErxejC1ADYDehGVLWjMgJ/ANFE+U+k nixos@latitude-5290"
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILiPoFO8It22YQ9Vbp0sfLnP6+LKAUL2niAuYpaXSiLU nixos@legion-5"
-    ];
-    ${hostname} = {
-      isNormalUser = true;
-      uid = 1000;
-      group = "users";
-      password = "";
-      openssh.authorizedKeys.keys = [
-        # change this to your ssh key
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINej8Vqt3lEBNDErxejC1ADYDehGVLWjMgJ/ANFE+U+k nixos@latitude-5290"
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILiPoFO8It22YQ9Vbp0sfLnP6+LKAUL2niAuYpaXSiLU nixos@legion-5"
-      ];
-    };
-  };
+  users.groups.services = {};
 
   environment.systemPackages = with pkgs; [
     kdePackages.plasma-browser-integration
     certbot-full
     curl
     git
+    gparted
     input-leap
-    libsForQt5.kamoso
     openssl
-    spotify
+    qdirstat
   ];
   programs.kdeconnect.enable = true;
-
-  boot.kernelModules = [ "snd_hda_intel" ];
 
   swapDevices = [
     {

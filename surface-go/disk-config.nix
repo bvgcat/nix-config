@@ -6,6 +6,12 @@
 # }
 # https://gist.github.com/Kidsan/d61ecaabc971569e9f915e62732ccc54 check this for zfs at some point
 # https://github.com/nix-community/disko-templates/blob/main/zfs-impermanence/disko-config.nix
+
+{
+  user,
+  ...
+}:
+
 {
   disko.devices = {
     disk = {
@@ -36,6 +42,24 @@
                 format = "ext4";
                 mountpoint = "/";
               };
+            };
+          };
+        };
+      };
+      sdcard = {
+        device = "/dev/mmcblk1";
+        type = "disk";
+        content = {
+          type = "gpt";
+          partitions = {
+            sdcard = {
+              size = "100%";
+              content = {
+                  type = "filesystem";
+                  format = "ext4";
+                  mountpoint = "/run/media/${user}/sdcard";
+                  mountOptions = [ "rw" "relatime" ];
+                };
             };
           };
         };

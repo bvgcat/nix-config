@@ -21,8 +21,6 @@
     clang-tools
     ecryptfs
     gcc-arm-embedded
-    glib
-    glibc
     gnumake
 
     gnupg
@@ -36,7 +34,6 @@
     pinentry-all
     powertop
     power-profiles-daemon
-    samba # matlab in bottles
     savvycan
     sops
     qdirstat
@@ -56,11 +53,12 @@
 
   users.users.h.packages = with pkgs; [
     kdePackages.kdenlive
-    anki
+    #anki
     ausweisapp
     brave
+    deluge
     can-utils
-    #discord
+    discord
     disko
     drawio
     #element-desktop
@@ -82,8 +80,8 @@
     nixdoc
     nixos-anywhere
     obsidian
-    octaveFull
-    python3
+    psst
+    python3Minimal
     qalculate-qt
     rnote
     rpi-imager
@@ -94,9 +92,8 @@
     #teams-for-linux
     texliveMinimal
     tor-browser
-    tree
     thunderbird
-    #ventoy-full
+    ventoy-full
     vlc
     wineWowPackages.stable
   ];
@@ -140,10 +137,15 @@
   networking.firewall.allowedTCPPorts = [
     8384
     22000
+    24800
   ];
   networking.firewall.allowedUDPPorts = [
     21027
     22000
+  ];
+
+  nixpkgs.config.permittedInsecurePackages = [
+    "ventoy-1.1.05"
   ];
 
   services.avahi = {

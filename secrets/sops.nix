@@ -23,6 +23,9 @@
       ddns-home.key = "ddns-home";
       ddns-immich.key = "ddns-immich";
       ddns-sync.key = "ddns-sync";
+
+      home-ssid = { };
+      home-psk = { };
     };
   };
 
