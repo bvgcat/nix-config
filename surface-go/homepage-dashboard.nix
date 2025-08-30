@@ -71,7 +71,7 @@ in
             };
           }
           {
-            "FRITZ!Box" = {
+            "FRITZ!Box 4050" = {
               description = "Current best Anime website";
               href = "https://192.168.178.1/";
             };
@@ -83,7 +83,6 @@ in
         "Services" = [
           {
             "Immich" = {
-              name = "Immich";
               icon = "immich.svg";
               description = "Self-hosted photo and video management solution";
               href = "https://immich.bvgcat.de";

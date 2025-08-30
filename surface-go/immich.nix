@@ -8,10 +8,19 @@
 }:
 
 let
-  sdcardpath = "/run/media/${user}/sdcard";
   port = 2283;
+  path = "/run/media/${user}/sdcard/immich";
 in
 {
+  networking.firewall.allowedTCPPorts = [ port ];
+
+  systemd.tmpfiles.rules = [ "d ${path} 0750 immich immich -" ];
+
+  fileSystems."/var/lib/immich" = {
+    device = path;
+    options = [ "bind" ];
+  };
+
   services = {
     immich = {
       enable = true;
@@ -22,7 +31,7 @@ in
       openFirewall = true;
       redis.enable = true;
       accelerationDevices = null; # enable all
-      mediaLocation = "${sdcardpath}" + "/immich";
+      mediaLocation = "/var/lib/immich";
       
       #  https://immich.app/docs/install/config-file/
       #settings = ;

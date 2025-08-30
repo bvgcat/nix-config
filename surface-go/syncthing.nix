@@ -12,7 +12,6 @@ in
 {
   services.syncthing = {
     enable = true;
-    package = pkgs.syncthing;
     user = user;
     configDir = "/home/${user}/.config/syncthing";
     databaseDir = "/home/${user}/syncthing";

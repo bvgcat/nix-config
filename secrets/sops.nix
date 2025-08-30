@@ -24,6 +24,9 @@
       ddns-immich.key = "ddns-immich";
       ddns-sync.key = "ddns-sync";
 
+      restic-password.key = "restic-password";
+      restic-env.key = "restic-env";
+
       home-ssid = { };
       home-psk = { };
     };

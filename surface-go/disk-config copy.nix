@@ -6,18 +6,15 @@
 # }
 # https://gist.github.com/Kidsan/d61ecaabc971569e9f915e62732ccc54 check this for zfs at some point
 # https://github.com/nix-community/disko-templates/blob/main/zfs-impermanence/disko-config.nix
-
 {
-  config,
   user,
-  pkgs,
   ...
 }:
 
 {
   disko.devices = {
     disk = {
-      main = {
+      root = {
         device = "/dev/mmcblk0";
         type = "disk";
         content = {
@@ -40,9 +37,17 @@
             root = {
               size = "100%";
               content = {
-                type = "filesystem";
-                format = "ext4";
-                mountpoint = "/";
+                # LUKS passphrase will be prompted interactively only
+                type = "luks";
+                name = "root";
+                settings = {
+                  allowDiscards = true;
+                };
+                content = {
+                  type = "filesystem";
+                  format = "ext4";
+                  mountpoint = "/";
+                };
               };
             };
           };
@@ -57,11 +62,19 @@
             sdcard = {
               size = "100%";
               content = {
+                # LUKS passphrase will be prompted interactively only
+                type = "luks";
+                name = "sdcard";
+                settings = {
+                  allowDiscards = true;
+                };
+                content = {
                   type = "filesystem";
                   format = "ext4";
                   mountpoint = "/run/media/${user}/sdcard";
                   mountOptions = [ "rw" "relatime" ];
                 };
+              };
             };
           };
         };

@@ -22,17 +22,13 @@
     ecryptfs
     gcc-arm-embedded
     gnumake
-
     gnupg
     gparted
     input-leap
     iptsd
-    nixfmt-rfc-style
     ntfs3g
     openocd
     pciutils
-    pinentry-all
-    powertop
     power-profiles-daemon
     savvycan
     sops
@@ -53,7 +49,6 @@
 
   users.users.h.packages = with pkgs; [
     kdePackages.kdenlive
-    #anki
     ausweisapp
     brave
     deluge
@@ -67,35 +62,30 @@
     # With this
     (wrapFirefox (firefox-unwrapped.override { pipewireSupport = true; }) { })
     flatpak
-    freecad
     git
     #imagemagick
     kdePackages.kdenlive
     keepassxc
-    kicad
+    #kicad
     libreoffice
     marksman
     nextcloud-client
     nixd
     nixdoc
+    nixfmt-rfc-style
     nixos-anywhere
     obsidian
-    psst
     python3Minimal
     qalculate-qt
     rnote
-    rpi-imager
-    signal-desktop-bin
     sops
     spotify
     syncthing
-    #teams-for-linux
     texliveMinimal
     tor-browser
     thunderbird
     ventoy-full
     vlc
-    wineWowPackages.stable
   ];
 
   programs.firefox = {

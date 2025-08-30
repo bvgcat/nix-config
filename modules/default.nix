@@ -26,19 +26,26 @@
     };
   };
 
-  networking.networkmanager.enable = true;
-  networking.nameservers = [
-    "1.1.1.1"
-    "2606:4700:4700::1111"
-  ]; # Cloudflare IPv4 + IPv6
+  networking = {
+    networkmanager.enable = true;
+    hosts = {
+      "192.168.178.200" = [ "bvgcat.de" "home.bvgcat.de" "cloud.bvgcat.de" "sync.bvgcat.de" "immich.bvgcat.de" ];
+    };
+
+    nameservers = [
+      "1.1.1.1"
+      "2606:4700:4700::1111"
+    ]; # Cloudflare IPv4 + IPv6
+  };
+
   services.resolved = {
     enable = true;
     fallbackDns = [
       "1.1.1.1"
       "2606:4700:4700::1111"
     ];
-    dnssec = "false"; # if your router breaks DNSSEC (optional)
   };
+  
   hardware.bluetooth.enable = true;
   boot.supportedFilesystems = [ "ntfs" ];
 
@@ -87,5 +94,5 @@
   # STLink v2
   services.udev.extraRules = ''
     SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="374f", MODE="0666"
-    		SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="374b", MODE="0666"'';
+    SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="374b", MODE="0666"'';
 }

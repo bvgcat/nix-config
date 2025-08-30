@@ -3,6 +3,7 @@
   config,
   lib,
   pkgs,
+  user,
   ...
 }:
 
@@ -65,12 +66,30 @@ in
     certbot-full
     curl
     git
+    gnome-network-displays
     gparted
     input-leap
     openssl
     qdirstat
   ];
   programs.kdeconnect.enable = true;
+
+  # Run chown recursively after mount to enforce ownership
+  systemd.services.chown-sdcard = {
+    description = "Fix sdcard and Immich perms";
+    after = [ "local-fs.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "
+        # set proper permissions for the SD card
+        ${pkgs.coreutils}/bin/chown -R :services /run/media/${user}/sdcard
+
+        # ensure immich subdir exists and is owned by immich
+        ${pkgs.coreutils}/bin/mkdir -p /run/media/${user}/sdcard/immich
+        ${pkgs.coreutils}/bin/chown -R immich:immich /run/media/${user}/sdcard/immich
+      ";
+    };
+  };
 
   swapDevices = [
     {

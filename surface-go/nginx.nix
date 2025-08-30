@@ -7,6 +7,8 @@
 }:
 
 {
+  networking.firewall.allowedTCPPorts = [ 80 443 ];
+
   services.nginx = {
     enable = true;
 
@@ -92,22 +94,16 @@
         gawk
       ];
       script = ''
-        IP4=$(ip -4 addr show dev wlp1s0 scope global | grep inet | awk '{print $2}' | cut -d/ -f1 | head -n1)
         IP6=$(ip -6 addr show dev wlp1s0 scope global | grep inet6 | awk '{print $2}' | cut -d/ -f1 | head -n1)
         PASSWORD=$(cat ${config.sops.secrets.ddns-main.path})
-        curl -s "https://dynamicdns.key-systems.net/update.php?hostname=bvgcat.de&password=$PASSWORD&ip=$IP4"
         curl -s "https://dynamicdns.key-systems.net/update.php?hostname=bvgcat.de&password=$PASSWORD&ip=$IP6"
         PASSWORD=$(cat ${config.sops.secrets.ddns-cloud.path})
-        curl -s "https://dynamicdns.key-systems.net/update.php?hostname=cloud.bvgcat.de&password=$PASSWORD&ip=$IP4"
         curl -s "https://dynamicdns.key-systems.net/update.php?hostname=cloud.bvgcat.de&password=$PASSWORD&ip=$IP6"
         PASSWORD=$(cat ${config.sops.secrets.ddns-sync.path})
-        curl -s "https://dynamicdns.key-systems.net/update.php?hostname=sync.bvgcat.de&password=$PASSWORD&ip=$IP4"
         curl -s "https://dynamicdns.key-systems.net/update.php?hostname=sync.bvgcat.de&password=$PASSWORD&ip=$IP6"
         PASSWORD=$(cat ${config.sops.secrets.ddns-home.path}) 
-        curl -s "https://dynamicdns.key-systems.net/update.php?hostname=home.bvgcat.de&password=$PASSWORD&ip=$IP4"
         curl -s "https://dynamicdns.key-systems.net/update.php?hostname=home.bvgcat.de&password=$PASSWORD&ip=$IP6"        
         PASSWORD=$(cat ${config.sops.secrets.ddns-immich.path}) 
-        curl -s "https://dynamicdns.key-systems.net/update.php?hostname=immich.bvgcat.de&password=$PASSWORD&ip=$IP4" 
         curl -s "https://dynamicdns.key-systems.net/update.php?hostname=immich.bvgcat.de&password=$PASSWORD&ip=$IP6"   
       '';
       serviceConfig = {
