@@ -52,14 +52,28 @@ in
     '';
   };
 
+  environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; }; # Optionally, set the environment variable
   hardware.graphics = {
     enable = true;
     extraPackages = with pkgs; [
-      vpl-gpu-rt
+      intel-media-driver
     ];
   };
 
-  users.groups.services = {};
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+    settings = {
+      General = {
+        # Shows battery charge of connected devices on supported
+        Experimental = true;
+        FastConnectable = true;
+      };
+      Policy = {
+        AutoEnable = true;
+      };
+    };
+  };
 
   environment.systemPackages = with pkgs; [
     kdePackages.plasma-browser-integration
@@ -71,8 +85,11 @@ in
     input-leap
     openssl
     qdirstat
+    vlc
   ];
   programs.kdeconnect.enable = true;
+
+  users.groups.services = {};
 
   # Run chown recursively after mount to enforce ownership
   systemd.services.chown-sdcard = {

@@ -7,6 +7,8 @@
 
 {
   environment.systemPackages = with pkgs; [
+    (pkgs.callPackage ./plecs.nix { })
+
     kdePackages.qtwebengine
     kdePackages.plasma-browser-integration
     kdePackages.partitionmanager
@@ -63,10 +65,9 @@
     (wrapFirefox (firefox-unwrapped.override { pipewireSupport = true; }) { })
     flatpak
     git
-    #imagemagick
     kdePackages.kdenlive
     keepassxc
-    #kicad
+    kicad
     libreoffice
     marksman
     nextcloud-client

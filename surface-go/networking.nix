@@ -6,7 +6,6 @@
 
 let
   wlp = "wlp1s0";
-  eth = "eth1s0";
 in 
 {
   boot.initrd.network.ssh = {

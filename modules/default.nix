@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  user,
   ...
 }:
 
@@ -31,17 +32,16 @@
     hosts = {
       "192.168.178.200" = [ "bvgcat.de" "home.bvgcat.de" "cloud.bvgcat.de" "sync.bvgcat.de" "immich.bvgcat.de" ];
     };
-
-    nameservers = [
-      "1.1.1.1"
-      "2606:4700:4700::1111"
-    ]; # Cloudflare IPv4 + IPv6
   };
 
   services.resolved = {
     enable = true;
+    dnsovertls = "opportunistic";
+    dnssec = "allow-downgrade";
+    extraConfig = 
+      "DNSStubListener=yes";
     fallbackDns = [
-      "1.1.1.1"
+      "1.0.0.1"
       "2606:4700:4700::1111"
     ];
   };

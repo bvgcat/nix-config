@@ -25,7 +25,7 @@
       ddns-sync.key = "ddns-sync";
 
       restic-password.key = "restic-password";
-      restic-env.key = "restic-env";
+      trans-ext4.key = "trans-ext4";
 
       home-ssid = { };
       home-psk = { };

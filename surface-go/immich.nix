@@ -12,7 +12,8 @@ let
   path = "/run/media/${user}/sdcard/immich";
 in
 {
-  networking.firewall.allowedTCPPorts = [ port ];
+  networking.firewall.allowedTCPPorts = [ port 3003 ];
+  users.users.immich.extraGroups = [ "video" "render" ];
 
   systemd.tmpfiles.rules = [ "d ${path} 0750 immich immich -" ];
 
@@ -21,6 +22,13 @@ in
     options = [ "bind" ];
   };
 
+  systemd.services.immich-machine-learning = {
+    environment = {
+      MPLCONFIGDIR = "/var/lib/immich/.cache/matplotlib";
+      HF_HOME      = "/var/lib/immich/.cache/huggingface";
+    };
+  };
+  
   services = {
     immich = {
       enable = true;
@@ -42,7 +50,8 @@ in
       };
       machine-learning = {
         enable = true;
-        #environment = { MACHINE_LEARNING_MODEL_TTL = "600"; };
+        environment = { 
+        };
       };
     };
   };

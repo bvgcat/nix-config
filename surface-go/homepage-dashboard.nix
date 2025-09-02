@@ -28,18 +28,6 @@ in
           };
         }
         {
-          Arr = {
-            header = true;
-            style = "column";
-          };
-        }
-        {
-          Downloads = {
-            header = true;
-            style = "column";
-          };
-        }
-        {
           Media = {
             header = true;
             style = "column";
@@ -63,7 +51,7 @@ in
     # https://gethomepage.dev/latest/configs/services/
     services = [
       {
-        "Links" = [
+        "Other" = [
           {
             "animekai.to" = {
               description = "Current best Anime website";
@@ -80,7 +68,7 @@ in
 
       }
       {
-        "Services" = [
+        "Server" = [
           {
             "Immich" = {
               icon = "immich.svg";
@@ -100,6 +88,13 @@ in
               icon = "syncthing.svg";
               description = "Syncthing Web portal";
               href = "https://sync.bvgcat.de";
+            };
+          }
+          {
+            "Deluge" = {
+              icon = "deluge.svg";
+              description = "Torrent servive";
+              href = "https://deluge.bvgcat.de";
             };
           }
         ];

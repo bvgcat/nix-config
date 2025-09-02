@@ -45,6 +45,7 @@
           ./surface-go/networking.nix
           ./surface-go/nextcloud.nix
           ./surface-go/nginx.nix
+          ./surface-go/restic.nix
           ./surface-go/spotify.nix
           ./surface-go/ssh.nix
           ./surface-go/syncthing.nix
@@ -57,6 +58,14 @@
       nixosConfigurations.legion-5 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
+          ({ ... }: {
+            _module.args = {
+              user = "h";
+              pkgs-master = import nixpkgs-master {
+                system = "x86_64-linux";
+              };
+            };
+          })
           nixos-hardware.nixosModules.lenovo-legion-15arh05h
           sops-nix.nixosModules.sops
           ./legion-5/hardware-configuration.nix
@@ -70,6 +79,14 @@
       nixosConfigurations.latitude-5290 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
+          ({ ... }: {
+            _module.args = {
+              user = "h";
+              pkgs-master = import nixpkgs-master {
+                system = "x86_64-linux";
+              };
+            };
+          })
           #nixos-hardware.nixosModules.dell-latitude-5490
           sops-nix.nixosModules.sops
           ./latitude-5290/hardware-configuration.nix
