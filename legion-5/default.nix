@@ -7,8 +7,8 @@
 
 {
   imports = [
-    ./modules/common.nix
-    #./modules/nvidia.nix
+    ./hardware-configuration.nix
+    ./nvidia.nix
   ];
 
   fileSystems."/run/media/h/windows" = {

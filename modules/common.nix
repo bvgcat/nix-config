@@ -8,6 +8,7 @@
 {
   environment.systemPackages = with pkgs; [
     (pkgs.callPackage ./plecs.nix { })
+    #(pkgs.callPackage ./ccs.nix { })
 
     kdePackages.qtwebengine
     kdePackages.plasma-browser-integration
@@ -51,7 +52,6 @@
 
   users.users.h.packages = with pkgs; [
     kdePackages.kdenlive
-    ausweisapp
     brave
     deluge
     can-utils
@@ -60,7 +60,6 @@
     drawio
     #element-desktop
     fastfetch
-    firefox
     # With this
     (wrapFirefox (firefox-unwrapped.override { pipewireSupport = true; }) { })
     flatpak
@@ -83,18 +82,36 @@
     spotify
     syncthing
     texliveMinimal
+    tidal-hifi
     tor-browser
     thunderbird
     ventoy-full
     vlc
   ];
 
-  programs.firefox = {
-    enable = true;
-    preferences = {
-      "widget.use-xdg-desktop-portal.file-picker" = 1;
+  programs = {
+    ausweisapp = {
+      enable = true;
+      openFirewall = true;
+    };
+    firefox = {
+      enable = true;
+      preferences = {
+        "widget.use-xdg-desktop-portal.file-picker" = 1;
+      };
+    };
+    partition-manager.enable = true;
+    kdeconnect.enable = true;
+    steam = {
+      enable = true;
+      remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+      dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+      localNetworkGameTransfers.openFirewall = true;
+      protontricks.enable = true;
     };
   };
+
+  # Firefox
   environment.sessionVariables = {
     MOZ_USE_XINPUT2 = "1";
   };
@@ -108,16 +125,6 @@
     };
   };
 
-  # for partition-manager
-  programs.partition-manager.enable = true;
-
-  # to enable kdeconnect
-  programs.kdeconnect.enable = true;
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-  };
 
   # make systemd service start automatically
   services.syncthing = {

@@ -14,6 +14,18 @@ in
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
     (modulesPath + "/profiles/qemu-guest.nix")
+    ./deluge.nix
+    ./disk-config.nix
+    ./hardware-configuration.nix
+    ./homepage-dashboard.nix
+    ./immich.nix
+    ./networking.nix
+    ./nextcloud.nix
+    ./nginx.nix
+    ./restic.nix
+    ./spotify.nix
+    ./ssh.nix
+    ./syncthing.nix
   ];
 
   # Configure keymap in X11

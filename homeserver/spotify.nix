@@ -14,6 +14,7 @@ in
   environment.systemPackages = with pkgs; [ 
     spotify 
     spotifyd
+    tidal-hifi
   ];
 
   services.spotifyd = {

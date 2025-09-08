@@ -15,7 +15,6 @@
       disko,
       nixos-hardware,
       sops-nix,
-      #nix-config,
       ...
     }:
     {
@@ -37,21 +36,8 @@
           sops-nix.nixosModules.sops
           disko.nixosModules.disko
           ./secrets/sops.nix
-          ./surface-go/disk-config.nix
-          ./surface-go/duckdns.nix
-          ./surface-go/hardware-configuration.nix
-          ./surface-go/homepage-dashboard.nix
-          ./surface-go/immich.nix
-          ./surface-go/networking.nix
-          ./surface-go/nextcloud.nix
-          ./surface-go/nginx.nix
-          ./surface-go/restic.nix
-          ./surface-go/spotify.nix
-          ./surface-go/ssh.nix
-          ./surface-go/syncthing.nix
-          ./surface-go.nix
-          ./modules/bash.nix
-          ./modules/default.nix
+          ./surface-go
+          ./modules
         ];
       };
 
@@ -61,6 +47,7 @@
           ({ ... }: {
             _module.args = {
               user = "h";
+              hostname = "legion-5";
               pkgs-master = import nixpkgs-master {
                 system = "x86_64-linux";
               };
@@ -68,10 +55,8 @@
           })
           nixos-hardware.nixosModules.lenovo-legion-15arh05h
           sops-nix.nixosModules.sops
-          ./legion-5/hardware-configuration.nix
-          ./legion-5.nix
-          ./modules/bash.nix
-          ./modules/default.nix
+          ./legion-5
+          ./modules
           ./modules/common.nix
         ];
       };
@@ -82,6 +67,7 @@
           ({ ... }: {
             _module.args = {
               user = "h";
+              hostname = "latitude-5290";
               pkgs-master = import nixpkgs-master {
                 system = "x86_64-linux";
               };
@@ -89,10 +75,28 @@
           })
           #nixos-hardware.nixosModules.dell-latitude-5490
           sops-nix.nixosModules.sops
-          ./latitude-5290/hardware-configuration.nix
-          ./latitude-5290.nix
-          ./modules/bash.nix
-          ./modules/default.nix
+          ./latitude-5290
+          ./modules
+          ./modules/common.nix
+        ];
+      };
+
+      nixosConfigurations.thinkpad-l14-g2 = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ({ ... }: {
+            _module.args = {
+              user = "h";
+              hostname = "thinkpad-l14-g2";
+              pkgs-master = import nixpkgs-master {
+                system = "x86_64-linux";
+              };
+            };
+          })
+          nixos-hardware.nixosModules.lenovo-thinkpad-l14-amd
+          sops-nix.nixosModules.sops
+          ./thinkpad-l14-g2
+          ./modules
           ./modules/common.nix
         ];
       };

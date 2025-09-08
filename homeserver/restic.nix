@@ -1,20 +1,21 @@
 { config, pkgs, user, ... }:
 
+let 
+  repo_path = "/run/media/${user}/trans_ext4/homeserver";
+in 
 {
-  services.restic.backups.tubcloud = {
+  # Restic backup service
+  services.restic.backups.local_ssd = {
     initialize = true;
-    repository = "rest:https://tubcloud.tu-berlin.de/remote.php/webdav/backups";
+    repository = repo_path;
     passwordFile = config.sops.secrets.restic-password.path;
-    environmentFile = config.sops.secrets.restic-env.path;
     paths = [ "/home/${user}" "/run/media/${user}/sdcard" ];
 
-    # Run daily
     timerConfig = {
       OnCalendar = "daily";
       Persistent = true;
     };
 
-    # Auto-prune old snapshots
     pruneOpts = [
       "--keep-daily 7"
       "--keep-weekly 4"
@@ -22,27 +23,32 @@
     ];
   };
 
-  environment.systemPackages = with pkgs; [ backrest nodejs];
+  # System packages for Backrest
+  environment.systemPackages = with pkgs; [ backrest nodejs restic ];
+
+  # Environment variables for Backrest
   environment.variables = {
-    #BACKREST_CONFIG = "";
-    #BACKREST_DATA = "";
     BACKREST_PORT = "localhost:9898";
     BACKREST_RESTIC_COMMAND = "${pkgs.restic}/bin/restic";
   };
 
-  systemd.user.units.backrest-gui.service = {
+  systemd.services.backrest-gui = {
     description = "Backrest Web GUI for Restic";
+    after = [ "network.target" ];
 
     serviceConfig = {
       ExecStart = "${pkgs.backrest}/bin/backrest gui --port 9898";
-      EnvironmentFile = config.sops.secrets.restic-env.path;
-      Environment = "
+      User = "${user}";
+      WorkingDirectory = "/home/${user}";
+      Environment = ''
         RESTIC_PASSWORD_FILE=${config.sops.secrets.restic-password.path}
-        RESTIC_REPOSITORY=rest:https://tubcloud.tu-berlin.de/remote.php/webdav/backups
-      ";
+        RESTIC_REPOSITORY=${repo_path}
+        HOME=/home/${user}
+      '';
       Restart = "always";
     };
 
-    wantedBy = [ "default.target" ];
+    wantedBy = [ "multi-user.target" ];
   };
 }
+

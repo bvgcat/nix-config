@@ -2,11 +2,16 @@
   config,
   pkgs,
   lib,
+  hostname,
   ...
 }:
 
 {
-  networking.hostName = "latitude-5290"; # Define your hostname.
+  imports = [
+    ./hardware-configuration.nix
+  ];
+
+  networking.hostName = hostname; # Define your hostname.
   services.xserver = {
     enable = true;
     xkb.layout = "de";
