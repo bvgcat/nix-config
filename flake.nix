@@ -36,7 +36,7 @@
           sops-nix.nixosModules.sops
           disko.nixosModules.disko
           ./secrets/sops.nix
-          ./surface-go
+          ./homeserver
           ./modules
         ];
       };

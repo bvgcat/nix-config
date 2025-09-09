@@ -25,7 +25,6 @@ in
     ./restic.nix
     ./spotify.nix
     ./ssh.nix
-    ./syncthing.nix
     ./thelounge.nix
   ];
 

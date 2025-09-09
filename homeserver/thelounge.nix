@@ -4,7 +4,7 @@
 }:
 
 {
-  service.thelounge = {
+  services.thelounge = {
     enable = true;
     public = true;
     port = 9000;

@@ -37,9 +37,7 @@
             root = {
               size = "100%";
               content = {
-                # LUKS passphrase will be prompted interactively only
                 type = "luks";
-                name = "root";
                 settings = {
                   allowDiscards = true;
                 };
@@ -47,32 +45,6 @@
                   type = "filesystem";
                   format = "ext4";
                   mountpoint = "/";
-                };
-              };
-            };
-          };
-        };
-      };
-      sdcard = {
-        device = "/dev/mmcblk1";
-        type = "disk";
-        content = {
-          type = "gpt";
-          partitions = {
-            sdcard = {
-              size = "100%";
-              content = {
-                # LUKS passphrase will be prompted interactively only
-                type = "luks";
-                name = "sdcard";
-                settings = {
-                  allowDiscards = true;
-                };
-                content = {
-                  type = "filesystem";
-                  format = "ext4";
-                  mountpoint = "/run/media/${user}/sdcard";
-                  mountOptions = [ "rw" "relatime" ];
                 };
               };
             };

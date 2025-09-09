@@ -15,6 +15,7 @@ in
     user = user;
     configDir = "/home/${user}/.config/syncthing";
     databaseDir = "/home/${user}/syncthing";
+    overrideDevices = true;
     settings = {
       devices = {
         "XQ-DC54" = {
