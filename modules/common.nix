@@ -6,6 +6,10 @@
 }:
 
 {
+  imports = [
+    ./nixd.nix
+  ];
+
   environment.systemPackages = with pkgs; [
     (pkgs.callPackage ./plecs.nix { })
     #(pkgs.callPackage ./ccs.nix { })

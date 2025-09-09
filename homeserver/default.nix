@@ -26,6 +26,7 @@ in
     ./spotify.nix
     ./ssh.nix
     ./syncthing.nix
+    ./thelounge.nix
   ];
 
   # Configure keymap in X11
