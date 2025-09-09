@@ -18,6 +18,10 @@ in
     overrideDevices = true;
     settings = {
       devices = {
+        "homeserver" = {
+          id = "SAFCNJD-CMNIEYR-C7N7NMZ-7VKE6EI-E5FMGG2-HCXX6MZ-HRN523I-GW7GZA3";
+          autoAcceptFolders = true;
+        };
         "XQ-DC54" = {
           id = "C6BH2I7-UX4FGTM-7RFN4ZN-QQXOTU2-BFZOL7C-PS2I43T-QB5HBWG-R3OB3A5";
           autoAcceptFolders = true;
