@@ -6,7 +6,6 @@
 }:
 
 {
-
   programs.bash.shellAliases = {
     q = "exit ";
     c = "clear ";

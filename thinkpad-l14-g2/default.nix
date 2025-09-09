@@ -1,6 +1,8 @@
 {
+  config,
   pkgs,
   lib,
+  hostname,
   ...
 }:
 
@@ -9,6 +11,7 @@
     ./hardware-configuration.nix
   ];
 
+  networking.hostName = hostname; # Define your hostname.
 
   # luks keyboard layout
   console.keyMap = "de";
@@ -90,7 +93,7 @@
   services.fprintd = {
     enable = true;
     tod.enable = true;
-    #tod.driver = pkgs.libfprint-2-tod1-broadcom;
+    tod.driver = pkgs.libfprint-2-tod1-broadcom;
   };
   swapDevices = [
     {

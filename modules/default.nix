@@ -10,5 +10,6 @@
   imports = [
     ./bash.nix
     ./settings.nix
+    ./syncthing.nix
   ];
 }

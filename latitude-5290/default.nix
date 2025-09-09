@@ -12,13 +12,13 @@
   ];
 
   networking.hostName = hostname; # Define your hostname.
+
+  # luks keyboard layout
+  console.keyMap = "de";
   services.xserver = {
     enable = true;
     xkb.layout = "de";
   };
-
-  # luks keyboard layout
-  console.keyMap = "de";
 
   boot = {
     kernelParams = [

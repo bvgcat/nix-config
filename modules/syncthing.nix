@@ -15,7 +15,6 @@ in
     user = user;
     configDir = "/home/${user}/.config/syncthing";
     databaseDir = "/home/${user}/syncthing";
-    guiAddress = "[::]:" + toString port;
     settings = {
       devices = {
         "XQ-DC54" = {
@@ -28,6 +27,10 @@ in
         };
         "pi3b" = {
           id = "3WU2KZJ-FZHIYKV-IYPPGST-WA77JLU-FQ2L5YW-7HQYOLA-LXMVEL7-VIXZMAD";
+          autoAcceptFolders = true;
+        };
+        "nixos@thinkpad-l14-g2" = {
+          id = "6LYC6WJ-LUAIHJT-JMFJST6-XTWAZ6R-LUD5RF2-5KKGDKK-VE2CMQ7-BTKD7Q6";
           autoAcceptFolders = true;
         };
       };
