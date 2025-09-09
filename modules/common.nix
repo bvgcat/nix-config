@@ -7,7 +7,7 @@
 
 {
   imports = [
-    ./nixd.nix
+    ./codium.nix
   ];
 
   environment.systemPackages = with pkgs; [
