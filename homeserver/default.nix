@@ -28,6 +28,16 @@ in
     ./thelounge.nix
   ];
 
+  system.autoUpgrade = {
+    enable = true;
+    operation = "switch";
+    flake = "/home/${user}/nix-config";
+    upgrade = true;
+    dates = "04:00";
+    allowReboot = true;
+    rebootWindow = { lower = "02:00"; upper = "06:00"; };
+  };
+
   # Configure keymap in X11
   security.rtkit.enable = true;
   services = {
@@ -103,29 +113,12 @@ in
 
   users.groups.services = {};
 
-  # Run chown recursively after mount to enforce ownership
-  systemd.services.chown-sdcard = {
-    description = "Fix sdcard and Immich perms";
-    after = [ "local-fs.target" ];
-    serviceConfig = {
-      Type = "oneshot";
-      ExecStart = "
-        # set proper permissions for the SD card
-        ${pkgs.coreutils}/bin/chown -R :services /run/media/${user}/sdcard
-
-        # ensure immich subdir exists and is owned by immich
-        ${pkgs.coreutils}/bin/mkdir -p /run/media/${user}/sdcard/immich
-        ${pkgs.coreutils}/bin/chown -R immich:immich /run/media/${user}/sdcard/immich
-      ";
-    };
-  };
-
   swapDevices = [
     {
       device = "/swapfile";
-      size = 4 * 1024;
+      size = 8 * 1024;
     }
   ];
 
-  system.stateVersion = "24.11";
+  system.stateVersion = "25.05";
 }

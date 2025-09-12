@@ -38,7 +38,7 @@
       "bvgcat.de" = {
         enableACME = true;
         addSSL = true;
-        serverAliases = [ "home.bvgcat.de" ];
+        serverAliases = [ "home.bvgcat.de" "homeserver" ];
         locations."/".proxyPass = "http://localhost:8082";
       };
 
@@ -125,8 +125,3 @@
     defaults.email = "mira.tamim.tm@gmail.com";
   };
 }
-
-# PASSWORD=$(cat ${config.sops.secrets.ddns-sync.path})
-# curl -6 -s "https://dynamicdns.key-systems.net/update.php?hostname=sync.bvgcat.de&password=$PASSWORD&ip=auto"
-# PASSWORD=$(cat ${config.sops.secrets.ddns-home.path})
-# curl -6 -s "https://dynamicdns.key-systems.net/update.php?hostname=home.bvgcat.de&password=$PASSWORD&ip=auto"

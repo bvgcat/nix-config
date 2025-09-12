@@ -81,6 +81,26 @@
         ];
       };
 
+      nixosConfigurations.surface-go = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ({ ... }: {
+            _module.args = {
+              user = "h";
+              hostname = "surface-go";
+              pkgs-master = import nixpkgs-master {
+                system = "x86_64-linux";
+              };
+            };
+          })
+          nixos-hardware.nixosModules.microsoft-surface-go
+          sops-nix.nixosModules.sops
+          ./surface-go
+          ./modules
+          ./modules/common.nix
+        ];
+      };
+
       nixosConfigurations.thinkpad-l14-g2 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [

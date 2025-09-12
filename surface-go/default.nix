@@ -29,15 +29,6 @@
     supportedFilesystems = [ "ntfs" ];
   };
 
-  fileSystems."/run/media/h/windows" = {
-    device = "/dev/nvme0n1p3";
-    fsType = "ntfs-3g";
-    options = [
-      "rw"
-      "uid=h"
-    ];
-  };
-
   hardware.bluetooth.enable = true;
   hardware.enableAllFirmware = true;
   hardware.graphics = {
@@ -56,10 +47,6 @@
 
   ### Packages
   environment.systemPackages = with pkgs; [
-    fprintd
-    fprintd-tod
-    libfprint-tod
-    libfprint-2-tod1-broadcom
     maliit-keyboard
   ];
 
@@ -69,39 +56,10 @@
     extraGroups = [
       "networkmanager"
       "wheel"
-      "qemu-libvirtd"
-      "libvirtd"
       "disk"
     ];
   };
 
-  # for virtualistion
-  programs.virt-manager.enable = true;
-  virtualisation = {
-    spiceUSBRedirection.enable = true;
-    libvirtd = {
-      enable = true;
-      qemu = {
-        runAsRoot = true;
-        swtpm.enable = true;
-        ovmf.enable = true;
-      };
-      onBoot = "ignore";
-      onShutdown = "shutdown";
-    };
-  };
-
-  services.fwupd.enable = true;
-  systemd.services.fprintd = {
-    wantedBy = [ "multi-user.target" ];
-    serviceConfig.Type = "simple";
-  };
-
-  services.fprintd = {
-    enable = true;
-    tod.enable = true;
-    tod.driver = pkgs.libfprint-2-tod1-broadcom;
-  };
   swapDevices = [
     {
       device = "/swapfile";
