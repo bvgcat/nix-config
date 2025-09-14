@@ -31,20 +31,6 @@
       canTouchEfiVariables = true;
     };
   };
-
-  networking = {
-    networkmanager.enable = true;
-    hosts."192.168.178.200" = [ "bvgcat.de" "home.bvgcat.de" "cloud.bvgcat.de" "sync.bvgcat.de" "immich.bvgcat.de" ];
-  };
-
-  services.resolved.enable = false;
-
-  networking.nameservers = [
-    "1.1.1.1"
-    "1.0.0.1"
-    "2606:4700:4700::1111"
-    "2606:4700:4700::1001"
-  ];
   
   hardware.bluetooth.enable = true;
   boot.supportedFilesystems = [ "ntfs" ];

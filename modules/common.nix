@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  user,
   ...
 }:
 
@@ -54,7 +55,7 @@
     vscodium
   ];
 
-  users.users.h.packages = with pkgs; [
+  users.users.${user}.packages = with pkgs; [
     kdePackages.kdenlive
     brave
     deluge
@@ -128,23 +129,6 @@
       ];
     };
   };
-
-
-  # make systemd service start automatically
-  services.syncthing = {
-    enable = true;
-    configDir = "/home/h/.config/syncthing";
-    user = "h";
-  };
-  networking.firewall.allowedTCPPorts = [
-    8384
-    22000
-    24800
-  ];
-  networking.firewall.allowedUDPPorts = [
-    21027
-    22000
-  ];
 
   nixpkgs.config.permittedInsecurePackages = [
     "ventoy-1.1.07"

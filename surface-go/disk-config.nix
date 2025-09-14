@@ -14,7 +14,7 @@
 {
   disko.devices = {
     disk = {
-      root = {
+      main = {
         device = "/dev/mmcblk0";
         type = "disk";
         content = {
@@ -38,6 +38,7 @@
               size = "100%";
               content = {
                 type = "luks";
+                name = "root";
                 settings = {
                   allowDiscards = true;
                 };

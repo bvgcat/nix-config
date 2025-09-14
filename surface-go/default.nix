@@ -8,23 +8,23 @@
 
 {
   imports = [
+    ./disk-config.nix
     ./hardware-configuration.nix
   ];
 
   networking.hostName = hostname; # Define your hostname.
 
   # luks keyboard layout
-  console.keyMap = "de";
+  console.keyMap = "gr";
   services.xserver = {
     enable = true;
-    xkb.layout = "de";
+    xkb = {
+      layout = "gb";
+      variant = "";
+    };  
   };
 
   boot = {
-    kernelParams = [
-      "mem_sleep_default=s2idle"
-    ];
-    kernelPackages = pkgs.linuxPackages_latest;
     kernelModules = [ "snd_hda_intel" ];
     supportedFilesystems = [ "ntfs" ];
   };
@@ -50,22 +50,12 @@
     maliit-keyboard
   ];
 
-  users.users.h = {
-    isNormalUser = true;
-    description = "h";
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-      "disk"
-    ];
-  };
-
   swapDevices = [
     {
       device = "/swapfile";
-      size = 8128;
+      size = 1024*4;
     }
   ];
 
-  system.stateVersion = "24.05"; # Did you read the comment?
+  system.stateVersion = "25.05"; # Did you read the comment?
 }

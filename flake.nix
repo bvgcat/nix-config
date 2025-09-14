@@ -86,15 +86,16 @@
         modules = [
           ({ ... }: {
             _module.args = {
-              user = "h";
+              user = "m";
               hostname = "surface-go";
               pkgs-master = import nixpkgs-master {
                 system = "x86_64-linux";
               };
             };
           })
-          nixos-hardware.nixosModules.microsoft-surface-go
+          #nixos-hardware.nixosModules.microsoft-surface-go
           sops-nix.nixosModules.sops
+          disko.nixosModules.disko  
           ./surface-go
           ./modules
           ./modules/common.nix
