@@ -28,15 +28,6 @@ in
 
   networking = {
     hostName = hostname;
-    wireless = {
-      enable = true;
-      # this makes wpa_supplicant read /run/secrets/wifi at runtime
-      #secretsFile = config.sops.secrets.home-psk.path;
-      #networks = {
-      #  "Apartment 727-30-11-41" = {
-      #    pskRaw = "ext:home-psk";    # use the name inside your secrets file
-      #  };
-      #};    
-    };
+    wireless.networkmanager.enable = true;
   };
 }
