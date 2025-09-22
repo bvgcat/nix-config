@@ -6,7 +6,26 @@
   ...
 }:
 
-{
+
+let 
+  pwd = "$y$j9T$H801xAtifzZymLFhYfTPE.$OyXSj2K8JCGGwkvDEFuAV0KhW7Gn59uobxBLDxFuK/4";
+in {
+  users.users = {
+    root = {
+      hashedPassword = pwd;
+    };
+    ${user} = {
+      isNormalUser = true;
+      group = "users";
+      hashedPassword = pwd;
+      extraGroups = [
+        "networkmanager"
+        "wheel"
+        "disk"
+      ];
+    };
+  };
+
   services.cloudflare-warp = {
     enable = true;
     package = pkgs.cloudflare-warp;

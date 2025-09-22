@@ -83,7 +83,6 @@
     python3Minimal
     qalculate-qt
     rnote
-    sops
     spotify
     syncthing
     texliveMinimal

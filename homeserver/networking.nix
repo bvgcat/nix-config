@@ -35,12 +35,6 @@ in
     };
     usePredictableInterfaceNames = true;
 
-    wireless.networks = {
-      "${config.sops.secrets.home-ssid.value}" = {
-        psk = config.sops.secrets.home-pwd.value;
-      };
-    };                                
-
     interfaces.${wlp} = {
       ipv4.addresses = [{
         address = "192.168.178.200";

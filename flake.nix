@@ -35,7 +35,6 @@
           #nixos-hardware.nixosModules.microsoft-surface-go
           sops-nix.nixosModules.sops
           disko.nixosModules.disko
-          ./secrets/sops.nix
           ./homeserver
           ./modules
         ];

@@ -30,12 +30,16 @@ in
           id = "NG5MYM5-FAWXKH4-7CUGTQM-LAUFPXE-NRPTDG5-TLKNHLC-47BOMEY-W7TE4AM";
           autoAcceptFolders = true;
         };
-        "pi3b" = {
-          id = "3WU2KZJ-FZHIYKV-IYPPGST-WA77JLU-FQ2L5YW-7HQYOLA-LXMVEL7-VIXZMAD";
-          autoAcceptFolders = true;
-        };
         "nixos@thinkpad-l14-g2" = {
           id = "6LYC6WJ-LUAIHJT-JMFJST6-XTWAZ6R-LUD5RF2-5KKGDKK-VE2CMQ7-BTKD7Q6";
+          autoAcceptFolders = true;
+        };
+        "nixos@surface-go" = {
+          id = "D6OI2T3-2EVREJA-ZHNHZ5B-63IRD3P-HH3XAHX-YUZY7P6-2OWPEYD-BGLKNQM";
+          autoAcceptFolders = true;
+        };
+        "pi3b" = {
+          id = "3WU2KZJ-FZHIYKV-IYPPGST-WA77JLU-FQ2L5YW-7HQYOLA-LXMVEL7-VIXZMAD";
           autoAcceptFolders = true;
         };
       };
