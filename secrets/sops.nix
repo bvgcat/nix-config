@@ -13,8 +13,6 @@
     defaultSopsFormat = "yaml";
     # Define secrets paths that sops-nix should decrypt
     secrets = {
-      wifi = { };         # this will hold the wifi secrets file
-
       duckdns.key = "duckdns";
 
       nc-adminpass.key = "nc-adminpass";
@@ -29,7 +27,7 @@
       restic-password.key = "restic-password";
       trans-ext4.key = "trans-ext4";
 
-      home-psk = { };
+      home-psk.key = "home-psk";
     };
   };
 
