@@ -9,7 +9,6 @@ let
 in 
 {
   boot.initrd = {
-    kernelParams = [ "ip=dhcp" ];
     availableKernelModules = [ "r8169" ];
     network = {
       enable = true;
@@ -29,11 +28,15 @@ in
 
   networking = {
     hostName = hostname;
-    wireless.enable = true;
-    wireless.networks = {
-      "${config.sops.secrets.home-ssid.value}" = {
-        psk = config.sops.secrets.home-pwd.value;
-      };
-    };          
+    wireless = {
+      enable = true;
+      # this makes wpa_supplicant read /run/secrets/wifi at runtime
+      secretsFile = config.sops.secrets.wifi.path;
+      networks = {
+        "Apartment 727-30-11-41" = {
+          pskRaw = "ext:home-pwd";    # use the name inside your secrets file
+        };
+      };    
+    };
   };
 }
