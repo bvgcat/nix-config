@@ -9,7 +9,6 @@ let
 in 
 {
   boot.initrd = {
-    availableKernelModules = [ "r8169" ];
     network = {
       enable = true;
       ssh = {
@@ -20,8 +19,6 @@ in
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILiPoFO8It22YQ9Vbp0sfLnP6+LKAUL2niAuYpaXSiLU nixos@legion-5"
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHLEKUxvn8ftYTF0opH9Kesf1PAcerJXLsp3feSzxZeC nixos@thinkpad-l14-g2"
         ];
-        hostKeys = [ "/etc/secrets/initrd/ssh_host_rsa_key" ];
-        shell = "/bin/cryptsetup-askpass";
       };
     };
   };
