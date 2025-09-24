@@ -73,6 +73,10 @@ in {
         "homeserver:21gbBImd72iH+aKAxOXZXzj8fkTGrMtlxiL4SSzHgoY="
       ];
     };
+    extraOptions = ''
+      secret-key-files = /etc/nix/homeserver
+    '';
+
     optimise = {
       automatic = true;
       dates = [ "weekly" ]; # optimise periodically
