@@ -19,7 +19,7 @@
     }:
     {
       # Use this for all other targets
-      # nixos-anywhere --flake ./nix-config#homeserver --generate-hardware-config nixos-generate-config ./surface-go/hardware-configuration.nix nixos@192.168.178.200
+      # nixos-anywhere --flake ./nix-config#homeserver --generate-hardware-config nixos-generate-config ./nix-config/homeserver/hardware-configuration.nix nixos@192.168.178.200
       nixosConfigurations.homeserver = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [

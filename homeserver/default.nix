@@ -24,7 +24,6 @@ in
     ./nginx.nix
     ./restic.nix
     ./spotify.nix
-    ./ssh.nix
     ./thelounge.nix
   ];
 
@@ -44,8 +43,8 @@ in
     desktopManager.plasma6.enable = true;
     displayManager = {
       sddm.enable = true;
-      autoLogin.enable = true;
       sddm.autoLogin.relogin = true;
+      autoLogin.enable = true;
       autoLogin.user = "${hostname}";
     };
     pipewire = {
@@ -60,7 +59,7 @@ in
       HandleLidSwitchExternalPower = "lock";
     };
     xserver.xkb = {
-      layout = "gb";
+      layout = "de";
       variant = "";
     };
   };
@@ -97,6 +96,7 @@ in
     };
   };
 
+  programs.kdeconnect.enable = true;
   environment.systemPackages = with pkgs; [
     kdePackages.plasma-browser-integration
     certbot-full
@@ -109,7 +109,6 @@ in
     qdirstat
     vlc
   ];
-  programs.kdeconnect.enable = true;
 
   users.groups.services = {};
 

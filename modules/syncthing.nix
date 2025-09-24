@@ -14,12 +14,12 @@ in
     enable = true;
     user = user;
     configDir = "/home/${user}/.config/syncthing";
-    databaseDir = "/home/${user}/syncthing";
+    databaseDir = "/home/${user}/";
     overrideDevices = true;
     settings = {
       devices = {
         "homeserver" = {
-          id = "SAFCNJD-CMNIEYR-C7N7NMZ-7VKE6EI-E5FMGG2-HCXX6MZ-HRN523I-GW7GZA3";
+          id = "YHM74UR-MW3ZMBC-KFDSUFG-CSWEWEI-GNJH3UC-5Q7FCII-Y34KIWJ-PO7EPQG";
           autoAcceptFolders = true;
         };
         "XQ-DC54" = {
@@ -46,6 +46,4 @@ in
     };
     openDefaultPorts = true;
   };
-
-  networking.firewall.allowedTCPPorts = [ port ];
 }

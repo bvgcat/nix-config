@@ -14,7 +14,7 @@ in
 
     # These options were already present in my configuration.
     enable = true;
-    allowedHosts = "localhost:8082,home.bvgcat.de,bvgcat.de";
+    allowedHosts = "localhost:8082,homeserver";
     openFirewall = true;
     # The following options were what I planned to add.
     # https://gethomepage.dev/latest/configs/settings/
@@ -73,28 +73,35 @@ in
             "Immich" = {
               icon = "immich.svg";
               description = "Self-hosted photo and video management solution";
-              href = "https://immich.bvgcat.de";
+              href = "https://homeserver/immich/";
             };
           }
           {
             "Nextcloud" = {
               icon = "nextcloud.svg";
               description = "My Nextlcloud instance :)";
-              href = "https://cloud.bvgcat.de";
+              href = "https://homeserver/cloud";
             };
           }
           {
             "Syncthing" = {
               icon = "syncthing.svg";
               description = "Syncthing Web portal";
-              href = "https://sync.bvgcat.de";
+              href = "https://homeserver/sync";
             };
           }
           {
             "Deluge" = {
               icon = "deluge.svg";
-              description = "Torrent servive";
-              href = "https://deluge.bvgcat.de";
+              description = "Torrent service";
+              href = "https://homeserver/deluge";
+            };
+          }
+          {
+            "Grafana" = {
+              icon = "grafana.svg";
+              description = "Open source analytics & monitoring solution for every database";
+              href = "https://homeserver/grafana";
             };
           }
         ];

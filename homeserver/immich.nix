@@ -15,13 +15,6 @@ in
   networking.firewall.allowedTCPPorts = [ port 3003 ];
   users.users.immich.extraGroups = [ "video" "render" ];
 
-  systemd.tmpfiles.rules = [ "d ${path} 0750 immich immich -" ];
-
-  fileSystems."/var/lib/immich" = {
-    device = path;
-    options = [ "bind" ];
-  };
-
   systemd.services.immich-machine-learning = {
     environment = {
       MPLCONFIGDIR = "/var/lib/immich/.cache/matplotlib";

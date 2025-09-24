@@ -29,6 +29,7 @@
       trans-ext4.key = "trans-ext4";
 
       home-psk.key = "home-psk";
+      ssh_key_homeserver.key = "ssh_key_homeserver";
     };
   };
 

@@ -18,7 +18,7 @@
   disko.devices = {
     disk = {
       main = {
-        device = "/dev/mmcblk0";
+        device = "/dev/nvme0n1";
         type = "disk";
         content = {
           type = "gpt";
@@ -44,24 +44,6 @@
                 format = "ext4";
                 mountpoint = "/";
               };
-            };
-          };
-        };
-      };
-      sdcard = {
-        device = "/dev/mmcblk1";
-        type = "disk";
-        content = {
-          type = "gpt";
-          partitions = {
-            sdcard = {
-              size = "100%";
-              content = {
-                  type = "filesystem";
-                  format = "ext4";
-                  mountpoint = "/run/media/${user}/sdcard";
-                  mountOptions = [ "rw" "relatime" ];
-                };
             };
           };
         };

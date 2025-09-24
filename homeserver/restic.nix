@@ -12,7 +12,7 @@ in
     paths = [ "/home/${user}" "/run/media/${user}/sdcard" ];
 
     timerConfig = {
-      OnCalendar = "daily";
+      OnCalendar = "weekly";
       Persistent = true;
     };
 

@@ -9,22 +9,14 @@
 
 let 
   ports = [ 80 443 ];
-  path = "/run/media/homeserver/sdcard/nextcloud";
 in 
 {
   networking.firewall.allowedTCPPorts = ports;
 
-  systemd.tmpfiles.rules = [ "d /var/lib/nextcloud 0770 nextcloud nextcloud -" ];
-
-  fileSystems."/var/lib/nextcloud" = {
-    device = path;
-    options = [ "bind" ];
-  };
-
   services = {
     nextcloud = {
       enable = true;
-      hostName = "cloud.bvgcat.de";
+      hostName = "homeserver/cloud";
       datadir = "/var/lib/nextcloud";
         
       # Need to manually increment with every major upgrade.
