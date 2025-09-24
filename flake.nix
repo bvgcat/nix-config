@@ -92,7 +92,7 @@
               };
             };
           })
-          #nixos-hardware.nixosModules.microsoft-surface-go
+          nixos-hardware.nixosModules.microsoft-surface-go
           sops-nix.nixosModules.sops
           disko.nixosModules.disko  
           ./surface-go

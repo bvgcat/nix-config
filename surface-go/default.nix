@@ -12,6 +12,8 @@
     ./hardware-configuration.nix
   ];
 
+  hardware.microsoft-surface.kernelVersion = "stable";
+  
   networking.hostName = hostname; # Define your hostname.
 
   # luks keyboard layout
