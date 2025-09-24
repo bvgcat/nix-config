@@ -34,10 +34,6 @@ in {
 
   services.openssh.enable = true;
   time.timeZone = "Europe/Berlin";
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
   nixpkgs.config.allowUnfree = true;
 
   services.flatpak.enable = true;
@@ -65,18 +61,27 @@ in {
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
-
+  
   # optimises the nix store
-  nix.optimise = {
-    automatic = true;
-    dates = [ "weekly" ]; # optimise periodically
-  };
-
-  # automation of garbage collection
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 7d";
+  nix = {
+    settings = {
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+      trusted-public-keys = [
+        "homeserver:21gbBImd72iH+aKAxOXZXzj8fkTGrMtlxiL4SSzHgoY="
+      ];
+    };
+    optimise = {
+      automatic = true;
+      dates = [ "weekly" ]; # optimise periodically
+    };
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 7d";
+    };
   };
 
   i18n.defaultLocale = "en_US.UTF-8";  # base locale (for LANG)

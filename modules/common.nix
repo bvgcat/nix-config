@@ -77,13 +77,11 @@
     nextcloud-client
     nixd
     nixdoc
-    nixfmt-rfc-style
     nixos-anywhere
     obsidian
     python3Minimal
     qalculate-qt
     rnote
-    spotify
     syncthing
     texliveMinimal
     tidal-hifi
