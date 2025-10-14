@@ -26,6 +26,9 @@
     ];
     kernelPackages = pkgs.linuxPackages_latest;
     kernelModules = [ "snd_hda_intel" ];
+    extraModprobeConfig = ''
+      options snd-hda-intel power_save=0
+    '';
     supportedFilesystems = [ "ntfs" ];
   };
 
@@ -84,7 +87,6 @@
       qemu = {
         runAsRoot = true;
         swtpm.enable = true;
-        ovmf.enable = true;
       };
       onBoot = "ignore";
       onShutdown = "shutdown";

@@ -16,17 +16,21 @@ in
     (modulesPath + "/profiles/qemu-guest.nix")
     ./deluge.nix
     ./disk-config.nix
+    ./grafana.nix
     ./hardware-configuration.nix
     ./homepage-dashboard.nix
     ./immich.nix
     ./networking.nix
     ./nextcloud.nix
     ./nginx.nix
-    ./restic.nix
+    #./restic.nix
     ./spotify.nix
     ./thelounge.nix
   ];
 
+  networking.firewall.allowedTCPPorts = [ 8384 ];
+  services.syncthing.guiAddress = "http://0.0.0.0:8384";
+  
   system.autoUpgrade = {
     enable = true;
     operation = "switch";

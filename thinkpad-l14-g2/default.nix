@@ -77,7 +77,6 @@
       qemu = {
         runAsRoot = true;
         swtpm.enable = true;
-        ovmf.enable = true;
       };
       onBoot = "ignore";
       onShutdown = "shutdown";

@@ -1,59 +1,78 @@
 { config, pkgs, lib, ... }:
 
 {
-  networking.firewall.allowedTCPPorts = [ 80 8384 ];
+  networking.firewall.allowedTCPPorts = [ 8384 ];
+  services.syncthing.guiAddress = "http://0.0.0.0:8384";
 
   services.nginx = {
     enable = true;
     recommendedProxySettings = true;
 
-    virtualHosts."homeserver" = {
-      # No SSL or ACME, since you're using internal DNS (e.g., via router)
-      forceSSL = false;
-      enableACME = false;
-      addSSL = false;
+    commonHttpConfig = ''
+      proxy_headers_hash_max_size 1024;
+      proxy_headers_hash_bucket_size 128;
+    '';
 
-      locations = {
-        "/" = {
+    virtualHosts = {
+      # Root site
+      "homeserver" = {
+        forceSSL = false;
+        enableACME = false;
+
+        locations."/" = {
           proxyPass = "http://localhost:8082";
         };
+      };
 
-        "/sync/" = {
+      # Syncthing
+      "sync.homeserver" = {
+        forceSSL = false;
+        enableACME = false;
+
+        locations."/" = {
           proxyPass = "http://localhost:8384";
         };
+      };
 
-        "/deluge/" = {
+      # Deluge
+      "deluge.homeserver" = {
+        forceSSL = false;
+        enableACME = false;
+
+        locations."/" = {
           proxyPass = "http://localhost:${toString config.services.deluge.web.port}";
         };
+      };
 
-        "/lounge/" = {
+      # TheLounge
+      "lounge.homeserver" = {
+        forceSSL = false;
+        enableACME = false;
+
+        locations."/" = {
           proxyPass = "http://localhost:${toString config.services.thelounge.port}";
         };
+      };
 
-        # Deny .ht* files
-        "~ ^/cloud/.*\\.ht" = {
-          return = "404";
-        };
+      # Grafana
+      "grafana.homeserver" = {
+        forceSSL = false;
+        enableACME = false;
 
-        # FastCGI for PHP (Nextcloud)
-        "~ ^/cloud/.*\\.php$" = {
-          extraConfig = ''
-            include ${pkgs.nginx}/conf/fastcgi_params;
-            fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-            fastcgi_pass unix:/run/phpfpm/nextcloud.sock;
-          '';
-        };
-
-        # Grafana
-        "/grafana/" = {
-          proxyPass = "http://${toString config.services.grafana.settings.server.http_addr}:${toString config.services.grafana.settings.server.http_port}";
+        locations."/" = {
+          proxyPass = "http://localhost:${toString config.services.grafana.settings.server.http_port}";
           proxyWebsockets = true;
           recommendedProxySettings = true;
         };
+      };
 
-        # Immich
-        "/immich/" = {
-          proxyPass = "http://[::1]:${toString config.services.immich.port}";
+      # Immich
+      "immich.homeserver" = {
+        forceSSL = false;
+        enableACME = false;
+
+        locations."/" = {
+          proxyPass = "http://localhost:${toString config.services.immich.port}";
           proxyWebsockets = true;
           recommendedProxySettings = true;
           extraConfig = ''
@@ -74,9 +93,28 @@
           '';
         };
       };
+
+      # Optional: Nextcloud (under /cloud) on root domain
+      "cloud.homeserver" = {
+        enableACME = true;
+        addSSL = true;
+
+        # PHP files
+        locations."~ \.php$" = {
+          extraConfig = ''
+            include ${pkgs.nginx}/conf/fastcgi_params;
+            fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+            fastcgi_pass unix:/run/phpfpm/nextcloud.sock;
+          '';
+        };
+
+        # Disable .htaccess etc.
+        locations."~ /\.ht" = {
+          return = "404";
+        };
+      };
     };
   };
 
-  # No ACME because you're using an internal domain
   security.acme.acceptTerms = false;
 }

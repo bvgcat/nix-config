@@ -16,7 +16,7 @@ in
   services = {
     nextcloud = {
       enable = true;
-      hostName = "homeserver/cloud";
+      hostName = "localhost";
       datadir = "/var/lib/nextcloud";
         
       # Need to manually increment with every major upgrade.
@@ -67,7 +67,7 @@ in
 
       settings = {
         default_phone_region = "DE";
-        trusted_domains = [ "localhost" ];
+        trusted_domains = [ "localhost" "homeserver" "cloud.homeserver"];
         enabledPreviewProviders = [
           "OC\\Preview\\BMP"
           "OC\\Preview\\GIF"

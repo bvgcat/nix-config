@@ -9,7 +9,6 @@
 
 let
   port = 2283;
-  path = "/run/media/${user}/sdcard/immich";
 in
 {
   networking.firewall.allowedTCPPorts = [ port 3003 ];
@@ -43,8 +42,7 @@ in
       };
       machine-learning = {
         enable = true;
-        environment = { 
-        };
+        environment = {};
       };
     };
   };

@@ -46,14 +46,13 @@
     };
   };
 
-  virtualisation = with pkgs; {
+  virtualisation = {
     spiceUSBRedirection.enable = true;
     libvirtd = {
       enable = true;
       qemu = {
         runAsRoot = true;
         swtpm.enable = true;
-        ovmf.enable = true;
       };
       onBoot = "ignore";
       onShutdown = "shutdown";

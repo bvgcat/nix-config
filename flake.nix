@@ -72,7 +72,7 @@
               };
             };
           })
-          #nixos-hardware.nixosModules.dell-latitude-5490
+          nixos-hardware.nixosModules.dell-latitude-5490
           sops-nix.nixosModules.sops
           ./latitude-5290
           ./modules
@@ -118,6 +118,8 @@
           ./thinkpad-l14-g2
           ./modules
           ./modules/common.nix
+          ./nixos-tuberlin/BSPrak.nix
+          ./nixos-tuberlin/SWTPP.nix
         ];
       };
     };

@@ -14,7 +14,7 @@ in
 
     # These options were already present in my configuration.
     enable = true;
-    allowedHosts = "localhost:8082,homeserver";
+    allowedHosts = "localhost:${toString port},homeserver,homeserver:8082";
     openFirewall = true;
     # The following options were what I planned to add.
     # https://gethomepage.dev/latest/configs/settings/
@@ -55,13 +55,13 @@ in
           {
             "animekai.to" = {
               description = "Current best Anime website";
-              href = "https://animekai.to/";
+              href = "http://animekai.to/";
             };
           }
           {
             "FRITZ!Box 4050" = {
               description = "Current best Anime website";
-              href = "https://192.168.178.1/";
+              href = "http://192.168.178.1/";
             };
           }
         ];
@@ -73,35 +73,42 @@ in
             "Immich" = {
               icon = "immich.svg";
               description = "Self-hosted photo and video management solution";
-              href = "https://homeserver/immich/";
+              href = "http://homeserver:2283";
             };
           }
           {
             "Nextcloud" = {
               icon = "nextcloud.svg";
               description = "My Nextlcloud instance :)";
-              href = "https://homeserver/cloud";
+              href = "http://homeserver";
             };
           }
           {
             "Syncthing" = {
               icon = "syncthing.svg";
               description = "Syncthing Web portal";
-              href = "https://homeserver/sync";
+              href = "http://homeserver:8384";
             };
           }
           {
             "Deluge" = {
               icon = "deluge.svg";
               description = "Torrent service";
-              href = "https://homeserver/deluge";
+              href = "http://homeserver:8112";
             };
           }
           {
             "Grafana" = {
               icon = "grafana.svg";
               description = "Open source analytics & monitoring solution for every database";
-              href = "https://homeserver/grafana";
+              href = "http://homeserver:3000";
+            };
+          }
+          {
+            "The Lounge" = {
+              icon = "thelounge.svg";
+              description = "The Lounge web IRC client";
+              href = "http://homeserver:9000";
             };
           }
         ];
