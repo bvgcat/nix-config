@@ -15,7 +15,7 @@
 
     virtualHosts = {
       # Root site
-      "homeserver" = {
+      "home.homeserver" = {
         forceSSL = false;
         enableACME = false;
 
@@ -54,17 +54,6 @@
         };
       };
 
-      # Grafana
-      "grafana.homeserver" = {
-        forceSSL = false;
-        enableACME = false;
-
-        locations."/" = {
-          proxyPass = "http://localhost:${toString config.services.grafana.settings.server.http_port}";
-          proxyWebsockets = true;
-          recommendedProxySettings = true;
-        };
-      };
 
       # Immich
       "immich.homeserver" = {
@@ -99,12 +88,26 @@
         enableACME = true;
         addSSL = true;
 
+        listen = [ {
+          addr = "127.0.0.1";
+          port = 8080; # NOT an exposed port
+        } ];
+
         # PHP files
         locations."~ \.php$" = {
           extraConfig = ''
             include ${pkgs.nginx}/conf/fastcgi_params;
             fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
             fastcgi_pass unix:/run/phpfpm/nextcloud.sock;
+
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-NginX-Proxy true;
+            proxy_set_header X-Forwarded-Proto http;
+            proxy_pass http://127.0.0.1:8080/; # tailing / is important!
+            proxy_set_header Host $host;
+            proxy_cache_bypass $http_upgrade;
+            proxy_redirect off;
           '';
         };
 

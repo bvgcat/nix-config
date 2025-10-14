@@ -36,6 +36,22 @@
         "type": "github"
       }
     },
+    "nixos-tuberlin": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1760467201,
+        "narHash": "sha256-UGbnhL8pRlOeNALkz+6WCTSx848jpOffKoKoqDIyFPE=",
+        "ref": "refs/heads/main",
+        "rev": "2c481f3743f424ba8c9e0ace395da38dfc60e1ad",
+        "revCount": 7,
+        "type": "git",
+        "url": "https://git.tu-berlin.de/hamza.tmm/nixos-tuberlin.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://git.tu-berlin.de/hamza.tmm/nixos-tuberlin.git"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1760349414,
@@ -54,11 +70,11 @@
     },
     "nixpkgs-master": {
       "locked": {
-        "lastModified": 1760461547,
-        "narHash": "sha256-YnLdIiyFAHk1xMN5KoP2AfF4ahnM5THcRwfT70yUmQE=",
+        "lastModified": 1760467294,
+        "narHash": "sha256-mAQ7kehZHv7C5ckeKuvl9AyxKxyiTqWvnLMOcy5Ye6M=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "facc9af2e0e7d192c401297bcf004eb2b63b1996",
+        "rev": "81069e3f0dd63b53c7ffbccd614a7aa3299a414e",
         "type": "github"
       },
       "original": {
@@ -88,6 +104,7 @@
       "inputs": {
         "disko": "disko",
         "nixos-hardware": "nixos-hardware",
+        "nixos-tuberlin": "nixos-tuberlin",
         "nixpkgs": "nixpkgs",
         "nixpkgs-master": "nixpkgs-master",
         "sops-nix": "sops-nix"

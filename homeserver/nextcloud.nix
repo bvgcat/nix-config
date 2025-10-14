@@ -58,13 +58,6 @@ in
         adminpassFile = "/run/secrets/nc-adminpass";
       };
 
-      #ensureUsers = {
-      #  mira = {
-      #    email = "miratamim.tm@gmail.com";
-      #    passwordFile = "/run/secrets/nc-userpass";
-      #  };
-      #};
-
       settings = {
         default_phone_region = "DE";
         trusted_domains = [ "localhost" "homeserver" "cloud.homeserver"];

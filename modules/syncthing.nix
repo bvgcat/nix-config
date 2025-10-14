@@ -17,7 +17,7 @@ in
     databaseDir = "/home/${user}/";
     overrideDevices = true;
     settings = {
-      options.urAccepted = 1;
+      options.urAccepted = -1;
       gui.theme = "black";
       devices = {
         "homeserver" = {

@@ -6,6 +6,10 @@
     disko.inputs.nixpkgs.follows = "nixpkgs";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     sops-nix.url = "github:Mic92/sops-nix";
+    nixos-tuberlin = {
+      url = "git+https://git.tu-berlin.de/hamza.tmm/nixos-tuberlin.git";
+      flake = false;
+    };
   };
 
   outputs =
@@ -15,6 +19,7 @@
       disko,
       nixos-hardware,
       sops-nix,
+      nixos-tuberlin,
       ...
     }:
     {
@@ -118,8 +123,8 @@
           ./thinkpad-l14-g2
           ./modules
           ./modules/common.nix
-          ./nixos-tuberlin/BSPrak.nix
-          ./nixos-tuberlin/SWTPP.nix
+          (import "${nixos-tuberlin}/BSPrak.nix")
+          (import "${nixos-tuberlin}/SWTPP.nix")
         ];
       };
     };

@@ -16,7 +16,6 @@ in
     (modulesPath + "/profiles/qemu-guest.nix")
     ./deluge.nix
     ./disk-config.nix
-    ./grafana.nix
     ./hardware-configuration.nix
     ./homepage-dashboard.nix
     ./immich.nix

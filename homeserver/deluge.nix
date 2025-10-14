@@ -13,7 +13,6 @@ in
   services.deluge = {
     enable = true;
     dataDir = "/var/lib/deluge";
-    #declarative = true;
     web = {
       enable = true;
       port = port;
