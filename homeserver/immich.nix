@@ -26,7 +26,7 @@ in
       enable = true;
       port = port;
       host = "localhost";
-      group = "services";
+      group = "immich";
       package = pkgs.immich;
       openFirewall = true;
       redis.enable = true;

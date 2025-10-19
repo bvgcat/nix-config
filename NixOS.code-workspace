@@ -7,6 +7,9 @@
 		{
 			"name": "nixos",
 			"path": "../../../etc/nixos"
+		},
+		{
+			"path": "../git/nixos-tuberlin"
 		}
 	],
 	"settings": {}

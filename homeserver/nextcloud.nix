@@ -60,7 +60,7 @@ in
 
       settings = {
         default_phone_region = "DE";
-        trusted_domains = [ "localhost" "homeserver" "cloud.homeserver"];
+        trusted_domains = [ "localhost" "homeserver" ];
         enabledPreviewProviders = [
           "OC\\Preview\\BMP"
           "OC\\Preview\\GIF"

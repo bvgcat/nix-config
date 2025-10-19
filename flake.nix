@@ -124,6 +124,7 @@
           ./modules
           ./modules/common.nix
           (import "${nixos-tuberlin}/BSPrak.nix")
+          (import "${nixos-tuberlin}/GEM.nix")
           (import "${nixos-tuberlin}/SWTPP.nix")
         ];
       };

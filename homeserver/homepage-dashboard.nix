@@ -14,7 +14,7 @@ in
 
     # These options were already present in my configuration.
     enable = true;
-    allowedHosts = "localhost:${toString port},homeserver,homeserver:8082";
+    allowedHosts = "localhost:${toString port},homeserver/home,homeserver:8082";
     openFirewall = true;
     # The following options were what I planned to add.
     # https://gethomepage.dev/latest/configs/settings/

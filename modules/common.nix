@@ -57,6 +57,7 @@
 
   users.users.${user}.packages = with pkgs; [
     kdePackages.kdenlive
+    bottles
     brave
     deluge
     can-utils
@@ -79,7 +80,6 @@
     nixdoc
     nixos-anywhere
     obsidian
-    python3Minimal
     qalculate-qt
     rnote
     syncthing

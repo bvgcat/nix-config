@@ -20,6 +20,6 @@
     update = "sudo nix flake update --flake /home/${user}/nix-config";
     upgrade = "sudo nix flake update --flake /home/${user}/nix-config && sudo nixos-rebuild switch --flake /home/${user}/nix-config";
     upgrade-me = "sudo nixos-rebuild --build-host root@homeserver switch --flake /home/${user}/nix-config";
-    upgrade-hs = "sudo nixos-rebuild --build-host root@homeserver --target-host root@homeserver switch --flake /home/${user}/nix-config#homeserver";
+    upgrade-hs = "nixos-rebuild --build-host root@homeserver --target-host root@homeserver switch --flake /home/${user}/nix-config#homeserver";
   };
 }
