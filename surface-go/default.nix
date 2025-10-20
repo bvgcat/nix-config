@@ -3,6 +3,7 @@
   pkgs,
   lib,
   hostname,
+  user,
   ...
 }:
 
@@ -10,6 +11,14 @@
   imports = [
     ./disk-config.nix
     ./hardware-configuration.nix
+  ];
+
+  ### Packages
+  environment.systemPackages = with pkgs; [
+    maliit-keyboard
+  ];
+
+  users.users.${user}.packages = with pkgs; [
   ];
 
   hardware.microsoft-surface.kernelVersion = "stable";
@@ -47,10 +56,6 @@
     };
   };
 
-  ### Packages
-  environment.systemPackages = with pkgs; [
-    maliit-keyboard
-  ];
 
   swapDevices = [
     {

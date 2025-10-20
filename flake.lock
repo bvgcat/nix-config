@@ -84,6 +84,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-small": {
+      "locked": {
+        "lastModified": 1760965023,
+        "narHash": "sha256-cpcgkeLApMGFCdp4jFqeIxTwlcGaSI+Zwmv8z2E85pY=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "40ef6b9aa73f70b265c29df083fafae66b9df351",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable-small",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1760596604,
@@ -107,6 +123,7 @@
         "nixos-tuberlin": "nixos-tuberlin",
         "nixpkgs": "nixpkgs",
         "nixpkgs-master": "nixpkgs-master",
+        "nixpkgs-small": "nixpkgs-small",
         "sops-nix": "sops-nix"
       }
     },

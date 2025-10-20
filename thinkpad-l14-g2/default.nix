@@ -3,12 +3,31 @@
   pkgs,
   lib,
   hostname,
+  user,
   ...
 }:
 
 {
   imports = [
     ./hardware-configuration.nix
+  ];
+
+  environment.systemPackages = with pkgs; [
+    (pkgs.callPackage ./plecs.nix { })
+    fprintd
+    fprintd-tod
+    libfprint-tod
+
+    #virtualisation
+    libvirt
+    qemu
+    spice-vdagent
+    virt-manager
+    OVMFFull
+  ];
+
+  users.users.${user}.packages = with pkgs; [
+    bottles
   ];
 
   networking.hostName = hostname; # Define your hostname.
@@ -48,13 +67,6 @@
       package = pkgs.power-profiles-daemon;
     };
   };
-
-  ### Packages
-  environment.systemPackages = with pkgs; [
-    fprintd
-    fprintd-tod
-    libfprint-tod
-  ];
 
   users.users.h = {
     isNormalUser = true;

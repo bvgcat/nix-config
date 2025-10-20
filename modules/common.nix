@@ -12,9 +12,6 @@
   ];
 
   environment.systemPackages = with pkgs; [
-    (pkgs.callPackage ./plecs.nix { })
-    #(pkgs.callPackage ./ccs.nix { })
-
     kdePackages.qtwebengine
     kdePackages.plasma-browser-integration
     kdePackages.partitionmanager
@@ -28,7 +25,6 @@
     brave
     clang-tools
     ecryptfs
-    gcc-arm-embedded
     gnumake
     gnupg
     gparted
@@ -44,20 +40,11 @@
     usbutils
     zsh
 
-    #virtualisation
-    libvirt
-    qemu
-    spice-vdagent
-    virt-manager
-    OVMFFull
-
-    direnv
     vscodium
   ];
 
   users.users.${user}.packages = with pkgs; [
     kdePackages.kdenlive
-    bottles
     brave
     deluge
     can-utils

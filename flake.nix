@@ -1,6 +1,7 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs-small.url = "github:NixOS/nixpkgs/nixos-unstable-small";
     nixpkgs-master.url = "github:NixOS/nixpkgs/master";
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
@@ -15,6 +16,7 @@
   outputs =
     {
       nixpkgs,
+      nixpkgs-small,
       nixpkgs-master,
       disko,
       nixos-hardware,
@@ -37,7 +39,6 @@
               };
             };
           })
-          #nixos-hardware.nixosModules.microsoft-surface-go
           sops-nix.nixosModules.sops
           disko.nixosModules.disko
           ./homeserver
@@ -52,9 +53,6 @@
             _module.args = {
               user = "h";
               hostname = "legion-5";
-              pkgs-master = import nixpkgs-master {
-                system = "x86_64-linux";
-              };
             };
           })
           nixos-hardware.nixosModules.lenovo-legion-15arh05h
@@ -72,9 +70,6 @@
             _module.args = {
               user = "h";
               hostname = "latitude-5290";
-              pkgs-master = import nixpkgs-master {
-                system = "x86_64-linux";
-              };
             };
           })
           nixos-hardware.nixosModules.dell-latitude-5490
@@ -85,16 +80,13 @@
         ];
       };
 
-      nixosConfigurations.surface-go = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.surface-go = nixpkgs-small.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           ({ ... }: {
             _module.args = {
               user = "m";
               hostname = "surface-go";
-              pkgs-master = import nixpkgs-master {
-                system = "x86_64-linux";
-              };
             };
           })
           nixos-hardware.nixosModules.microsoft-surface-go
@@ -103,6 +95,8 @@
           ./surface-go
           ./modules
           ./modules/common.nix
+          (import "${nixos-tuberlin}/GEM.nix")
+          (import "${nixos-tuberlin}/SWTPP.nix")
         ];
       };
 
@@ -113,9 +107,6 @@
             _module.args = {
               user = "h";
               hostname = "thinkpad-l14-g2";
-              pkgs-master = import nixpkgs-master {
-                system = "x86_64-linux";
-              };
             };
           })
           nixos-hardware.nixosModules.lenovo-thinkpad-l14-amd
