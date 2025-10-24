@@ -13,7 +13,7 @@
   ];
 
   environment.systemPackages = with pkgs; [
-    (pkgs.callPackage ./plecs.nix { })
+    (pkgs.callPackage ../modules/plecs.nix { })
     fprintd
     fprintd-tod
     libfprint-tod
@@ -26,9 +26,22 @@
     OVMFFull
   ];
 
-  users.users.${user}.packages = with pkgs; [
-    bottles
-  ];
+
+  users.users.${user} = {
+    isNormalUser = true;
+    description = "h";
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "qemu-libvirtd"
+      "libvirtd"
+      "disk"
+    ];
+    packages = with pkgs; [
+      bottles
+      texliveFull
+    ];
+  };
 
   networking.hostName = hostname; # Define your hostname.
 
@@ -66,18 +79,6 @@
       enable = true;
       package = pkgs.power-profiles-daemon;
     };
-  };
-
-  users.users.h = {
-    isNormalUser = true;
-    description = "h";
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-      "qemu-libvirtd"
-      "libvirtd"
-      "disk"
-    ];
   };
 
   # for virtualistion

@@ -1,17 +1,45 @@
 { stdenv, fetchzip, makeWrapper, autoPatchelfHook, pkgs, lib }:
 
-stdenv.mkDerivation rec {
+let
   pname = "plecs";
-  version = "4.9.7";
+  version = "4.9.8";
+  appname = "PLECS";
+  meta = with lib; {
+    description = "PLECS (Piecewise Linear Electrical Circuit Simulation) software";
+    homepage = "https://www.plexim.com/plecs";
+    mainProgram = "obsidian";
+    license = licenses.unfree;
+    platforms = platforms.linux;
+  };
+
+  desktopEntry = pkgs.makeDesktopItem {
+    name = pname;
+    desktopName = appname;
+    comment = "PLECS (Piecewise Linear Electrical Circuit Simulation) software";
+    icon = "plecs";   # TODO: find the logo somewhere
+    exec = "plecs %f";
+    categories = [ "Science" ];
+    mimeTypes = [
+      "x-scheme-handler/sgnl"
+      "x-scheme-handler/signalcaptcha"
+    ];
+  };
+in
+stdenv.mkDerivation {
+  pname = pname;
+  version = version;
+  meta = meta;
 
   src = fetchzip {
-    url = "https://www.plexim.com/sites/default/files/packages/plecs-standalone-4-9-7_linux64.tar.gz";
-    sha256 = "sha256-w4FNJ/Btg2XAQQb91pndmPezygDl0To2+wChfgUbqOw=";
+    url = "https://www.plexim.com/sites/default/files/packages/plecs-standalone-4-9-8_linux64.tar.gz";
+    sha256 = "sha256-87Kdx49WLIiBFBoUXO+yMOwSFxD52nzWjKX09g6pTRU=";
   };
+
+  dontBuild = true;
 
   nativeBuildInputs = [ makeWrapper autoPatchelfHook pkgs.qt6.wrapQtAppsHook ];
 
-  buildInputs = with pkgs;[
+  buildInputs = with pkgs; [
     glibc
     zlib
     xorg.libX11
@@ -32,7 +60,7 @@ stdenv.mkDerivation rec {
     xcb-util-cursor
     libxkbcommon
     libdrm
-  
+
     qt6.qtbase
     qt6.qttools
     qt6.qtdeclarative
@@ -43,7 +71,6 @@ stdenv.mkDerivation rec {
     nss
   ];
 
-
   installPhase = ''
     mkdir -p $out/opt/plecs
     cp -r * $out/opt/plecs
@@ -51,12 +78,9 @@ stdenv.mkDerivation rec {
     mkdir -p $out/bin
     makeWrapper $out/opt/plecs/PLECS $out/bin/plecs \
       --prefix LD_LIBRARY_PATH : "$out/opt/plecs/lib"
+
+    # Install .desktop file
+    mkdir -p $out/share/applications
+    cp ${desktopEntry}/share/applications/plecs.desktop $out/share/applications/
   '';
-  
-  meta = with lib; {
-    description = "PLECS (Piecewise Linear Electrical Circuit Simulation) software";
-    homepage = "https://www.plexim.com/plecs";
-    license = licenses.unfree;
-    platforms = platforms.linux;
-  };
 }

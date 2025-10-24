@@ -70,7 +70,6 @@
     qalculate-qt
     rnote
     syncthing
-    texliveMinimal
     tidal-hifi
     tor-browser
     thunderbird

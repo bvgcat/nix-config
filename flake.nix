@@ -2,7 +2,6 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nixpkgs-small.url = "github:NixOS/nixpkgs/nixos-unstable-small";
-    nixpkgs-master.url = "github:NixOS/nixpkgs/master";
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
@@ -17,7 +16,6 @@
     {
       nixpkgs,
       nixpkgs-small,
-      nixpkgs-master,
       disko,
       nixos-hardware,
       sops-nix,
@@ -34,9 +32,6 @@
             _module.args = {
               user = "homeserver";
               hostname = "homeserver";
-              pkgs-master = import nixpkgs-master {
-                system = "x86_64-linux";
-              };
             };
           })
           sops-nix.nixosModules.sops

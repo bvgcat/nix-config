@@ -14,13 +14,13 @@ in
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
     (modulesPath + "/profiles/qemu-guest.nix")
-    ./deluge.nix
+    #./deluge.nix
     ./disk-config.nix
     ./hardware-configuration.nix
     ./homepage-dashboard.nix
     ./immich.nix
     ./networking.nix
-    ./nextcloud.nix
+    #./nextcloud.nix
     ./nginx.nix
     #./restic.nix
     ./spotify.nix
