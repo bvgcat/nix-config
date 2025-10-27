@@ -56,7 +56,7 @@
     git
     keepassxc
     kicad
-    libreoffice
+    #libreoffice
     marksman
     nextcloud-client
     nixd
