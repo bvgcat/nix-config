@@ -26,12 +26,6 @@ in {
     };
   };
 
-  services.cloudflare-warp = {
-    enable = true;
-    package = pkgs.cloudflare-warp;
-    openFirewall = true;
-  };
-
   services.openssh.enable = true;
   time.timeZone = "Europe/Berlin";
   nixpkgs.config.allowUnfree = true;

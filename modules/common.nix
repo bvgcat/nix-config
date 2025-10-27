@@ -12,17 +12,17 @@
   ];
 
   environment.systemPackages = with pkgs; [
+    kdePackages.kdenlive
+    kdePackages.kpmcore
     kdePackages.qtwebengine
     kdePackages.plasma-browser-integration
     kdePackages.partitionmanager
-    kdePackages.kpmcore
 
     age
     appimage-run
     baobab
     bear
     bootiso
-    brave
     clang-tools
     ecryptfs
     gnumake
@@ -38,15 +38,12 @@
     sops
     qdirstat
     usbutils
-    zsh
-
     vscodium
+    zsh
   ];
 
   users.users.${user}.packages = with pkgs; [
-    kdePackages.kdenlive
     brave
-    deluge
     can-utils
     discord
     disko
@@ -57,14 +54,12 @@
     (wrapFirefox (firefox-unwrapped.override { pipewireSupport = true; }) { })
     flatpak
     git
-    kdePackages.kdenlive
     keepassxc
     kicad
     libreoffice
     marksman
     nextcloud-client
     nixd
-    nixdoc
     nixos-anywhere
     obsidian
     qalculate-qt
