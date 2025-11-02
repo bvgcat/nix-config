@@ -33,7 +33,7 @@ in
   system.autoUpgrade = {
     enable = true;
     operation = "switch";
-    flake = "/home/${user}/nix-config";
+    flake = "github:bvgcat/nix-config";
     upgrade = true;
     dates = "04:00";
     allowReboot = true;
