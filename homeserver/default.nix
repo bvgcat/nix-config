@@ -27,6 +27,20 @@ in
     ./thelounge.nix
   ];
 
+  environment.systemPackages = with pkgs; [
+    kdePackages.krfb
+    kdePackages.plasma-browser-integration
+    #certbot-full
+    curl
+    git
+    gnome-network-displays
+    gparted
+    input-leap
+    openssl
+    qdirstat
+    vlc
+  ];
+  
   networking.firewall.allowedTCPPorts = [ 8384 ];
   services.syncthing.guiAddress = "http://0.0.0.0:8384";
   
@@ -100,18 +114,6 @@ in
   };
 
   programs.kdeconnect.enable = true;
-  environment.systemPackages = with pkgs; [
-    kdePackages.plasma-browser-integration
-    certbot-full
-    curl
-    git
-    gnome-network-displays
-    gparted
-    input-leap
-    openssl
-    qdirstat
-    vlc
-  ];
 
   users.groups.services = {};
 

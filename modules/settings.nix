@@ -10,11 +10,6 @@
 let 
   pwd = "$y$j9T$H801xAtifzZymLFhYfTPE.$OyXSj2K8JCGGwkvDEFuAV0KhW7Gn59uobxBLDxFuK/4";
 in {
-  ### Packages
-  environment.systemPackages = with pkgs; [
-    kdePackages.krfb
-  ];
-
   users.users = {
     root = {
       hashedPassword = pwd;
@@ -27,8 +22,7 @@ in {
         "networkmanager"
         "wheel"
         "disk"
-      ];
-      packages = with pkgs; [];  
+      ]; 
     };
   };
 
