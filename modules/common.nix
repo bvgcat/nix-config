@@ -13,6 +13,7 @@
 
   environment.systemPackages = with pkgs; [
     kdePackages.kdenlive
+    kdePackages.krfb        ## kdeconnect virtual display
     kdePackages.kpmcore
     kdePackages.qtwebengine
     kdePackages.plasma-browser-integration
