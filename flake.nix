@@ -1,10 +1,11 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs-small.url = "github:NixOS/nixpkgs/nixos-unstable-small";
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/321cb2173bc3a6a2ccb1d50dea2373950720efad";
     sops-nix.url = "github:Mic92/sops-nix";
     nixos-tuberlin = {
       url = "git+https://git.tu-berlin.de/hamza.tmm/nixos-tuberlin.git";
@@ -15,6 +16,7 @@
   outputs =
     {
       nixpkgs,
+      nixpkgs-stable,
       nixpkgs-small,
       disko,
       nixos-hardware,
@@ -82,6 +84,9 @@
             _module.args = {
               user = "m";
               hostname = "surface-go";
+              stable = import nixpkgs-stable {
+                system = "x86_64-linux";
+              };
             };
           })
           nixos-hardware.nixosModules.microsoft-surface-go
@@ -91,7 +96,7 @@
           ./modules
           ./modules/common.nix
           (import "${nixos-tuberlin}/GEM.nix")
-          (import "${nixos-tuberlin}/SWTPP.nix")
+          #(import "${nixos-tuberlin}/SWTPP.nix")
         ];
       };
 

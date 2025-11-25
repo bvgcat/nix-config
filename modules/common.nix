@@ -3,6 +3,7 @@
   pkgs,
   lib,
   user,
+  stable,
   ...
 }:
 
@@ -21,9 +22,6 @@
 
     age
     appimage-run
-    baobab
-    bear
-    bootiso
     clang-tools
     ecryptfs
     gnumake
@@ -46,25 +44,21 @@
   users.users.${user}.packages = with pkgs; [
     brave
     can-utils
-    discord
     disko
     drawio
     #element-desktop
-    fastfetch
     # With this
     (wrapFirefox (firefox-unwrapped.override { pipewireSupport = true; }) { })
     flatpak
     git
     keepassxc
-    kicad
-    #libreoffice
+    libreoffice
     marksman
     nextcloud-client
     nixd
-    nixos-anywhere
     obsidian
     qalculate-qt
-    rnote
+    stable.rnote
     syncthing
     tidal-hifi
     tor-browser

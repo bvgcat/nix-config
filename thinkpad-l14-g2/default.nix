@@ -19,7 +19,10 @@
     libfprint-tod
 
     #virtualisation
+    discord
+    kicad
     libvirt
+    nixos-anywhere
     qemu
     spice-vdagent
     virt-manager
