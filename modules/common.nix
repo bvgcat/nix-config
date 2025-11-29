@@ -3,7 +3,6 @@
   pkgs,
   lib,
   user,
-  stable,
   ...
 }:
 
@@ -58,7 +57,7 @@
     nixd
     obsidian
     qalculate-qt
-    stable.rnote
+    rnote
     syncthing
     tidal-hifi
     tor-browser
@@ -93,14 +92,14 @@
   environment.sessionVariables = {
     MOZ_USE_XINPUT2 = "1";
   };
-  xdg = {
-    portal = {
-      enable = true;
-      extraPortals = with pkgs; [
-        xdg-desktop-portal-wlr
-        xdg-desktop-portal-gtk
-      ];
-    };
+  
+  xdg.portal = {
+    enable = true;
+    xdgOpenUsePortal = true;
+    extraPortals = with pkgs; [
+      kdePackages.xdg-desktop-portal-kde
+      xdg-desktop-portal-gtk
+    ];
   };
 
   nixpkgs.config.permittedInsecurePackages = [

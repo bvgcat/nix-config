@@ -21,6 +21,11 @@
   users.users.${user}.packages = with pkgs; [
   ];
 
+  boot.kernelPatches = [{
+    name = "rust-1.91-fix";
+    patch = ../hacks/rust-fix.patch;
+  }];
+
   hardware.microsoft-surface.kernelVersion = "stable";
   
   networking.hostName = hostname; # Define your hostname.

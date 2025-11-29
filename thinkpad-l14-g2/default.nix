@@ -23,12 +23,12 @@
     kicad
     libvirt
     nixos-anywhere
+    freecad
     qemu
     spice-vdagent
     virt-manager
     OVMFFull
   ];
-
 
   users.users.${user} = {
     isNormalUser = true;

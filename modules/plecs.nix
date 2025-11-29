@@ -37,39 +37,40 @@ stdenv.mkDerivation {
 
   dontBuild = true;
 
-  nativeBuildInputs = [ makeWrapper autoPatchelfHook pkgs.qt6.wrapQtAppsHook ];
+  dontWrapQtApps = true;
 
+  nativeBuildInputs = [ makeWrapper autoPatchelfHook pkgs.kdePackages.wrapQtAppsHook ];
+  
   buildInputs = with pkgs; [
     glibc
+    libGL
+    libGLU
+    fontconfig
+    freetype
+    nspr
+    nss
+    qpdf
     zlib
+
+    libdrm
+    libxcb
+    libxkbcommon
+    xcb-util-cursor
+    xorg.libxkbfile
     xorg.libX11
     xorg.libXext
     xorg.libXrender
     xorg.libSM
     xorg.libICE
-    libGL
-    libGLU
-    fontconfig
-    freetype
-
-    libxcb
     xorg.xcbutilimage
     xorg.xcbutilkeysyms
     xorg.xcbutilrenderutil
-    xorg.libxkbfile
-    xcb-util-cursor
-    libxkbcommon
-    libdrm
 
-    qt6.qtbase
-    qt6.qttools
+    qt6.qtbase    
     qt6.qtdeclarative
+    qt6.qttools
     qt6.qtwebengine
-
-    qpdf
-    nspr
-    nss
-  ];
+];
 
   installPhase = ''
     mkdir -p $out/opt/plecs
