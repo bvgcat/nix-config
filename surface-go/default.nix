@@ -23,7 +23,7 @@
 
   boot.kernelPatches = [{
     name = "rust-1.91-fix";
-    patch = ../hacks/rust-fix.patch;
+    patch = ./rust-fix.patch;
   }];
 
   hardware.microsoft-surface.kernelVersion = "stable";

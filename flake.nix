@@ -84,9 +84,6 @@
             _module.args = {
               user = "m";
               hostname = "surface-go";
-              stable = import nixpkgs-stable {
-                system = "x86_64-linux";
-              };
             };
           })
           nixos-hardware.nixosModules.microsoft-surface-go
