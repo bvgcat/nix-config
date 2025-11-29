@@ -1,8 +1,8 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
-    nixpkgs-small.url = "github:NixOS/nixpkgs/nixos-unstable-small";
+    nixpkgs-small.url = "github:NixOS/nixpkgs/nixos-25.11-small";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
     nixos-hardware.url = "github:NixOS/nixos-hardware/321cb2173bc3a6a2ccb1d50dea2373950720efad";
@@ -16,8 +16,8 @@
   outputs =
     {
       nixpkgs,
-      nixpkgs-stable,
       nixpkgs-small,
+      nixpkgs-unstable,
       disko,
       nixos-hardware,
       sops-nix,
