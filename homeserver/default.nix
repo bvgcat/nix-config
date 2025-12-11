@@ -19,6 +19,7 @@ in
     ./hardware-configuration.nix
     ./homepage-dashboard.nix
     ./immich.nix
+    ./mc-server.nix
     ./networking.nix
     #./nextcloud.nix
     ./nginx.nix

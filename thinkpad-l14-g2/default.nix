@@ -24,6 +24,7 @@
     libvirt
     nixos-anywhere
     freecad
+    prismlauncher
     qemu
     spice-vdagent
     virt-manager
