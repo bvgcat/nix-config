@@ -1,4 +1,5 @@
 {
+  pkgs,
   ...
 }:
 
@@ -10,19 +11,18 @@
     eula = true;
     openFirewall = true;
     declarative = true;
-    whitelist = {
-      # This is a mapping from Minecraft usernames to UUIDs. You can use https://mcuuid.net/ to get a Minecraft UUID for a username
-      #username1 = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
-      #username2 = "yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy";
-    };
+    package = pkgs.minecraft-server;
     serverProperties = {
       server-port = 25565;
       difficulty = 3;
-      gamemode = 1;
+      gamemode = 0;
+      enable-status = true;
+      enable-query = true;
       max-players = 5;
       motd = "Charlottenburger Crafters";
       white-list = true;
       allow-cheats = true;
+      status-heartbeat-interval = true;
     };
     jvmOpts = "-Xms2048M -Xmx4096M";
   };
