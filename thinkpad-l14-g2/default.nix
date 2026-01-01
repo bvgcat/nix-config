@@ -18,7 +18,9 @@
     fprintd-tod
     libfprint-tod
 
-    #virtualisation
+    android-tools
+    scrcpy
+
     discord
     kicad
     libvirt
@@ -26,6 +28,7 @@
     freecad
     prismlauncher
     qemu
+    signal-desktop
     spice-vdagent
     virt-manager
     OVMFFull
@@ -88,6 +91,10 @@
   # for virtualistion
   programs.virt-manager.enable = true;
   virtualisation = {
+    waydroid = {
+      enable = true;
+      package = pkgs.waydroid-nftables;
+    };
     spiceUSBRedirection.enable = true;
     libvirtd = {
       enable = true;

@@ -56,6 +56,7 @@
     nextcloud-client
     nixd
     obsidian
+    proton-authenticator
     qalculate-qt
     rnote
     syncthing
