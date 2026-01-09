@@ -25,6 +25,7 @@
       ...
     }:
     {
+      formatter = nixpkgs.nixfmt-rfc-style;
       # Use this for all other targets
       # nixos-anywhere --flake ./nix-config#homeserver --generate-hardware-config nixos-generate-config ./nix-config/homeserver/hardware-configuration.nix nixos@192.168.178.200
       nixosConfigurations.homeserver = nixpkgs.lib.nixosSystem {
@@ -92,8 +93,6 @@
           ./surface-go
           ./modules
           ./modules/common.nix
-          (import "${nixos-tuberlin}/GEM.nix")
-          #(import "${nixos-tuberlin}/SWTPP.nix")
         ];
       };
 
