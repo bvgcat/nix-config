@@ -16,51 +16,35 @@ in
   services = {
     nextcloud = {
       enable = true;
-      hostName = "localhost";
+      hostName = "cloud.homeserver";
       datadir = "/var/lib/nextcloud";
         
       # Need to manually increment with every major upgrade.
-      package = pkgs.nextcloud31;
+      package = pkgs.nextcloud32;
 
       # Let NixOS install and configure the database automatically.
       database.createLocally = true;
 
-      # Let NixOS install and configure Redis caching automatically.
-      configureRedis = true;
-
       # Increase the maximum file upload size to avoid problems uploading videos.
       maxUploadSize = "16G";
       https = true;
-      #overwriteprotocol = "https";
+
       appstoreEnable = true;
       autoUpdateApps = {
         enable = true;
         startAt = "02:00:00";
       };
-      #extraAppsEnable = false;
-      #extraApps = with config.services.nextcloud.package.packages.apps; {
-        # List of apps we want to install and are already packaged in
-        # https://github.com/NixOS/nixpkgs/blob/master/pkgs/servers/nextcloud/packages/nextcloud-apps.json
-      #  inherit calendar contacts notes;
-
-        # Custom app installation example.
-        #cookbook = pkgs.fetchNextcloudApp rec {
-        #  url =
-        #    "https://github.com/nextcloud/cookbook/releases/download/v0.10.2/Cookbook-0.10.2.tar.gz";
-        #  sha256 = "sha256-XgBwUr26qW6wvqhrnhhhhcN4wkI+eXDHnNSm1HDbP6M=";
-        #};
-      #};
 
       config = {
-        #overwriteprotocol = "http";
         dbtype = "pgsql";
         adminuser = "admin";
         adminpassFile = "/run/secrets/nc-adminpass";
       };
 
       settings = {
-        default_phone_region = "DE";
-        trusted_domains = [ "localhost" "homeserver" ];
+        default_phone_region = "DE";    
+        trusted_domains = [ "cloud.homeserver" "localhost" "homeserver" "homeserver/cloud" ];
+        overwrite.cli.url = "http://cloud.homeserver";
         enabledPreviewProviders = [
           "OC\\Preview\\BMP"
           "OC\\Preview\\GIF"

@@ -21,7 +21,7 @@ in
     ./immich.nix
     ./mc-server.nix
     ./networking.nix
-    #./nextcloud.nix
+    ./nextcloud.nix
     ./nginx.nix
     #./restic.nix
     ./spotify.nix

@@ -14,7 +14,7 @@ in
 
     # These options were already present in my configuration.
     enable = true;
-    allowedHosts = "localhost:${toString port},homeserver/home,homeserver:8082";
+    allowedHosts = "localhost:${toString port},home.homeserver,homeserver/home,homeserver:8082";
     openFirewall = true;
     # The following options were what I planned to add.
     # https://gethomepage.dev/latest/configs/settings/
@@ -61,7 +61,7 @@ in
           {
             "FRITZ!Box 4050" = {
               description = "Current best Anime website";
-              href = "http://192.168.178.1/";
+              href = "http://192.168.0.1/";
             };
           }
         ];
@@ -88,20 +88,6 @@ in
               icon = "syncthing.svg";
               description = "Syncthing Web portal";
               href = "http://homeserver:8384";
-            };
-          }
-          {
-            "Deluge" = {
-              icon = "deluge.svg";
-              description = "Torrent service";
-              href = "http://homeserver:8112";
-            };
-          }
-          {
-            "Grafana" = {
-              icon = "grafana.svg";
-              description = "Open source analytics & monitoring solution for every database";
-              href = "http://homeserver:3000";
             };
           }
           {

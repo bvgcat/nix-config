@@ -21,6 +21,7 @@
     android-tools
     scrcpy
 
+    bottles
     discord
     kicad
     libvirt
@@ -30,7 +31,9 @@
     qemu
     signal-desktop
     spice-vdagent
+    texliveFull
     virt-manager
+    vscode
     OVMFFull
   ];
 
@@ -45,8 +48,6 @@
       "disk"
     ];
     packages = with pkgs; [
-      bottles
-      texliveFull
     ];
   };
 
