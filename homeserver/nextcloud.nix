@@ -43,7 +43,7 @@ in
 
       settings = {
         default_phone_region = "DE";    
-        trusted_domains = [ "cloud.homeserver" "localhost" "homeserver" "homeserver/cloud" ];
+        trusted_domains = [ "cloud.homeserver" "localhost" "homeserver" ];
         overwrite.cli.url = "http://cloud.homeserver";
         enabledPreviewProviders = [
           "OC\\Preview\\BMP"

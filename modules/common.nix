@@ -55,6 +55,7 @@
     marksman
     nextcloud-client
     nixd
+    nixfmt-rfc-style
     obsidian
     proton-authenticator
     qalculate-qt

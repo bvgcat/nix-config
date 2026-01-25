@@ -15,6 +15,9 @@
 
     virtualHosts = {
       "homeserver" = {
+        addSSL = true;
+        sslCertificate = "/etc/ssl/local-ca/homeserver.crt";
+        sslCertificateKey = "/etc/ssl/local-ca/homeserver.key";
         locations."/" = {
           proxyPass = "http://[::1]:2283";
           proxyWebsockets = true;
@@ -26,20 +29,34 @@
         };
       };
       "home.homeserver" = {
+        addSSL = true;
+        sslCertificate = "/etc/ssl/local-ca/homeserver.crt";
+        sslCertificateKey = "/etc/ssl/local-ca/homeserver.key";
         locations."/" = {
           proxyPass = "http://127.0.0.1:8082";
           recommendedProxySettings = true;
         };
       };
       "sync.homeserver" = {
+        addSSL = true;
+        sslCertificate = "/etc/ssl/local-ca/homeserver.crt";
+        sslCertificateKey = "/etc/ssl/local-ca/homeserver.key";
         locations."/" = {
           proxyPass = "http://127.0.0.1:8384";
         };
       };
       "lounge.homeserver" = {
+        addSSL = true;
+        sslCertificate = "/etc/ssl/local-ca/homeserver.crt";
+        sslCertificateKey = "/etc/ssl/local-ca/homeserver.key";
         locations."/" = {
           proxyPass = "http://127.0.0.1:9000";
         };
+      };
+      "cloud.homeserver" = {
+        addSSL = true;
+        sslCertificate = "/etc/ssl/local-ca/homeserver.crt";
+        sslCertificateKey = "/etc/ssl/local-ca/homeserver.key";
       };
     };
   };

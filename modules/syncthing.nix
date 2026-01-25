@@ -16,8 +16,11 @@ in
     configDir = "/home/${user}/.config/syncthing";
     databaseDir = "/home/${user}/";
     overrideDevices = true;
+
     settings = {
       options.urAccepted = -1;
+      gui.user = "admin";
+      gui.password = "$2a$10$HaLAXjOdbqddkhWyuJ5cPOooMH/XxlqNSlqxhaLqng2XZLHbfsilG";
       gui.theme = "black";
       devices = {
         "homeserver" = {
