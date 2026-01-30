@@ -29,6 +29,7 @@ in
       maxUploadSize = "16G";
       https = true;
 
+      extraAppsEnable = true;
       appstoreEnable = true;
       autoUpdateApps = {
         enable = true;

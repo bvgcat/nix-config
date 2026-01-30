@@ -73,28 +73,28 @@ in
             "Immich" = {
               icon = "immich.svg";
               description = "Self-hosted photo and video management solution";
-              href = "http://homeserver:2283";
+              href = "https://homeserver";
             };
           }
           {
             "Nextcloud" = {
               icon = "nextcloud.svg";
               description = "My Nextlcloud instance :)";
-              href = "http://homeserver";
+              href = "https://cloud.homeserver";
             };
           }
           {
             "Syncthing" = {
               icon = "syncthing.svg";
               description = "Syncthing Web portal";
-              href = "http://homeserver:8384";
+              href = "https://sync.homeserver";
             };
           }
           {
             "The Lounge" = {
               icon = "thelounge.svg";
               description = "The Lounge web IRC client";
-              href = "http://homeserver:9000";
+              href = "https://lounge.homeserver";
             };
           }
         ];
