@@ -8,6 +8,7 @@ let
   wlp = "wlp109s0";
 in 
 {
+  networking.firewall.allowedTCPPorts = [ 24800 ];
   networking = {
     hostName = hostname;
     networkmanager.enable = true;
@@ -25,6 +26,7 @@ in
       ];
     };
   };
+  
   security.pki.certificates = [''
     -----BEGIN CERTIFICATE-----
     MIIFYTCCA0mgAwIBAgIUTFTiG8w1poE9iHeMtuxUBlnoR+cwDQYJKoZIhvcNAQEL

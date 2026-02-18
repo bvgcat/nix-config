@@ -48,6 +48,7 @@
       "disk"
     ];
     packages = with pkgs; [
+      tor-browser
     ];
   };
 

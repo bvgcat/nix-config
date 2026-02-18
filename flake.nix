@@ -61,23 +61,6 @@
         ];
       };
 
-      nixosConfigurations.latitude-5290 = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          ({ ... }: {
-            _module.args = {
-              user = "h";
-              hostname = "latitude-5290";
-            };
-          })
-          nixos-hardware.nixosModules.dell-latitude-5490
-          sops-nix.nixosModules.sops
-          ./latitude-5290
-          ./modules
-          ./modules/common.nix
-        ];
-      };
-
       nixosConfigurations.surface-go = nixpkgs-small.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [

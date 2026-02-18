@@ -32,7 +32,6 @@
     openocd
     pciutils
     power-profiles-daemon
-    savvycan
     sops
     qdirstat
     usbutils
@@ -42,14 +41,10 @@
 
   users.users.${user}.packages = with pkgs; [
     brave
-    can-utils
-    disko
     drawio
     #element-desktop
     # With this
     (wrapFirefox (firefox-unwrapped.override { pipewireSupport = true; }) { })
-    flatpak
-    git
     keepassxc
     libreoffice
     marksman
@@ -59,10 +54,7 @@
     obsidian
     proton-authenticator
     qalculate-qt
-    rnote
-    syncthing
     tidal-hifi
-    tor-browser
     thunderbird
     ventoy-full
     vlc
