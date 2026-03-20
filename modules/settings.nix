@@ -108,10 +108,4 @@ in {
     LC_TIME = "de_DE.UTF-8";
     LC_COLLATE = "de_DE.UTF-8";
   };
-
-  # STLink v3
-  # STLink v2
-  services.udev.extraRules = ''
-    SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="374f", MODE="0666"
-    SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="374b", MODE="0666"'';
 }

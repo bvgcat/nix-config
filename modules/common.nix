@@ -15,9 +15,10 @@
     kdePackages.kdenlive
     kdePackages.krfb        ## kdeconnect virtual display
     kdePackages.kpmcore
-    kdePackages.qtwebengine
     kdePackages.plasma-browser-integration
     kdePackages.partitionmanager
+    kdePackages.qtwebengine
+    kdePackages.wacomtablet
 
     age
     appimage-run
@@ -28,6 +29,7 @@
     gparted
     input-leap
     iptsd
+    libwacom
     ntfs3g
     openocd
     pciutils
@@ -56,7 +58,6 @@
     qalculate-qt
     tidal-hifi
     thunderbird
-    ventoy-full
     vlc
   ];
 
@@ -95,10 +96,6 @@
       xdg-desktop-portal-gtk
     ];
   };
-
-  nixpkgs.config.permittedInsecurePackages = [
-    "ventoy-1.1.07"
-  ];
 
   services.avahi = {
     enable = true;
