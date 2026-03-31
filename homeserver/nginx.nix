@@ -1,7 +1,14 @@
 { config, pkgs, lib, ... }:
 
 {
-  networking.firewall.allowedTCPPorts = [ 80 443 2283 8082 8384 9000 ];
+  networking.firewall.allowedTCPPorts = [ 
+    80 
+    443 
+    config.services.immich.port 
+    8082 
+    config.services.home-assistant.config.http.server_port
+    8384
+    9000 ];
   services.syncthing.guiAddress = "http://0.0.0.0:8384";
 
   services.nginx = {
@@ -57,6 +64,18 @@
         addSSL = true;
         sslCertificate = "/etc/ssl/local-ca/homeserver.crt";
         sslCertificateKey = "/etc/ssl/local-ca/homeserver.key";
+      };
+      "assistant.homeserver" = {
+        addSSL = true;
+        sslCertificate = "/etc/ssl/local-ca/homeserver.crt";
+        sslCertificateKey = "/etc/ssl/local-ca/homeserver.key";
+        extraConfig = ''
+          proxy_buffering off;
+        '';
+        locations."/" = {
+          proxyPass = "http://[::1]:8123";
+          proxyWebsockets = true;
+        };
       };
     };
   };

@@ -54,6 +54,14 @@
 
   networking.hostName = hostname; # Define your hostname.
 
+  specialisation = {
+    "niri".configuration = {
+      imports = [ ../modules/niri.nix ];
+      services.displayManager.sddm.enable = lib.mkForce false;
+      services.desktopManager.plasma6.enable = lib.mkForce false;
+    };
+  };
+
   # luks keyboard layout
   console.keyMap = "de";
   services.xserver = {

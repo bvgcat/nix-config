@@ -29,7 +29,6 @@
     gparted
     input-leap
     iptsd
-    libwacom
     ntfs3g
     openocd
     pciutils
@@ -56,6 +55,7 @@
     obsidian
     proton-authenticator
     qalculate-qt
+    rnote
     tidal-hifi
     thunderbird
     vlc

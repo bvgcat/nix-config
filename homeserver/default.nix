@@ -17,6 +17,7 @@ in
     #./deluge.nix
     ./disk-config.nix
     ./hardware-configuration.nix
+    ./home-assistant.nix
     ./homepage-dashboard.nix
     ./immich.nix
     ./mc-server.nix

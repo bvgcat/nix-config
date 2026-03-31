@@ -93,9 +93,9 @@
           ./thinkpad-l14-g2
           ./modules
           ./modules/common.nix
-          (import "${nixos-tuberlin}/BSPrak.nix")
-          (import "${nixos-tuberlin}/GEM.nix")
-          (import "${nixos-tuberlin}/SWTPP.nix")
+          #(import "${nixos-tuberlin}/BSPrak.nix")
+          #(import "${nixos-tuberlin}/GEM.nix")
+          #(import "${nixos-tuberlin}/SWTPP.nix")
         ];
       };
     };
