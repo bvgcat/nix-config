@@ -106,9 +106,11 @@ in
       {
         openmeteo = {
           label = "Berlin";
+          latitude = 52.5200;
+          longitude = 13.4050;
           timezone = "Europe/Berlin"; # optional
           units = "metric"; # or imperial
-          cache = 5; # Time in minutes to cache API responses, to stay within limits
+          cache = 10; # Time in minutes to cache API responses, to stay within limits
           #format: # optional, Intl.NumberFormat options
           #  maximumFractionDigits: 1
         };
@@ -125,11 +127,26 @@ in
         };
       }
       {
-        search = {
-          provider = "duckduckgo";
-          target = "_blank";
-          showSearchSuggestions = true;
+        immich = {
+          url = "http://localhost:${config.services.immich.port}";
+          key = "IKWwGv8Mw10LYR2e7f3bEAofDvE0KKKwSmYWbMLI8";
+          version = 2;
         };
+      }
+      {
+        speedtest = {
+          url = http://speedtest.host.or.ip;
+          version = 2;
+          bitratePrecision = 2;
+        }
+      }
+      {
+        calender = {
+          firstDayInWeek = "sunday";
+          view = "monthly";
+          maxEvents = 10;
+          showTime = true;
+        }
       }
     ];
 
