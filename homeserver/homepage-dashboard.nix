@@ -9,7 +9,6 @@ let
   port = 8082;
 in
 {
-  networking.firewall.allowedTCPPorts = [ port ];
   services.homepage-dashboard = {
 
     # These options were already present in my configuration.
@@ -42,7 +41,7 @@ in
       ];
       headerStyle = "clean";
       statusStyle = "dot";
-      hideVersion = "true";
+      hideVersion = true;
     };
 
     # https://gethomepage.dev/latest/configs/bookmarks/
@@ -56,12 +55,6 @@ in
             "animekai.to" = {
               description = "Current best Anime website";
               href = "http://animekai.to/";
-            };
-          }
-          {
-            "FRITZ!Box 4050" = {
-              description = "Current best Anime website";
-              href = "http://192.168.0.1/";
             };
           }
         ];
@@ -97,6 +90,13 @@ in
               href = "https://lounge.homeserver";
             };
           }
+          {
+            "Home Assistant" = {
+              icon = "homeassistant.svg";
+              description = "Home automation dashboard";
+              href = "https://home.homeserver";
+            };
+          }
         ];
       }
     ];
@@ -104,15 +104,22 @@ in
     # https://gethomepage.dev/latest/configs/service-widgets/
     widgets = [
       {
+        datetime = {
+          locale = "de";
+          format = {
+            dateStyle = "short";
+            timeStyle = "short";
+          };
+        };
+      }
+      {
         openmeteo = {
           label = "Berlin";
           latitude = 52.5200;
           longitude = 13.4050;
-          timezone = "Europe/Berlin"; # optional
-          units = "metric"; # or imperial
-          cache = 10; # Time in minutes to cache API responses, to stay within limits
-          #format: # optional, Intl.NumberFormat options
-          #  maximumFractionDigits: 1
+          timezone = "Europe/Berlin";
+          units = "metric";
+          cache = 10;
         };
       }
       {
@@ -122,31 +129,9 @@ in
           disk = "/";
           memory = true;
           uptime = true;
-          refresh = 1000;
+          refresh = 500;
           network = true;
         };
-      }
-      {
-        immich = {
-          url = "http://localhost:${config.services.immich.port}";
-          key = "IKWwGv8Mw10LYR2e7f3bEAofDvE0KKKwSmYWbMLI8";
-          version = 2;
-        };
-      }
-      {
-        speedtest = {
-          url = http://speedtest.host.or.ip;
-          version = 2;
-          bitratePrecision = 2;
-        }
-      }
-      {
-        calender = {
-          firstDayInWeek = "sunday";
-          view = "monthly";
-          maxEvents = 10;
-          showTime = true;
-        }
       }
     ];
 

@@ -43,8 +43,9 @@
   users.users.${user}.packages = with pkgs; [
     brave
     drawio
-    #element-desktop
+    element-desktop
     # With this
+    gearlever
     (wrapFirefox (firefox-unwrapped.override { pipewireSupport = true; }) { })
     keepassxc
     libreoffice
@@ -55,7 +56,6 @@
     obsidian
     proton-authenticator
     qalculate-qt
-    rnote
     tidal-hifi
     thunderbird
     vlc
