@@ -36,7 +36,7 @@
     vscode
     OVMFFull
   ];
-
+  
   users.users.${user} = {
     isNormalUser = true;
     description = "h";
@@ -121,6 +121,16 @@
   systemd.services.fprintd = {
     wantedBy = [ "multi-user.target" ];
     serviceConfig.Type = "simple";
+  };
+
+  systemd.user.services.input-leap-autostart = {
+    description = "Input Leap";
+    after = [ "graphical-session.target" ];
+    wantedBy = [ "graphical-session.target" ];
+
+    serviceConfig = {
+      ExecStart = "${pkgs.input-leap}/bin/input-leaps --no-daemon -c .config/InputLeap/config.conf";
+    };
   };
 
   services.fprintd = {

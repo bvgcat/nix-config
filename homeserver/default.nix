@@ -50,10 +50,7 @@ in
     enable = true;
     operation = "switch";
     flake = "github:bvgcat/nix-config";
-    upgrade = true;
-    dates = "04:00";
-    allowReboot = true;
-    rebootWindow = { lower = "02:00"; upper = "06:00"; };
+    dates = "Sat *-*-* 2:00:00";
   };
 
   # Configure keymap in X11
