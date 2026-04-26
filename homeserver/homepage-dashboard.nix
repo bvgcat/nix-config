@@ -47,17 +47,6 @@ in
     # https://gethomepage.dev/latest/configs/services/
     services = [
       {
-        "Other" = [
-          {
-            "animekai.to" = {
-              description = "Current best Anime website";
-              href = "http://animekai.to/";
-            };
-          }
-        ];
-
-      }
-      {
         "Server" = [
           {
             "Immich" = {

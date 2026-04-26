@@ -69,6 +69,7 @@
       local = "/homeserver/";
       address = [
         "/immich.homeserver/192.168.0.110"
+        "/home.homeserver/192.168.0.110"
         "/cloud.homeserver/192.168.0.110"
         "/sync.homeserver/192.168.0.110"
         "/assistant.homeserver/192.168.0.110"
