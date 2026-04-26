@@ -52,14 +52,9 @@
     ];
   };
 
-  networking.hostName = hostname; # Define your hostname.
-
-  specialisation = {
-    "niri".configuration = {
-      imports = [ ../modules/niri.nix ];
-      services.displayManager.sddm.enable = lib.mkForce false;
-      services.desktopManager.plasma6.enable = lib.mkForce false;
-    };
+  networking = {
+    hostName = hostname;
+    wireguard.interfaces.wg0.privateKeyFile = "/home/${user}/Safe/wireguard/thinkpad-l14-g2.pub";
   };
 
   # luks keyboard layout
@@ -85,10 +80,10 @@
     ];
   };
 
-  hardware.bluetooth.enable = true;
-  hardware.enableAllFirmware = true;
-  hardware.graphics = {
-    enable = true;
+  hardware = {
+    graphics.enable = true;
+    bluetooth.enable = true;
+    enableAllFirmware = true;
   };
   services = {
     thermald.enable = true;
@@ -123,13 +118,13 @@
     serviceConfig.Type = "simple";
   };
 
-  systemd.user.services.input-leap-autostart = {
+  systemd.user.services.input-leaps-autostart = {
     description = "Input Leap";
     after = [ "graphical-session.target" ];
     wantedBy = [ "graphical-session.target" ];
 
     serviceConfig = {
-      ExecStart = "${pkgs.input-leap}/bin/input-leaps --no-daemon -c .config/InputLeap/config.conf";
+      ExecStart = "${pkgs.input-leap}/bin/input-leaps -c .config/InputLeap/config.conf";
     };
   };
 

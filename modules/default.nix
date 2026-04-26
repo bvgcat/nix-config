@@ -15,5 +15,6 @@
     ./settings.nix
     ./ssh.nix
     ./syncthing.nix
+    ./wireguard.nix
   ];
 }

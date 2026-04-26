@@ -59,6 +59,7 @@
     tidal-hifi
     thunderbird
     vlc
+    wireguard-tools
   ];
 
   programs = {
