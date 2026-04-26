@@ -1,4 +1,5 @@
 {
+  pkgs,
   ...
 }:
 
@@ -10,10 +11,30 @@
     privateKeyFile = "/etc/wireguard/server.key";
     peers = [
       {
-        publicKey = "eWHObqIW8xWo+XMhq6DEEhXSzz74lwbd8kgTFInZzmA=";
+        publicKey = "KCYZ9Sni11MSHEK6ak3fs+Q9vzsiiXI+OEJFOHJdYxM="; # thinkpad-l14-g2
         allowedIPs = [ "10.100.0.2/32" ];
       }
+      {
+        publicKey = "eWHObqIW8xWo+XMhq6DEEhXSzz74lwbd8kgTFInZzmA="; # pixel-7
+        allowedIPs = [ "10.100.0.3/32" ];
+      }
     ];
+
+    # This allows the wireguard server to route your traffic to the internet and hence be like a VPN
+    postSetup = ''
+      ${pkgs.iptables}/bin/iptables -A FORWARD -i wg0 -j ACCEPT
+      ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s 10.0.0.1/24 -o eth0 -j MASQUERADE
+      ${pkgs.iptables}/bin/ip6tables -A FORWARD -i wg0 -j ACCEPT
+      ${pkgs.iptables}/bin/ip6tables -t nat -A POSTROUTING -s fdc9:281f:04d7:9ee9::1/64 -o eth0 -j MASQUERADE
+    '';
+
+    # Undo the above
+    preShutdown = ''
+      ${pkgs.iptables}/bin/iptables -D FORWARD -i wg0 -j ACCEPT
+      ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s 10.0.0.1/24 -o eth0 -j MASQUERADE
+      ${pkgs.iptables}/bin/ip6tables -D FORWARD -i wg0 -j ACCEPT
+      ${pkgs.iptables}/bin/ip6tables -t nat -D POSTROUTING -s fdc9:281f:04d7:9ee9::1/64 -o eth0 -j MASQUERADE
+    '';
   };
   boot.kernel.sysctl = {
     "net.ipv4.ip_forward" = 1;
@@ -46,7 +67,14 @@
       ];
 
       local = "/homeserver/";
-      address = "/homeserver/10.100.0.1";
+      address = [
+        "/immich.homeserver/192.168.0.110"
+        "/cloud.homeserver/192.168.0.110"
+        "/sync.homeserver/192.168.0.110"
+        "/assistant.homeserver/192.168.0.110"
+        "/lounge.homeserver/192.168.0.110"
+      ];
     };
   };
+  
 }

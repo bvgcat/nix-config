@@ -11,7 +11,7 @@
       listenPort = 51820; # to match firewall allowedUDPPorts (without this wg uses random port numbers)
       peers = [
         {
-          publicKey = "XMhq6DEEhXSzz74lwbd8kgTFInZzmA";
+          publicKey = "3iU/zXCnXO+cri0T+2WJ8pQbj46ETdhO+8wtSFXx7is=";
           allowedIPs = [ "0.0.0.0/0" ];
           # Set this to the server IP and port.
           endpoint = "homeserver:51820";

@@ -10,12 +10,9 @@ let
 in
 {
   services.homepage-dashboard = {
-
-    # These options were already present in my configuration.
     enable = true;
-    allowedHosts = "localhost:${toString port},home.homeserver,homeserver/home,homeserver:8082";
+    allowedHosts = "*";
     openFirewall = true;
-    # The following options were what I planned to add.
     # https://gethomepage.dev/latest/configs/settings/
     settings = {
       layout = [
@@ -92,9 +89,9 @@ in
           }
           {
             "Home Assistant" = {
-              icon = "homeassistant.svg";
+              icon = "home-assistant.svg";
               description = "Home automation dashboard";
-              href = "https://home.homeserver";
+              href = "https://assistant.homeserver";
             };
           }
         ];

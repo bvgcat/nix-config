@@ -27,6 +27,7 @@ in
     #./restic.nix
     ./spotify.nix
     ./thelounge.nix
+    ./wireguard.nix
   ];
 
   environment.systemPackages = with pkgs; [

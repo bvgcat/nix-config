@@ -52,11 +52,6 @@
     ];
   };
 
-  networking = {
-    hostName = hostname;
-    wireguard.interfaces.wg0.privateKeyFile = "/home/${user}/Safe/wireguard/thinkpad-l14-g2.pub";
-  };
-
   # luks keyboard layout
   console.keyMap = "de";
   services.xserver = {

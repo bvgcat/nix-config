@@ -21,7 +21,7 @@
     '';
 
     virtualHosts = {
-      "homeserver" = {
+      "immich.homeserver" = {
         addSSL = true;
         sslCertificate = "/etc/ssl/local-ca/homeserver.crt";
         sslCertificateKey = "/etc/ssl/local-ca/homeserver.key";

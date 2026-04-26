@@ -8,22 +8,25 @@ let
   wlp = "wlp109s0";
 in 
 {
-  networking.firewall.allowedTCPPorts = [ 24800 ];
   networking = {
     hostName = hostname;
+    firewall= {
+      allowedUDPPorts = [ 51820 ];  # wireguard
+      allowedTCPPorts = [ 24800 ];
+    };
     networkmanager.enable = true;
     nameservers = [
       "1.1.1.1"
       "1.0.0.1"
     ];
     hosts = {
-      "192.168.0.110" = [
-        "homeserver"
-        "home.homeserver"
-        "cloud.homeserver"
-        "sync.homeserver"
-        "lounge.homeserver"
-      ];
+      #"192.168.0.110" = [
+      #  "homeserver"
+      #  "home.homeserver"
+      #  "cloud.homeserver"
+      #  "sync.homeserver"
+      #  "lounge.homeserver"
+      #];
     };
   };
   
