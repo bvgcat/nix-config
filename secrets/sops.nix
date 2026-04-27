@@ -19,17 +19,16 @@
       nc-adminpass.key = "nc-adminpass";
       nc-userpass.key = "nc-userpass";
 
-      ddns-main.key = "ddns-main";
-      ddns-cloud.key = "ddns-cloud";
-      ddns-home.key = "ddns-home";
-      ddns-immich.key = "ddns-immich";
-      ddns-sync.key = "ddns-sync";
-
       restic-password.key = "restic-password";
       trans-ext4.key = "trans-ext4";
 
       home-psk.key = "home-psk";
       ssh_key_homeserver.key = "ssh_key_homeserver";
+
+      homepage-env.key = "homepage-env";
+      wg-homeserver.key = "wg-homeserver";
+      wg-thinkpad-l14-g2.key = "wg-thinkpad-l14-g2";
+      wg-pixel-7.key = "wg-pixel-7";
     };
   };
 

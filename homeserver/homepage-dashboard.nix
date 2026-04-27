@@ -13,6 +13,7 @@ in
     enable = true;
     allowedHosts = "*";
     openFirewall = true;
+    environmentFile = config.sops.secrets.homepage-env.path;
     # https://gethomepage.dev/latest/configs/settings/
     settings = {
       layout = [
@@ -20,7 +21,7 @@ in
           Glances = {
             header = false;
             style = "row";
-            columns = 4;
+            columns = 3;
           };
         }
         {
@@ -52,7 +53,14 @@ in
             "Immich" = {
               icon = "immich.svg";
               description = "Self-hosted photo and video management solution";
-              href = "https://homeserver";
+              href = "https://immich.homeserver";
+              ping = "https://immich.homeserver";
+              widget = {
+                type = "immich";
+                url = "https://immich.homeserver";
+                key = "{{HOMEPAGE_VAR_IMMICH_KEY}}";
+                version = 2;
+              };
             };
           }
           {
@@ -60,6 +68,13 @@ in
               icon = "nextcloud.svg";
               description = "My Nextlcloud instance :)";
               href = "https://cloud.homeserver";
+              ping = "https://cloud.homeserver";              
+              widget = {
+                type = "nextcloud";
+                url = "https://cloud.homeserver";
+                username = "{{HOMEPAGE_VAR_NEXTCLOUD_USERNAME}}";
+                password = "{{HOMEPAGE_VAR_NEXTCLOUD_PASSWORD}}";
+              };
             };
           }
           {
@@ -67,6 +82,7 @@ in
               icon = "syncthing.svg";
               description = "Syncthing Web portal";
               href = "https://sync.homeserver";
+              ping = "https://sync.homeserver";
             };
           }
           {
@@ -74,6 +90,7 @@ in
               icon = "thelounge.svg";
               description = "The Lounge web IRC client";
               href = "https://lounge.homeserver";
+              ping = "https://lounge.homeserver";
             };
           }
           {
@@ -81,6 +98,7 @@ in
               icon = "home-assistant.svg";
               description = "Home automation dashboard";
               href = "https://assistant.homeserver";
+              ping = "https://assistant.homeserver";
             };
           }
         ];
@@ -117,6 +135,14 @@ in
           uptime = true;
           refresh = 500;
           network = true;
+        };
+      }
+      {
+        widget = {
+          type = "speedtest";
+          url = "https://cloud.homeserver";
+          username = "{{HOMEPAGE_VAR_NEXTCLOUD_USERNAME}}";
+          password = "{{HOMEPAGE_VAR_NEXTCLOUD_PASSWORD}}";
         };
       }
     ];

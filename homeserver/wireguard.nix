@@ -8,7 +8,7 @@
     ips = [ "10.100.0.1/24" ];
     listenPort = 51820;
 
-    privateKeyFile = "/etc/wireguard/server.key";
+    privateKeyFile = "/run/secrets/wg-homeserver";
     peers = [
       {
         publicKey = "KCYZ9Sni11MSHEK6ak3fs+Q9vzsiiXI+OEJFOHJdYxM="; # thinkpad-l14-g2
