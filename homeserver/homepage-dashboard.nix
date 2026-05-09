@@ -21,11 +21,11 @@ in
           Glances = {
             header = false;
             style = "row";
-            columns = 3;
+            columns = 2;
           };
         }
         {
-          Media = {
+          Calendars = {
             header = true;
             style = "column";
           };
@@ -39,6 +39,7 @@ in
       ];
       headerStyle = "clean";
       statusStyle = "dot";
+      fullWidth = true;
       hideVersion = true;
     };
 
@@ -48,7 +49,45 @@ in
     # https://gethomepage.dev/latest/configs/services/
     services = [
       {
-        "Server" = [
+      "Calendars" = [          {
+          "Agenda" = {
+              widget = {
+                type = "calendar";
+                view = "agenda";
+                previousDays = 2;
+                showTime = true;
+                integrations = [
+                  {
+                    type = "ical";
+                    url = "https://isis.tu-berlin.de/calendar/export_execute.php?userid=101064&authtoken=c88afeb0577b890665c1c1d16c32013f188e672f&preset_what=all&preset_time=custom";
+                    name = "ISIS";
+                    color = "red";
+                  }
+                ];
+              };
+            };
+          }
+          {
+          "Calender" = {
+              widget = {
+                type = "calendar";
+                firstDayInWeek = "monday";
+                view = "monthly";
+                integrations = [
+                  {
+                    type = "ical";
+                    url = "https://isis.tu-berlin.de/calendar/export_execute.php?userid=101064&authtoken=c88afeb0577b890665c1c1d16c32013f188e672f&preset_what=all&preset_time=custom";
+                    name = "ISIS";
+                    color = "red";
+                  }
+                ];
+              };
+            };
+          }
+        ];
+      }
+      {
+        "Services" = [
           {
             "Immich" = {
               icon = "immich.svg";
@@ -74,6 +113,16 @@ in
                 url = "https://cloud.homeserver";
                 username = "{{HOMEPAGE_VAR_NEXTCLOUD_USERNAME}}";
                 password = "{{HOMEPAGE_VAR_NEXTCLOUD_PASSWORD}}";
+              };
+            };
+          }
+          {
+            "Minecraft" = {
+              icon = "minecraft.svg";
+              description = "Main Minecraft Server";
+              widget = {
+                type = "minecraft";
+                url = "udp://localhost:25565";
               };
             };
           }
@@ -135,14 +184,6 @@ in
           uptime = true;
           refresh = 500;
           network = true;
-        };
-      }
-      {
-        widget = {
-          type = "speedtest";
-          url = "https://cloud.homeserver";
-          username = "{{HOMEPAGE_VAR_NEXTCLOUD_USERNAME}}";
-          password = "{{HOMEPAGE_VAR_NEXTCLOUD_PASSWORD}}";
         };
       }
     ];

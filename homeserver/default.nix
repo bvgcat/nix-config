@@ -24,6 +24,7 @@ in
     ./networking.nix
     ./nextcloud.nix
     ./nginx.nix
+    #./pi-hole.nix
     #./restic.nix
     ./spotify.nix
     ./thelounge.nix

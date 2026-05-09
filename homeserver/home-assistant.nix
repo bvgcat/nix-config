@@ -24,11 +24,10 @@
     config = {
       http = {
         server_host = "::1";
-        trusted_proxies = [ "::1" "127.0.0.1" "assistant.homeserver"];
+        trusted_proxies = [ "::1" "127.0.0.1" ];
         use_x_forwarded_for = true;
       };
-      # Includes dependencies for a basic setup
-      # https://www.home-assistant.io/integrations/default_config/
+
       default_config = {};
     };
   };

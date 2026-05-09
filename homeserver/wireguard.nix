@@ -18,6 +18,10 @@
         publicKey = "eWHObqIW8xWo+XMhq6DEEhXSzz74lwbd8kgTFInZzmA="; # pixel-7
         allowedIPs = [ "10.100.0.3/32" ];
       }
+      {
+        publicKey = "Oe2N+ck/nj1Gjx9ycAHQKts5gWvG93+4zZrHq/WMH14="; # surface-go
+        allowedIPs = [ "10.100.0.4/32" ];
+      }
     ];
 
     # This allows the wireguard server to route your traffic to the internet and hence be like a VPN
