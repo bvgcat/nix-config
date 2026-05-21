@@ -7,11 +7,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1777713215,
-        "narHash": "sha256-8GzXDOXckDWwST8TY5DbwYFjdvQLlP7K9CLSVx6iTTo=",
+        "lastModified": 1779226674,
+        "narHash": "sha256-wuOkjI6pRiN4sEn/EPBRnNW5cmcpvd7xtIM8y5LooAs=",
         "owner": "nix-community",
         "repo": "disko",
-        "rev": "63b4e7e6cf75307c1d26ac3762b886b5b0247267",
+        "rev": "65fb947964bd44fc0008faf77d1fcb7a9f40bb32",
         "type": "github"
       },
       "original": {
@@ -22,43 +22,27 @@
     },
     "nixos-hardware": {
       "locked": {
-        "lastModified": 1756749690,
-        "narHash": "sha256-2h4tUbk+2NroNIzr+adjKl0ZVY84LHAySpHXLCcn1Cc=",
+        "lastModified": 1778593042,
+        "narHash": "sha256-xYGrSg6354UK2K4WSQd4+TfyvfqmvFbSY+ZtGQUXK0c=",
         "owner": "NixOS",
         "repo": "nixos-hardware",
-        "rev": "321cb2173bc3a6a2ccb1d50dea2373950720efad",
+        "rev": "9bd7c80d43e258aaa607d83b43661df11444d808",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
         "repo": "nixos-hardware",
-        "rev": "321cb2173bc3a6a2ccb1d50dea2373950720efad",
+        "rev": "9bd7c80d43e258aaa607d83b43661df11444d808",
         "type": "github"
-      }
-    },
-    "nixos-tuberlin": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1767019113,
-        "narHash": "sha256-OterXTencH6U3D2ml5ywpRdssPHXnZUEj96jt7XRIHY=",
-        "ref": "refs/heads/main",
-        "rev": "c79b00e04f7d63097f5e7004859e823acc78e5af",
-        "revCount": 30,
-        "type": "git",
-        "url": "https://git.tu-berlin.de/hamza.tmm/nixos-tuberlin.git"
-      },
-      "original": {
-        "type": "git",
-        "url": "https://git.tu-berlin.de/hamza.tmm/nixos-tuberlin.git"
       }
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1777673416,
-        "narHash": "sha256-5c2POKPOjU40Kh0MirOdScBLG0bu9TAuPYAtPRNZMBs=",
+        "lastModified": 1779102034,
+        "narHash": "sha256-vZJZjLo513IeI8hjzHFc6TDezUd4uCE2Eq4SNO3DNNg=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "26ef669cffa904b6f6832ab57b77892a37c1a671",
+        "rev": "687f05a9184cad4eaf905c48b63649e3a86f5433",
         "type": "github"
       },
       "original": {
@@ -70,11 +54,11 @@
     },
     "nixpkgs-small": {
       "locked": {
-        "lastModified": 1777933422,
-        "narHash": "sha256-WpfZLatstZKZV43HtpK4cbEdQZvHhwVRVtW/rc6YTRU=",
+        "lastModified": 1779340751,
+        "narHash": "sha256-92M/hAL5Odp/esu8C9lqTycZu3TwyCXkcRS9sWMW+Ps=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "41a7bd591bc47320390c829b9f16bfc59b25843c",
+        "rev": "ea1d480338c301fb20b067a155d6cba71a65b406",
         "type": "github"
       },
       "original": {
@@ -86,11 +70,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1777954456,
-        "narHash": "sha256-hGdgeU2Nk87RAuZyYjyDjFL6LK7dAZN5RE9+hrDTkDU=",
+        "lastModified": 1778869304,
+        "narHash": "sha256-30sZNZoA1cqF5JNO9fVX+wgiQYjB7HJqqJ4ztCDeBZE=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "549bd84d6279f9852cae6225e372cc67fb91a4c1",
+        "rev": "d233902339c02a9c334e7e593de68855ad26c4cb",
         "type": "github"
       },
       "original": {
@@ -120,7 +104,6 @@
       "inputs": {
         "disko": "disko",
         "nixos-hardware": "nixos-hardware",
-        "nixos-tuberlin": "nixos-tuberlin",
         "nixpkgs": "nixpkgs",
         "nixpkgs-small": "nixpkgs-small",
         "nixpkgs-unstable": "nixpkgs-unstable",

@@ -4,9 +4,6 @@
   ...
 }:
 
-let
-  wlp = "wlp109s0";
-in 
 {
   networking = {
     hostName = hostname;

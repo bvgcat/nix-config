@@ -5,12 +5,8 @@
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
-    nixos-hardware.url = "github:NixOS/nixos-hardware/321cb2173bc3a6a2ccb1d50dea2373950720efad";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/9bd7c80d43e258aaa607d83b43661df11444d808";
     sops-nix.url = "github:Mic92/sops-nix";
-    nixos-tuberlin = {
-      url = "git+https://git.tu-berlin.de/hamza.tmm/nixos-tuberlin.git";
-      flake = false;
-    };
   };
 
   outputs =
@@ -21,7 +17,6 @@
       disko,
       nixos-hardware,
       sops-nix,
-      nixos-tuberlin,
       ...
     }:
     {
@@ -40,7 +35,13 @@
           sops-nix.nixosModules.sops
           disko.nixosModules.disko
           ./homeserver
-          ./modules
+          ./secrets/sops.nix
+          ./modules/bash.nix
+          ./modules/networking.nix
+          ./modules/settings.nix
+          ./modules/ssh.nix
+          ./modules/syncthing.nix
+          ./modules/common.nix
         ];
       };
 
@@ -56,7 +57,12 @@
           nixos-hardware.nixosModules.lenovo-legion-15arh05h
           sops-nix.nixosModules.sops
           ./legion-5
-          ./modules
+          ./secrets/sops.nix
+          ./modules/bash.nix
+          ./modules/networking.nix
+          ./modules/settings.nix
+          ./modules/ssh.nix
+          ./modules/syncthing.nix
           ./modules/common.nix
         ];
       };
@@ -74,7 +80,12 @@
           sops-nix.nixosModules.sops
           disko.nixosModules.disko  
           ./surface-go
-          ./modules
+          ./secrets/sops.nix
+          ./modules/bash.nix
+          ./modules/networking.nix
+          ./modules/settings.nix
+          ./modules/ssh.nix
+          ./modules/syncthing.nix
           ./modules/common.nix
         ];
       };
@@ -91,11 +102,33 @@
           nixos-hardware.nixosModules.lenovo-thinkpad-l14-amd
           sops-nix.nixosModules.sops
           ./thinkpad-l14-g2
-          ./modules
+          ./secrets/sops.nix
+          ./modules/bash.nix
+          ./modules/networking.nix
+          ./modules/settings.nix
+          ./modules/ssh.nix
+          ./modules/syncthing.nix
           ./modules/common.nix
-          #(import "${nixos-tuberlin}/BSPrak.nix")
-          #(import "${nixos-tuberlin}/GEM.nix")
-          #(import "${nixos-tuberlin}/SWTPP.nix")
+        ];
+      };
+
+      nixosConfigurations.pi3b = nixpkgs.lib.nixosSystem {
+        system = "aarch64-linux";
+        modules = [
+          ({ ... }: {
+            _module.args = {
+              user = "m";
+              hostname = "pi3b";
+            };
+          })
+          nixos-hardware.nixosModules.raspberry-pi-3
+          sops-nix.nixosModules.sops
+          ./secrets/sops.nix
+          ./modules/bash.nix
+          ./modules/networking.nix
+          ./modules/settings.nix
+          ./modules/ssh.nix
+          ./modules/syncthing.nix
         ];
       };
     };

@@ -30,7 +30,6 @@ in {
     };
   };
 
-  services.openssh.enable = true;
   time.timeZone = "Europe/Berlin";
   nixpkgs.config.allowUnfree = true;
 

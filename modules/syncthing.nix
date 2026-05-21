@@ -6,9 +6,6 @@
   ...
 }:
 
-let 
-  port = 8384;
-in
 {
   environment.systemPackages = with pkgs; [
     syncthing
