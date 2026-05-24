@@ -5,6 +5,12 @@
 }:
 
 {
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
+
   networking = {
     hostName = hostname;
     firewall= {
@@ -16,15 +22,6 @@
       "1.1.1.1"
       "1.0.0.1"
     ];
-    hosts = {
-      #"192.168.0.110" = [
-      #  "homeserver"
-      #  "home.homeserver"
-      #  "cloud.homeserver"
-      #  "sync.homeserver"
-      #  "lounge.homeserver"
-      #];
-    };
   };
   
   security.pki.certificates = [''

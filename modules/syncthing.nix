@@ -38,7 +38,7 @@
           autoAcceptFolders = true;
         };
         "pi3b" = {
-          id = "3WU2KZJ-FZHIYKV-IYPPGST-WA77JLU-FQ2L5YW-7HQYOLA-LXMVEL7-VIXZMAD";
+          id = "42WHYGB-OVHIXOC-XR3IV7U-PF5Y7VJ-UJE3BUM-NKMAQ6O-FBIZWKU-Z3YO2A6";
         };
       };
     };

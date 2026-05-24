@@ -76,11 +76,6 @@ in {
       automatic = true;
       dates = [ "weekly" ]; # optimise periodically
     };
-    gc = {
-      automatic = true;
-      dates = "monthly";
-      options = "--delete-older-than 7d";
-    };
   };
 
   i18n.defaultLocale = "en_US.UTF-8";  # base locale (for LANG)

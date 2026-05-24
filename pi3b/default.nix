@@ -1,18 +1,48 @@
 {
   pkgs,
+  user,
+  hostname,
   ...
 }:
-{
+let 
+  pwd = "$y$j9T$H801xAtifzZymLFhYfTPE.$OyXSj2K8JCGGwkvDEFuAV0KhW7Gn59uobxBLDxFuK/4";
+in {
+  imports = [
+    ./hardware-configuration.nix
+  ];
+
   environment.systemPackages = with pkgs; [
     curl
     git
     openssl
   ];
-  
+
   nixpkgs.config.allowUnfree = true;
   hardware.enableRedistributableFirmware = true;
-  networking.wireless.enable = true;
+  users.users = {
+    root = {
+      hashedPassword = pwd;
+    };
+    ${user} = {
+      isNormalUser = true;
+      group = "users";
+      hashedPassword = pwd;
+      extraGroups = [
+        "networkmanager"
+        "wheel"
+        "disk"
+      ]; 
+    };
+  };
   
+  boot.loader.grub.enable = false;
+  boot.loader.generic-extlinux-compatible.enable = true;
+  networking.hostName = hostname;
+  boot.kernelParams = [
+    "console=ttyAMA0,115200"
+    "console=tty1"
+  ];
+
   system.autoUpgrade = {
     enable = true;
     operation = "switch";
@@ -21,15 +51,6 @@
   };
 
   security.rtkit.enable = true;
-  systemd = {
-    sleep.extraConfig = ''
-      AllowSuspend=no
-      AllowHibernation=no
-      AllowHybridSleep=no
-      AllowSuspendThenHibernate=no
-    '';
-  };
-
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
@@ -63,9 +84,15 @@
         "homeserver:21gbBImd72iH+aKAxOXZXzj8fkTGrMtlxiL4SSzHgoY="
       ];
     };
-    extraOptions = ''
-      secret-key-files = /etc/nix/homeserver
-    '';
+    optimise = {
+      automatic = true;
+      dates = [ "weekly" ]; # optimise periodically
+    };
+    gc = {
+      automatic = true;
+      dates = "monthly";
+      options = "--delete-older-than 7d";
+    };
   };
 
   i18n.defaultLocale = "en_US.UTF-8";  # base locale (for LANG)
@@ -83,4 +110,6 @@
     LC_TIME = "de_DE.UTF-8";
     LC_COLLATE = "de_DE.UTF-8";
   };
+
+  system.stateVersion = "26.05"; # Did you read the comment?
 }

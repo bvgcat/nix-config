@@ -123,10 +123,10 @@
           })
           nixos-hardware.nixosModules.raspberry-pi-3
           sops-nix.nixosModules.sops
+          ./pi3b
           ./secrets/sops.nix
           ./modules/bash.nix
           ./modules/networking.nix
-          ./modules/settings.nix
           ./modules/ssh.nix
           ./modules/syncthing.nix
         ];
