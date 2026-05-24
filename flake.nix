@@ -41,7 +41,6 @@
           ./modules/settings.nix
           ./modules/ssh.nix
           ./modules/syncthing.nix
-          ./modules/common.nix
         ];
       };
 

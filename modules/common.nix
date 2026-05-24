@@ -42,7 +42,7 @@
 
   users.users.${user}.packages = with pkgs; [
     brave
-    drawio
+    #drawio
     element-desktop
     # With this
     gearlever

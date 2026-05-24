@@ -2,7 +2,7 @@
 
 let
   pname = "plecs";
-  version = "4.9.8";
+  version = "5.0.4";
   appname = "PLECS";
   meta = with lib; {
     description = "PLECS (Piecewise Linear Electrical Circuit Simulation) software";
@@ -31,7 +31,7 @@ stdenv.mkDerivation {
   meta = meta;
 
   src = fetchzip {
-    url = "https://www.plexim.com/sites/default/files/packages/plecs-standalone-4-9-8_linux64.tar.gz";
+    url = "https://www.plexim.com/sites/default/files/packages/plecs-standalone-5-0-4_linux64.tar.gz";
     sha256 = "sha256-87Kdx49WLIiBFBoUXO+yMOwSFxD52nzWjKX09g6pTRU=";
   };
 

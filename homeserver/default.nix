@@ -45,8 +45,11 @@ in
     vlc
   ];
   
-  networking.firewall.allowedTCPPorts = [ 8384 ];
-  services.syncthing.guiAddress = "http://0.0.0.0:8384";
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+
+  nix.settings.extra-platforms = [
+    "aarch64-linux"
+  ];
   
   system.autoUpgrade = {
     enable = true;
@@ -82,11 +85,13 @@ in
     };
   };
   
-  systemd.sleep.settings.Sleep = {
-      AllowSuspend = "no";
-      AllowHibernation = "no";
-      AllowHybridSleep= "no";
-      AllowSuspendThenHibernate = "no";
+  systemd = {
+    sleep.extraConfig = ''
+      AllowSuspend=no
+      AllowHibernation=no
+      AllowHybridSleep=no
+      AllowSuspendThenHibernate=no
+    '';
   };
 
   environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; }; # Optionally, set the environment variable
