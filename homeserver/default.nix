@@ -1,9 +1,6 @@
 {
   modulesPath,
-  config,
-  lib,
   pkgs,
-  user,
   ...
 }:
 
@@ -55,7 +52,7 @@ in
     enable = true;
     operation = "switch";
     flake = "github:bvgcat/nix-config";
-    dates = "Sat *-*-* 2:00:00";
+    dates = "Sat *-*-* 4:00:00";
   };
 
   # Configure keymap in X11
@@ -118,8 +115,6 @@ in
   };
 
   programs.kdeconnect.enable = true;
-
-  users.groups.services = {};
 
   swapDevices = [
     {

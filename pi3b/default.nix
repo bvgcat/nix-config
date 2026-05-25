@@ -34,23 +34,16 @@ in {
       ]; 
     };
   };
-  
-  boot.loader.grub.enable = false;
-  boot.loader.generic-extlinux-compatible.enable = true;
-  networking.hostName = hostname;
-  boot.kernelParams = [
-    "console=ttyAMA0,115200"
-    "console=tty1"
-  ];
 
   system.autoUpgrade = {
     enable = true;
     operation = "switch";
     flake = "github:bvgcat/nix-config";
-    dates = "Sat *-*-* 2:00:00";
+    dates = "Sat *-*-* 4:00:00";
   };
 
   security.rtkit.enable = true;
+  networking.hostName = hostname;
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
@@ -65,8 +58,6 @@ in {
   };
 
   programs.kdeconnect.enable = true;
-
-  users.groups.services = {};
 
   swapDevices = [
     {

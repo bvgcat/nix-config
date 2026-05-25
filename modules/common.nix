@@ -1,7 +1,5 @@
 {
-  config,
   pkgs,
-  lib,
   user,
   ...
 }:
@@ -36,19 +34,16 @@
     sops
     qdirstat
     usbutils
-    vscodium
     zsh
   ];
 
   users.users.${user}.packages = with pkgs; [
     brave
     #drawio
-    element-desktop
     # With this
     gearlever
     (wrapFirefox (firefox-unwrapped.override { pipewireSupport = true; }) { })
     keepassxc
-    libreoffice
     marksman
     nextcloud-client
     nixd
@@ -87,14 +82,5 @@
   # Firefox
   environment.sessionVariables = {
     MOZ_USE_XINPUT2 = "1";
-  };
-  
-  xdg.portal = {
-    enable = true;
-    xdgOpenUsePortal = true;
-    extraPortals = with pkgs; [
-      kdePackages.xdg-desktop-portal-kde
-      xdg-desktop-portal-gtk
-    ];
   };
 }

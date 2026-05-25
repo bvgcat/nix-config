@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, ... }:
 
 {
   networking.firewall.allowedTCPPorts = [ 
@@ -9,7 +9,6 @@
     config.services.home-assistant.config.http.server_port
     8384
     9000 ];
-  services.syncthing.guiAddress = "http://0.0.0.0:8384";
 
   services.nginx = {
     enable = true;

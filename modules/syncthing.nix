@@ -1,7 +1,5 @@
 {
-  config,
   pkgs,
-  lib,
   user,
   ...
 }:
@@ -14,8 +12,9 @@
     enable = true;
     user = user;
     configDir = "/home/${user}/.config/syncthing";
-    databaseDir = "/home/${user}/";
+    dataDir = "/home/${user}/";
     overrideDevices = true;
+    guiAddress = "http://0.0.0.0:8384";
 
     settings = {
       options.urAccepted = -1;

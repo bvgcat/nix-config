@@ -1,8 +1,5 @@
 {
-  config,
   pkgs,
-  lib,
-  hostname,
   user,
   ...
 }:
@@ -23,7 +20,9 @@
 
     bottles
     discord
+    element-desktop
     kicad
+    libreoffice
     libvirt
     nixos-anywhere
     freecad
@@ -34,6 +33,7 @@
     texliveFull
     virt-manager
     vscode
+    vscodium
     OVMFFull
   ];
   

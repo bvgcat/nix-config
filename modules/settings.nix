@@ -1,7 +1,5 @@
 {
-  config,
   pkgs,
-  lib,
   user,
   ...
 }:
@@ -33,9 +31,16 @@ in {
   time.timeZone = "Europe/Berlin";
   nixpkgs.config.allowUnfree = true;
 
-  services.flatpak.enable = true;
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  services.flatpak.enable = true;  
   xdg.portal.config.common.default = "gtk";
+  xdg.portal = {
+    enable = true;
+    xdgOpenUsePortal = true;
+    extraPortals = with pkgs; [
+      kdePackages.xdg-desktop-portal-kde
+      xdg-desktop-portal-gtk
+    ];
+  };
 
   boot.loader = {
     systemd-boot.enable = true;
@@ -57,7 +62,7 @@ in {
 
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
-  
+
   nix = {
     settings = {
       experimental-features = [

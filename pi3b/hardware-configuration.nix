@@ -1,4 +1,4 @@
-{ config, lib, pkgs, modulesPath, ... }:
+{ lib, modulesPath, ... }:
 
 {
   imports =
@@ -19,5 +19,3 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";
 }
-
-
