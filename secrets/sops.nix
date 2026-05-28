@@ -26,6 +26,7 @@
       ssh_key_homeserver.key = "ssh_key_homeserver";
 
       homepage-env.key = "homepage-env";
+      wg-pi3b.key = "wg-pi3b";
       wg-homeserver.key = "wg-homeserver";
       wg-thinkpad-l14-g2.key = "wg-thinkpad-l14-g2";
       wg-pixel-7.key = "wg-pixel-7";

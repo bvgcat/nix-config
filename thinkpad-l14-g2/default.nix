@@ -106,6 +106,12 @@
     };
   };
 
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+
+  nix.settings.extra-platforms = [
+    "aarch64-linux"
+  ];
+
   systemd.user.services.input-leaps-autostart = {
     description = "Input Leap";
     after = [ "graphical-session.target" ];
