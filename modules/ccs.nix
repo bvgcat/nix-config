@@ -24,9 +24,9 @@ stdenv.mkDerivation rec {
     libXi
     freetype
     fontconfig
-    xorg.libXcursor
-    xorg.libXrandr
-    xorg.libXfixes
+    libXcursor
+    libXrandr
+    libXfixes
     alsa-lib
   ];
 

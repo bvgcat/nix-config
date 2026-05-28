@@ -46,7 +46,7 @@
   };
   networking.nat = {
     enable = true;
-    externalInterface = "wlp109s0";
+    externalInterface = "enu1u1";
     internalInterfaces = [ "wg0" ];
   };
 

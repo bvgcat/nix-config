@@ -32,7 +32,7 @@ stdenv.mkDerivation {
 
   src = fetchzip {
     url = "https://www.plexim.com/sites/default/files/packages/plecs-standalone-5-0-4_linux64.tar.gz";
-    sha256 = "sha256-87Kdx49WLIiBFBoUXO+yMOwSFxD52nzWjKX09g6pTRU=";
+    sha256 = "sha256-34PlT1OWq1X8kW6qgZm8tgK61zz5X+hDaJiA6whT1/0=";
   };
 
   dontBuild = true;

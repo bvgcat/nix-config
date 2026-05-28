@@ -18,7 +18,6 @@
     android-tools
     scrcpy
 
-    bottles
     discord
     element-desktop
     kicad
