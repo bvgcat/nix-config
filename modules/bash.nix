@@ -14,10 +14,10 @@
 
     rkde = "kstart5 plasmashell";
     clean = "sudo nix-collect-garbage -v -d && sudo nix-store -v --gc && sudo nix-store -v --optimise";
-    update = "sudo nix flake update --flake /home/${user}/nix-config";
-    upgrade = "sudo nixos-rebuild switch --flake /home/${user}/nix-config";
-    upgrade-me = "sudo nixos-rebuild --build-host root@192.168.0.110 switch --flake /home/${user}/nix-config";
-    upgrade-hs = "nixos-rebuild --build-host root@192.168.0.110 --target-host root@192.168.0.110 switch --flake /home/${user}/nix-config#homeserver";
-    upgrade-pi = "nixos-rebuild --build-host root@192.168.0.110 --target-host root@192.168.0.100 switch --flake /home/${user}/nix-config#pi3b";
+    update = "sudo nix flake update --flake ./nix-config";
+    upgrade = "sudo nixos-rebuild switch --flake ./nix-config";
+    upgrade-me = "sudo nixos-rebuild --build-host root@192.168.0.110 switch --flake ./nix-config";
+    upgrade-hs = "nixos-rebuild --build-host root@192.168.0.110 --target-host root@192.168.0.110 switch --flake ./nix-config#homeserver";
+    upgrade-pi = "nixos-rebuild --build-host root@192.168.0.110 --target-host root@192.168.0.100 switch --flake ./nix-config#pi3b";
   };
 }

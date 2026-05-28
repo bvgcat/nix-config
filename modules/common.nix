@@ -21,7 +21,6 @@
     age
     appimage-run
     clang-tools
-    ecryptfs
     gnumake
     gnupg
     gparted
@@ -47,7 +46,7 @@
     marksman
     nextcloud-client
     nixd
-    nixfmt-rfc-style
+    nixfmt
     obsidian
     proton-authenticator
     qalculate-qt

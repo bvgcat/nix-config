@@ -19,8 +19,8 @@
   ];
 };
 
-services.pihole-web = {
-  enable = true;
-  ports = [ "443s" ];
-};
+  services.pihole-web = {
+    enable = true;
+    ports = [ "443s" ];
+  };
 }

@@ -1,7 +1,7 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
-    nixpkgs-small.url = "github:NixOS/nixpkgs/nixos-25.11-small";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
+    nixpkgs-small.url = "github:NixOS/nixpkgs/nixos-26.05-small";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
@@ -20,7 +20,7 @@
       ...
     }:
     {
-      formatter = nixpkgs.nixfmt-rfc-style;
+      formatter = nixpkgs.nixfmt;
       # Use this for all other targets
       # nixos-anywhere --flake ./nix-config#homeserver --generate-hardware-config nixos-generate-config ./nix-config/homeserver/hardware-configuration.nix nixos@192.168.178.200
       nixosConfigurations.homeserver = nixpkgs.lib.nixosSystem {
@@ -120,7 +120,7 @@
               hostname = "pi3b";
             };
           })
-          nixos-hardware.nixosModules.raspberry-pi-3
+          #nixos-hardware.nixosModules.raspberry-pi-3
           sops-nix.nixosModules.sops
           ./pi3b
           ./secrets/sops.nix

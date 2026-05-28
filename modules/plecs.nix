@@ -56,15 +56,15 @@ stdenv.mkDerivation {
     libxcb
     libxkbcommon
     xcb-util-cursor
-    xorg.libxkbfile
-    xorg.libX11
-    xorg.libXext
-    xorg.libXrender
-    xorg.libSM
-    xorg.libICE
-    xorg.xcbutilimage
-    xorg.xcbutilkeysyms
-    xorg.xcbutilrenderutil
+    libxkbfile
+    libX11
+    libXext
+    libXrender
+    libSM
+    libICE
+    xcbutilimage
+    xcbutilkeysyms
+    xcbutilrenderutil
 
     qt6.qtbase    
     qt6.qtdeclarative
