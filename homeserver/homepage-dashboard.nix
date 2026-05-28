@@ -13,7 +13,7 @@ in
     enable = true;
     allowedHosts = "*";
     openFirewall = true;
-    environmentFile = config.sops.secrets.homepage-env.path;
+    environmentFiles = [ config.sops.secrets.homepage-env.path ];
     # https://gethomepage.dev/latest/configs/settings/
     settings = {
       layout = [

@@ -21,11 +21,6 @@
   users.users.${user}.packages = with pkgs; [
   ];
 
-  boot.kernelPatches = [{
-    name = "rust-1.91-fix";
-    patch = ./rust-fix.patch;
-  }];
-
   hardware.microsoft-surface.kernelVersion = "stable";
   
   # luks keyboard layout

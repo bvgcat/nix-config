@@ -36,11 +36,8 @@
           disko.nixosModules.disko
           ./homeserver
           ./secrets/sops.nix
-          ./modules/bash.nix
-          ./modules/networking.nix
+          ./modules
           ./modules/settings.nix
-          ./modules/ssh.nix
-          ./modules/syncthing.nix
         ];
       };
 
@@ -57,12 +54,9 @@
           sops-nix.nixosModules.sops
           ./legion-5
           ./secrets/sops.nix
-          ./modules/bash.nix
-          ./modules/networking.nix
-          ./modules/settings.nix
-          ./modules/ssh.nix
-          ./modules/syncthing.nix
+          ./modules
           ./modules/common.nix
+          ./modules/settings.nix
         ];
       };
 
@@ -80,12 +74,10 @@
           disko.nixosModules.disko  
           ./surface-go
           ./secrets/sops.nix
-          ./modules/bash.nix
-          ./modules/networking.nix
-          ./modules/settings.nix
-          ./modules/ssh.nix
-          ./modules/syncthing.nix
+          ./modules
           ./modules/common.nix
+          ./modules/settings.nix
+          ./modules/settings.nix
         ];
       };
 
@@ -124,10 +116,7 @@
           sops-nix.nixosModules.sops
           ./pi3b
           ./secrets/sops.nix
-          ./modules/bash.nix
-          ./modules/networking.nix
-          ./modules/ssh.nix
-          ./modules/syncthing.nix
+          ./modules
         ];
       };
     };

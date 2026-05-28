@@ -7,11 +7,11 @@
 
 let
   keys = [
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKCOhL7yx0bvprjflceUhcp+Aqv6Wn04VQmIqOpU3+nX nixos@homeserver"
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGpoapLR32CmYTb7xjNPWEm9OzCnqSidPwZ6cBdq59e1 nixos@homeserver"
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILiPoFO8It22YQ9Vbp0sfLnP6+LKAUL2niAuYpaXSiLU nixos@legion-5"
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHLEKUxvn8ftYTF0opH9Kesf1PAcerJXLsp3feSzxZeC nixos@thinkpad-l14-g2"
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBEFVUaUD6qmIdaA1j+0sR7nadUqdMD5L8n1MMbdsMyD nixos@surface-go"
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDjPQFsF4JqDDU50EqLHfh1BUPQW0otVWmAqr7DKN0BX nixos@pi3b"
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM7alSJQ7mtWHNlBDbB+ZnjTOmxZWp3ljpr0dv24Tbws nixos@pi3b"
   ];
 in
 {

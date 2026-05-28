@@ -106,18 +106,6 @@
     };
   };
 
-  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
-
-  nix.settings.extra-platforms = [
-    "aarch64-linux"
-  ];
-
-  services.fwupd.enable = true;
-  systemd.services.fprintd = {
-    wantedBy = [ "multi-user.target" ];
-    serviceConfig.Type = "simple";
-  };
-
   systemd.user.services.input-leaps-autostart = {
     description = "Input Leap";
     after = [ "graphical-session.target" ];
@@ -128,6 +116,11 @@
     };
   };
 
+  services.fwupd.enable = true;
+  systemd.services.fprintd = {
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig.Type = "simple";
+  };
   services.fprintd = {
     enable = true;
     tod.enable = true;
