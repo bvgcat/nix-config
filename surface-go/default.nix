@@ -20,8 +20,6 @@
 
   users.users.${user}.packages = with pkgs; [
   ];
-
-  hardware.microsoft-surface.kernelVersion = "stable";
   
   # luks keyboard layout
   console.keyMap = "gr";

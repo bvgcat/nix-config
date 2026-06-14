@@ -89,6 +89,7 @@
               user = "h";
               hostname = "thinkpad-l14-g2";
             };
+            hardware.microsoft-surface.kernelVersion = "stable";
           })
           nixos-hardware.nixosModules.lenovo-thinkpad-l14-amd
           sops-nix.nixosModules.sops
