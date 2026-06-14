@@ -1,28 +1,50 @@
 {
   services.pihole-ftl = {
-  enable = true;
-  openFirewallWebserver = true;
-  openFirewallDNS = true;
-  openFirewallDHCP = true;
+    enable = true;
+    openFirewallWebserver = true;
+    openFirewallDNS = true;
+    openFirewallDHCP = true;
 
-  settings = {
-    # See <https://docs.pi-hole.net/ftldns/configfile/>
-    # External DNS Servers quad9 and cloudflare
-    dns.upstreams = [ "9.9.9.9" "1.1.1.1" ];
-    # Optionally resolve local hosts (domain is optional)
-    dns.hosts = [ "192.168.1.188 hostname.domain" ];
-    dns.listenInterface = "all";
+    settings = {
+      # Upstream DNS resolvers
+      dns = {
+        upstreams = [ "1.1.1.1" "9.9.9.9" ];
+        hosts = [
+          "192.168.0.100 pi.hole"
+          "192.168.0.100 pi.hole.pi"
+          "192.168.0.110 immich.homeserver"
+          "192.168.0.110 home.homeserver"
+          "192.168.0.110 cloud.homeserver"
+          "192.168.0.110 sync.homeserver"
+          "192.168.0.110 assistant.homeserver"
+          "192.168.0.110 lounge.homeserver"
+          "10.100.0.1 pi3b"
+          "10.100.0.2 thinkpad-l14-g2"
+          "10.100.0.3 pixel-7"
+          "10.100.0.4 surface-go"
+          "10.100.0.5 homeserver"
+          "10.100.0.1 pi.hole"
+          "10.100.0.1 pi.hole.pi"
+          "10.100.0.5 immich.homeserver"
+          "10.100.0.5 home.homeserver"
+          "10.100.0.5 cloud.homeserver"
+          "10.100.0.5 sync.homeserver"
+          "10.100.0.5 assistant.homeserver"
+          "10.100.0.5 lounge.homeserver"
+        ];
+        listenInterface = "all";
+      };
+    };
+
+    lists = [
+      {
+        url = "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/pro.txt";
+        type = "block";
+        enabled = true;
+        description = "hagezi blocklist";
+      }
+    ];
   };
-
-  lists = [
-    {
-      url = "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/pro.txt";
-      type = "block";
-      enabled = true;
-      description = "hagezi blocklist";
-    }
-  ];
-};
 
   services.pihole-web = {
     enable = true;

@@ -19,14 +19,25 @@ in
     fprintd-tod
     libfprint-tod
 
+    kdePackages.kdenlive
+    kdePackages.krfb        ## kdeconnect virtual display
+    kdePackages.kpmcore
+    kdePackages.plasma-browser-integration
+    kdePackages.partitionmanager
+    kdePackages.qtwebengine
+    kdePackages.wacomtablet
+    
     android-tools
     scrcpy
 
+    brave
     discord
+    gearlever
     element-desktop
     oldPkgs.kicad
     libreoffice
     libvirt
+    nextcloud-client
     nixos-anywhere
     freecad
     prismlauncher
@@ -34,6 +45,7 @@ in
     signal-desktop
     spice-vdagent
     texliveFull
+    thunderbird
     virt-manager
     vscode
     vscodium
@@ -55,6 +67,13 @@ in
     ];
   };
 
+  programs = {
+    partition-manager.enable = true;
+    ausweisapp = {
+      enable = true;
+      openFirewall = true;
+    };
+  };
   # luks keyboard layout
   console.keyMap = "de";
   services.xserver = {

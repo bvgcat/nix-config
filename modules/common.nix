@@ -10,14 +10,6 @@
   ];
 
   environment.systemPackages = with pkgs; [
-    kdePackages.kdenlive
-    kdePackages.krfb        ## kdeconnect virtual display
-    kdePackages.kpmcore
-    kdePackages.plasma-browser-integration
-    kdePackages.partitionmanager
-    kdePackages.qtwebengine
-    kdePackages.wacomtablet
-
     age
     appimage-run
     clang-tools
@@ -37,37 +29,28 @@
   ];
 
   users.users.${user}.packages = with pkgs; [
-    brave
     #drawio
     # With this
-    gearlever
     (wrapFirefox (firefox-unwrapped.override { pipewireSupport = true; }) { })
     keepassxc
     marksman
-    nextcloud-client
     nixd
     nixfmt
     obsidian
     proton-authenticator
     qalculate-qt
     tidal-hifi
-    thunderbird
     vlc
     wireguard-tools
   ];
 
   programs = {
-    ausweisapp = {
-      enable = true;
-      openFirewall = true;
-    };
     firefox = {
       enable = true;
       preferences = {
         "widget.use-xdg-desktop-portal.file-picker" = 1;
       };
     };
-    partition-manager.enable = true;
     kdeconnect.enable = true;
     steam = {
       enable = true;
