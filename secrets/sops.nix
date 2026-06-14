@@ -9,7 +9,7 @@
 {
   # SOPS configuration: point to your age private key file
   sops = {
-    age.keyFile = "/home/${user}/.config/sops/age/keys.txt";
+    age.keyFile = "/var/lib/sops/key.txt";
     defaultSopsFile = ./secrets.yaml;
     defaultSopsFormat = "yaml";
     # Define secrets paths that sops-nix should decrypt

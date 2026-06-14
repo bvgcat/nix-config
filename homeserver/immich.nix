@@ -15,7 +15,6 @@ in
 
   systemd.services.immich-machine-learning = {
     environment = {
-      MPLCONFIGDIR = "/var/lib/immich/.cache/matplotlib";
       HF_HOME      = "/var/lib/immich/.cache/huggingface";
     };
   };

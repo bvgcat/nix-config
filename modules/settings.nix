@@ -31,11 +31,11 @@ in {
   time.timeZone = "Europe/Berlin";
   nixpkgs.config.allowUnfree = true;
 
-  services.flatpak.enable = true;  
-  xdg.portal.config.common.default = "gtk";
+  services.flatpak.enable = true;
   xdg.portal = {
     enable = true;
     xdgOpenUsePortal = true;
+
     extraPortals = with pkgs; [
       kdePackages.xdg-desktop-portal-kde
       xdg-desktop-portal-gtk

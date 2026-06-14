@@ -1,5 +1,6 @@
 {
   inputs = {
+    nixpkgs-old.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     nixpkgs-small.url = "github:NixOS/nixpkgs/nixos-26.05-small";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -11,6 +12,7 @@
 
   outputs =
     {
+      nixpkgs-old,
       nixpkgs,
       nixpkgs-small,
       nixpkgs-unstable,
@@ -68,7 +70,6 @@
               user = "m";
               hostname = "surface-go";
             };
-            hardware.microsoft-surface.kernelVersion = "stable";
           })
           nixos-hardware.nixosModules.microsoft-surface-go
           sops-nix.nixosModules.sops
@@ -89,6 +90,7 @@
             _module.args = {
               user = "h";
               hostname = "thinkpad-l14-g2";
+              nixpkgs-old = nixpkgs-old;
             };
           })
           nixos-hardware.nixosModules.lenovo-thinkpad-l14-amd

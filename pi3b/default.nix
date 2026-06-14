@@ -9,6 +9,8 @@ let
 in {
   imports = [
     ./hardware-configuration.nix
+    ./pi-hole.nix
+    ./wireguard.nix
   ];
   networking.firewall.allowedTCPPorts = [ 80 443 8082 ];
 
@@ -45,19 +47,6 @@ in {
 
   security.rtkit.enable = true;
   networking.hostName = hostname;
-  hardware.bluetooth = {
-    enable = true;
-    powerOnBoot = true;
-    settings = {
-      General = {
-        FastConnectable = true;
-      };
-      Policy = {
-        AutoEnable = true;
-      };
-    };
-  };
-
   programs.kdeconnect.enable = true;
 
   swapDevices = [

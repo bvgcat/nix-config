@@ -1,9 +1,13 @@
 {
+  nixpkgs-old,
   pkgs,
   user,
   ...
 }:
 
+let
+  oldPkgs = nixpkgs-old.legacyPackages.${pkgs.system};
+in
 {
   imports = [
     ./hardware-configuration.nix
@@ -20,7 +24,7 @@
 
     discord
     element-desktop
-    kicad
+    oldPkgs.kicad
     libreoffice
     libvirt
     nixos-anywhere
