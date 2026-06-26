@@ -18,6 +18,7 @@ in {
     curl
     git
     openssl
+    wireguard-tools
   ];
 
   nixpkgs.config.allowUnfree = true;
