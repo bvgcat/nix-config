@@ -92,6 +92,7 @@ in {
     LC_TIME = "de_DE.UTF-8";
     LC_COLLATE = "de_DE.UTF-8";
   };
-
+  
+  systemd.user.services.dbus-broker.restartIfChanged = false;
   system.stateVersion = "26.05"; # Did you read the comment?
 }
