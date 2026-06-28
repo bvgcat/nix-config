@@ -13,14 +13,21 @@
     ./syncthing.nix
   ];
 
-  nix.buildMachines = [
-    {
-      hostName = "homeserver";
-      sshUser = "builder";
-      sshKey = "/home/${user};/.ssh/id_ed25519";
-      system = "x86_64-linux";
-      maxJobs = 8;
-      supportedFeatures = [ "kvm" "big-parallel" ];
-    }
-  ];
+  nix = {
+    distributedBuilds = true;
+    buildMachines = [
+      {
+        hostName = "homeserver";
+        sshUser = "builder";
+        sshKey = "/home/${user};/.ssh/id_ed25519";
+        system = "x86_64-linux";
+        maxJobs = 8;
+        supportedFeatures = [ "kvm" "big-parallel" ];
+      }
+    ];
+    settings = {
+      trusted-users = [ "root" "${user}" ];
+      builders-use-substitutes = true;
+    };
+  };
 }

@@ -43,24 +43,6 @@
       ];
     };
 
-    nixosConfigurations.legion-5 = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
-        ({ ... }: {
-          _module.args = {
-            user = "h";
-            hostname = "legion-5";
-          };
-        })
-        nixos-hardware.nixosModules.lenovo-legion-15arh05h
-        sops-nix.nixosModules.sops
-        ./legion-5
-        ./secrets/sops.nix
-        ./modules
-        ./modules/common.nix
-        ./modules/settings.nix
-      ];
-    };
 
     nixosConfigurations.surface-go = nixpkgs-small.lib.nixosSystem {
       system = "x86_64-linux";
@@ -97,11 +79,8 @@
         sops-nix.nixosModules.sops
         ./thinkpad-l14-g2
         ./secrets/sops.nix
-        ./modules/bash.nix
-        ./modules/networking.nix
+        ./modules
         ./modules/settings.nix
-        ./modules/ssh.nix
-        ./modules/syncthing.nix
         ./modules/common.nix
       ];
     };
@@ -122,6 +101,25 @@
         ./pi3b
         ./secrets/sops.nix
         ./modules
+      ];
+    };
+    
+    nixosConfigurations.legion-5 = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+        ({ ... }: {
+          _module.args = {
+            user = "h";
+            hostname = "legion-5";
+          };
+        })
+        nixos-hardware.nixosModules.lenovo-legion-15arh05h
+        sops-nix.nixosModules.sops
+        ./legion-5
+        ./secrets/sops.nix
+        ./modules
+        ./modules/common.nix
+        ./modules/settings.nix
       ];
     };
   };
