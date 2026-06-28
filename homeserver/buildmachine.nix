@@ -14,7 +14,7 @@ in
     builder = {
       isNormalUser = true;
       description = "Remote Nix builder";
-      createHome = false;
+      createHome = true;
       extraGroups = [ ];
       openssh.authorizedKeys.keys = keys;
       shell = "/run/current-system/sw/bin/bash";
