@@ -34,6 +34,7 @@ in
     discord
     gearlever
     element-desktop
+    (pkgs.ffmpeg-full.override { withUnfree = true; })
     oldPkgs.kicad
     libreoffice
     libvirt

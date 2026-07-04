@@ -18,17 +18,10 @@
             user = "m";
             hostname = "pi3b";
           };
-          nixpkgs .hostPlatform = system;
-          boot.loader.grub.enable = false;
-          boot.loader.generic-extlinux-compatible.enable = true;
-          services.openssh.enable = true;
-          boot.kernelParams = [
-            "console=ttyAMA0,115200"
-            "console=tty1"
-          ];
+          nixpkgs.hostPlatform = system;
           sdImage.compressImage = false;
         })
-        nixos-hardware.nixosModules.raspberry-pi-3
+        #nixos-hardware.nixosModules.raspberry-pi-3
         sops-nix.nixosModules.sops
         ./default.nix
         ../secrets/sops.nix

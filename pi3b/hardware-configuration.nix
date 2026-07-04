@@ -2,14 +2,20 @@
 
 {
   imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
+    [ 
+      (modulesPath + "/installer/scan/not-detected.nix")
+      ./config-txt.nix
+      ./config-txt-defaults.nix
     ];
-
-  boot.initrd.availableKernelModules = [ ];
+    
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
-
+  boot.initrd.availableKernelModules = [
+    "usb-storage"
+    "usbhid"
+    "vc4"
+  ];
 
   nixpkgs.overlays = [
     (_final: super: {
