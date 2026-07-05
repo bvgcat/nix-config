@@ -12,7 +12,7 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
-
+  boot.kernelParams = lib.mkForce [ "iommu=on" ];
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/0847faf6-932e-4818-ab01-b4e188c64865";
       fsType = "ext4";

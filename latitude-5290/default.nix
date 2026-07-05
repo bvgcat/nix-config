@@ -25,6 +25,7 @@
     kernelParams = [
       "mem_sleep_default=s2idle"
     ];
+    kernelPackages = lib.mkForce pkgs.linuxPackages_latest;
     kernelModules = [ "snd_hda_intel" ];
     supportedFilesystems = [ "ntfs" ];
   };
