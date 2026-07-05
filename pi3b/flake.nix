@@ -27,7 +27,6 @@
         ../secrets/sops.nix
         ../modules
 
-
         "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
       ];
     };

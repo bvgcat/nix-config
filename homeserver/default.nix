@@ -90,7 +90,7 @@ in
     AllowSuspendThenHibernate = false;
   };
 
-  kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; }; # Optionally, set the environment variable
   hardware.graphics = {
     enable = true;

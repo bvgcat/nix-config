@@ -30,7 +30,6 @@
 
   users.users.${user}.packages = with pkgs; [
     #drawio
-    # With this
     (wrapFirefox (firefox-unwrapped.override { pipewireSupport = true; }) { })
     keepassxc
     marksman

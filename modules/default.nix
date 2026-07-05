@@ -1,5 +1,6 @@
 {
   user,
+  pkgs,
   ...
 }:
 
@@ -13,13 +14,22 @@
     ./syncthing.nix
   ];
 
+  environment.systemPackages = with pkgs; [
+    htop
+    pciutils
+    powertop
+    qdirstat
+    usbutils
+    wireguard-tools
+  ];
+
   nix = {
     distributedBuilds = true;
     buildMachines = [
       {
         hostName = "homeserver";
         sshUser = "builder";
-        sshKey = "/home/${user}/.ssh/id_ed25519";
+        sshKey = "/root/.ssh/id_ed25519";
         system = "x86_64-linux";
         protocol = "ssh-ng";
         maxJobs = 8;
