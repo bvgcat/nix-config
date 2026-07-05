@@ -10,6 +10,7 @@ in {
   imports = [
     ./hardware-configuration.nix
     ./pi-hole.nix
+    ./secrets.nix
     ./wireguard.nix
   ];
   networking.firewall.allowedTCPPorts = [ 80 443 8082 ];

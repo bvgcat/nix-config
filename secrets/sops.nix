@@ -14,16 +14,10 @@
     defaultSopsFormat = "yaml";
     # Define secrets paths that sops-nix should decrypt
     secrets = {
-      duckdns.key = "duckdns";
-
       nc-adminpass.key = "nc-adminpass";
       nc-userpass.key = "nc-userpass";
 
       restic-password.key = "restic-password";
-      trans-ext4.key = "trans-ext4";
-
-      home-psk.key = "home-psk";
-      ssh_key_homeserver.key = "ssh_key_homeserver";
 
       homepage-env.key = "homepage-env";
       wg-pi3b.key = "wg-pi3b";

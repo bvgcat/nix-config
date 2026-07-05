@@ -11,6 +11,7 @@
   imports = [
     ./disk-config.nix
     ./hardware-configuration.nix
+    ./secrets.nix
   ];
 
   ### Packages

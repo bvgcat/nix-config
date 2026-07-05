@@ -11,6 +11,7 @@ in
 {
   imports = [
     ./hardware-configuration.nix
+    ./secrets.nix
   ];
 
   environment.systemPackages = with pkgs; [

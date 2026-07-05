@@ -11,7 +11,7 @@ let
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILiPoFO8It22YQ9Vbp0sfLnP6+LKAUL2niAuYpaXSiLU nixos@legion-5"
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHLEKUxvn8ftYTF0opH9Kesf1PAcerJXLsp3feSzxZeC nixos@thinkpad-l14-g2"
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBEFVUaUD6qmIdaA1j+0sR7nadUqdMD5L8n1MMbdsMyD nixos@surface-go"
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDjPQFsF4JqDDU50EqLHfh1BUPQW0otVWmAqr7DKN0BX nixos@pi3b"
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKxm/hekk06/1veUx/0OXXzjWbE6RMV8M3bzNa4fmtmB nixos@pi3b"
   ];
 in 
 {
@@ -24,7 +24,7 @@ in
         enable = true;
         port = 22;
         authorizedKeys = keys;
-        hostKeys = [ config.sops.secrets.ssh_key_homeserver.path ];
+        hostKeys = [ "/etc/ssh/ssh_host_ed25519_key" ];
       };
     };
   };
