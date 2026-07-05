@@ -15,7 +15,11 @@
   ];
 
   environment.systemPackages = with pkgs; [
+    curl
+    git
+    gnupg
     htop
+    openssl
     pciutils
     powertop
     qdirstat

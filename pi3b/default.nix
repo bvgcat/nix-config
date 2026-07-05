@@ -16,11 +16,7 @@ in {
   networking.firewall.allowedTCPPorts = [ 80 443 8082 ];
 
   environment.systemPackages = with pkgs; [
-    curl
-    git
     libraspberrypi
-    openssl
-    wireguard-tools
   ];
 
   nixpkgs.config.allowUnfree = true;

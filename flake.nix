@@ -86,7 +86,7 @@
     };
 
     nixosConfigurations.pi3b = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux"; # build machine (ThinkPad / homeserver)
+      system = "x86_64-linux"; # build machine
 
       modules = [
         ({ ... }: {

@@ -14,17 +14,12 @@
     appimage-run
     clang-tools
     gnumake
-    gnupg
     gparted
     input-leap
-    iptsd
     ntfs3g
     openocd
-    pciutils
     power-profiles-daemon
     sops
-    qdirstat
-    usbutils
     zsh
   ];
 
