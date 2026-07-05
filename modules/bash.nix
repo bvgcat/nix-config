@@ -18,8 +18,8 @@
     upgrade = "sudo nixos-rebuild switch --flake ./nix-config";
     upgrade-git = "sudo nixos-rebuild switch --flake github:bvgcat/nix-config";
     upgrade-me = "sudo nixos-rebuild switch --flake ./nix-config";
-    upgrade-hs = "nixos-rebuild --target-host root@192.168.0.110 switch --flake ./nix-config#homeserver";
-    upgrade-pi = "nixos-rebuild --target-host root@192.168.0.100 switch --flake ./nix-config#pi3b";
-    upgrade-sg = "nixos-rebuild --target-host root@192.168.0.229 switch --flake ./nix-config#pi3b";
+    upgrade-hs = "nixos-rebuild --target-host root@192.168.0.110 switch --flake github:bvgcat/nix-config";
+    upgrade-pi = "nixos-rebuild --target-host root@192.168.0.100 switch --flake github:bvgcat/nix-config";
+    upgrade-sg = "nixos-rebuild --target-host root@192.168.0.229 switch --flake github:bvgcat/nix-config";
   };
 }
