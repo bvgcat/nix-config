@@ -1,4 +1,14 @@
+{ pkgs, ... }:
 {
+  services.pihole-ftl.package = pkgs.pihole-ftl.overrideAttrs (old: {
+    nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [
+      pkgs.lld
+      pkgs.autoPatchelfHook
+    ];
+    NIX_CFLAGS_LINK = (old.NIX_CFLAGS_LINK or "")
+      + " -fuse-ld=lld -Wl,--fix-cortex-a53-843419";
+  });
+
   services.pihole-ftl = {
     enable = true;
     openFirewallWebserver = true;

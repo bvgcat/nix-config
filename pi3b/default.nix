@@ -51,12 +51,6 @@ in {
   networking.hostName = hostname;
   programs.kdeconnect.enable = true;
 
-  swapDevices = [
-    {
-      device = "/swapfile";
-      size = 4 * 1024;
-    }
-  ];
   nix = {
     settings = {
       experimental-features = [
