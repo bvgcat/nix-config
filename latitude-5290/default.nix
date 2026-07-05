@@ -25,11 +25,7 @@
     kernelParams = [
       "mem_sleep_default=s2idle"
     ];
-    kernelPackages = pkgs.linuxPackages_latest;
     kernelModules = [ "snd_hda_intel" ];
-    extraModprobeConfig = ''
-      options snd-hda-intel power_save=0
-    '';
     supportedFilesystems = [ "ntfs" ];
   };
 
