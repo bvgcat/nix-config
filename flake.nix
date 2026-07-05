@@ -34,6 +34,7 @@
             hostname = "homeserver";
           };
         })
+        nixos-hardware.nixosModules.raspberry-pi-3
         sops-nix.nixosModules.sops
         disko.nixosModules.disko
         ./homeserver
