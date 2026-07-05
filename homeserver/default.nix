@@ -44,7 +44,6 @@ in
   ];
   
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
-
   nix.settings.extra-platforms = [
     "aarch64-linux"
   ];
@@ -90,6 +89,7 @@ in
     AllowSuspendThenHibernate = false;
   };
 
+  kernelPackages = pkgs.linuxPackages_latest;
   environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; }; # Optionally, set the environment variable
   hardware.graphics = {
     enable = true;
