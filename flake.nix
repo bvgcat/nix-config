@@ -34,7 +34,6 @@
             hostname = "homeserver";
           };
         })
-        nixos-hardware.nixosModules.raspberry-pi-3
         sops-nix.nixosModules.sops
         disko.nixosModules.disko
         ./homeserver
@@ -97,6 +96,7 @@
           };
           nixpkgs.hostPlatform = "aarch64-linux";
         })
+        nixos-hardware.nixosModules.raspberry-pi-3
         sops-nix.nixosModules.sops
         ./pi3b
         ./secrets/sops.nix

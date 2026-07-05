@@ -21,7 +21,7 @@
           nixpkgs.hostPlatform = system;
           sdImage.compressImage = false;
         })
-        #nixos-hardware.nixosModules.raspberry-pi-3
+        nixos-hardware.nixosModules.raspberry-pi-3
         sops-nix.nixosModules.sops
         ./default.nix
         ../secrets/sops.nix
