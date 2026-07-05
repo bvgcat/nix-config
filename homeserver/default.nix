@@ -24,6 +24,7 @@ in
     ./nginx.nix
     #./pi-hole.nix
     #./restic.nix
+    ./secrets.nix
     ./spotify.nix
     ./thelounge.nix
     #./wireguard.nix
