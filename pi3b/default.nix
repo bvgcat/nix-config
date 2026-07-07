@@ -14,7 +14,13 @@ in {
     ./wireguard.nix
   ];
   networking.firewall.allowedTCPPorts = [ 80 443 8082 ];
-
+  networking.interfaces.enu1u1.ipv6.addresses = [
+    {
+      address = "2a02:8109:b518:e400:ef2:2236:92eb:83ee";
+      prefixLength = 128;
+    }
+  ];
+  
   environment.systemPackages = with pkgs; [
     libraspberrypi
   ];
