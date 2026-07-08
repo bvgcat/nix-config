@@ -25,6 +25,18 @@
           "10.100.0.1 pi.hole.pi"
           "10.100.0.1 pi3b"
 
+          "192.168.0.112 homeserver"
+          "192.168.0.112 immich.homeserver"
+          "192.168.0.112 home.homeserver"
+          "192.168.0.112 cloud.homeserver"
+          "192.168.0.112 sync.homeserver"
+          "192.168.0.112 assistant.homeserver"
+          "192.168.0.112 lounge.homeserver"
+
+          "192.168.0.113 thinkpad-l14-g2"
+          "192.168.0.114 pixel-7"
+          "192.168.0.115 surface-go"
+
           "10.100.0.2 homeserver"
           "10.100.0.2 immich.homeserver"
           "10.100.0.2 home.homeserver"
