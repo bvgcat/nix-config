@@ -16,9 +16,9 @@
     update = "sudo nix flake update --flake ./nix-config";
     upgrade = "sudo nixos-rebuild switch --flake ./nix-config";
     upgrade-git = "sudo nixos-rebuild switch --flake github:bvgcat/nix-config";
-    upgrade-me = "sudo nixos-rebuild switch --build-host builder@192.168.0.110 --flake github:bvgcat/nix-config";
-    upgrade-hs = "nixos-rebuild --target-host builder@192.168.0.110 switch --flake github:bvgcat/nix-config#homeserver";
-    upgrade-pi = "nixos-rebuild --target-host builder@192.168.0.100 switch --flake github:bvgcat/nix-config#pi3b";
-    upgrade-sg = "nixos-rebuild --target-host builder@192.168.0.229 switch --flake github:bvgcat/nix-config#surface-go";
+    upgrade-me = "sudo nixos-rebuild switch --build-host builder@192.168.0.112 --flake github:bvgcat/nix-config";
+    upgrade-pi = "nixos-rebuild --build-host builder@192.168.0.112 --target-host root@192.168.0.100 switch --flake github:bvgcat/nix-config#pi3b";
+    upgrade-hs = "nixos-rebuild --build-host builder@192.168.0.112 --target-host root@192.168.0.112 switch --flake github:bvgcat/nix-config#homeserver";
+    upgrade-sg = "nixos-rebuild --build-host builder@192.168.0.112 --target-host root@192.168.0.115 switch --flake github:bvgcat/nix-config#surface-go";
   };
 }
