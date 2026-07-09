@@ -14,6 +14,8 @@
     enable = true;
     user = user;
     group = "users";
+    key = config.sops.secrets.syncthing-key.path;
+    cert = config.sops.secrets.syncthing-cert.path;
     configDir = "/home/${user}/.config/syncthing";
     dataDir = "~";
     overrideDevices = true;
