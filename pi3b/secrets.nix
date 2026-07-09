@@ -8,12 +8,10 @@
     syncthing-cert = {
       key = "syncthing-cert-pi3b";
       owner = user;
-      path = "/home/${user}/.config/syncthing/syncthing-cert.pem";
     };
     syncthing-key = {
       key = "syncthing-key-pi3b";
       owner = user;
-      path = "/home/${user}/.config/syncthing/syncthing-key.pem";
     };
     ssh-key-root = {
       key = "ssh-key-pi3b";
