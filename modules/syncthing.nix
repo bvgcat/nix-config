@@ -17,7 +17,7 @@
     key = config.sops.secrets.syncthing-key.path;
     cert = config.sops.secrets.syncthing-cert.path;
     configDir = "/home/${user}/.config/syncthing";
-    dataDir = "~";
+    dataDir = "/home/${user}/";
     overrideDevices = true;
     guiAddress = "http://0.0.0.0:8384";
 
