@@ -33,9 +33,6 @@
         "nixos@thinkpad-l14-g2" = {
           id = "6LYC6WJ-LUAIHJT-JMFJST6-XTWAZ6R-LUD5RF2-5KKGDKK-VE2CMQ7-BTKD7Q6";
         };
-        "nixos@surface-go" = {
-          id = "D6OI2T3-2EVREJA-ZHNHZ5B-63IRD3P-HH3XAHX-YUZY7P6-2OWPEYD-BGLKNQM";
-        };
         "Pixel 7" = {
           id = "EPITZLR-6Y2XEK4-G5QRYT2-4DNBP3D-FHIH4D2-MLC7DXY-U2ZOQMH-UMHUYQ3";
           introducer = true;
