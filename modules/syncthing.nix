@@ -5,6 +5,7 @@
 }:
 
 {
+  networking.firewall.allowedTCPPorts = [ 8384 ];
   environment.systemPackages = with pkgs; [
     syncthing
   ];

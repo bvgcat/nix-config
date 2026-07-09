@@ -22,12 +22,10 @@ in
     ./networking.nix
     ./nextcloud.nix
     ./nginx.nix
-    #./pi-hole.nix
     #./restic.nix
     ./secrets.nix
     ./spotify.nix
     ./thelounge.nix
-    #./wireguard.nix
   ];
 
   environment.systemPackages = with pkgs; [

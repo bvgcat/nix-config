@@ -13,7 +13,7 @@ in {
     ./secrets.nix
     ./wireguard.nix
   ];
-  networking.firewall.allowedTCPPorts = [ 80 443 8082 ];
+  networking.firewall.allowedTCPPorts = [ 80 443 ];
   environment.systemPackages = with pkgs; [
     libraspberrypi
   ];
