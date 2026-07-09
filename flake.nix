@@ -2,7 +2,6 @@
   inputs = {
     nixpkgs-old.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
-    nixpkgs-small.url = "github:NixOS/nixpkgs/nixos-26.05-small";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
@@ -14,7 +13,6 @@
   {
     nixpkgs-old,
     nixpkgs,
-    nixpkgs-small,
     nixpkgs-unstable,
     disko,
     nixos-hardware,
@@ -44,7 +42,7 @@
     };
 
 
-    nixosConfigurations.surface-go = nixpkgs-small.lib.nixosSystem {
+    nixosConfigurations.surface-go = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
         ({ ... }: {
