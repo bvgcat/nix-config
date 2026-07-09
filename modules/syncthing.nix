@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   user,
   ...
@@ -13,6 +14,7 @@
     enable = true;
     user = user;
     group = "users";
+    key = config.sops.secrets.syncthing-key.path;
     configDir = "/home/${user}/.config/syncthing";
     dataDir = "/home/${user}/";
     overrideDevices = true;
