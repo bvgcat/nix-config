@@ -4,7 +4,14 @@
   services.syncthing.key = config.sops.secrets.syncthing-key.path;
 
   sops.secrets = {
-    syncthing-key.key = "syncthing-thinkpad";
+    syncthing-cert = {
+      key = "syncthing-cert-thinkpad";
+      owner = user;
+    };
+    syncthing-key = {
+      key = "syncthing-key-thinkpad";
+      owner = user;
+    };
     ssh-key-root = {
       key = "ssh-key-thinkpad";
       owner = "root";

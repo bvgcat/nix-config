@@ -4,7 +4,14 @@
   services.syncthing.key = config.sops.secrets.syncthing-key.path;
 
   sops.secrets = {
-    syncthing-key.key = "syncthing-surface";
+    syncthing-cert = {
+      key = "syncthing-cert-surface";
+      owner = user;
+    };
+    syncthing-key = {
+      key = "syncthing-key-surface";
+      owner = user;
+    };
     ssh-key-root = {
       key = "ssh-key-surface";
       owner = "root";

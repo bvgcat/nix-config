@@ -42,7 +42,7 @@
           autoAcceptFolders = true;
         };
         "pi3b" = {
-          id = "42WHYGB-OVHIXOC-XR3IV7U-PF5Y7VJ-UJE3BUM-NKMAQ6O-FBIZWKU-Z3YO2A6";
+          id = "HHD6NMO-7X4X6DS-4CNEBI6-F3ZQ3MR-NLC44WC-K3ZXDWC-3KWLOJN-4ZZSLAL";
         };
       };
     };
