@@ -12,6 +12,7 @@
   services.syncthing = {
     enable = true;
     user = user;
+    group = "users";
     configDir = "/home/${user}/.config/syncthing";
     dataDir = "/home/${user}/";
     overrideDevices = true;
