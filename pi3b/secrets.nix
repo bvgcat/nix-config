@@ -5,13 +5,12 @@
 
   sops.secrets = {
     duckdns.key = "duckdns";
-    sops.secrets.syncthing-cert = {
+    syncthing-cert = {
       key = "syncthing-cert-pi3b";
       owner = user;
       path = "/home/${user}/.config/syncthing/cert.pem";
     };
-
-    sops.secrets.syncthing-key = {
+    syncthing-key = {
       key = "syncthing-key-pi3b";
       owner = user;
       path = "/home/${user}/.config/syncthing/key.pem";
