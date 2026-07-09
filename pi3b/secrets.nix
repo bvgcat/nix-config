@@ -5,8 +5,14 @@
 
   sops.secrets = {
     duckdns.key = "duckdns";
-    syncthing-key.key = "syncthing-key-pi3b";
-    syncthing-cert.key = "syncthing-cert-pi3b";
+    syncthing-key = {
+      key ="syncthing-key-pi3b";
+      owner = user;
+    };
+    syncthing-cert = {
+      key = "syncthing-cert-pi3b";
+      owner = user;
+    };
     ssh-key-root = {
       key = "ssh-key-pi3b";
       owner = "root";
