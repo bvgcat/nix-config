@@ -16,7 +16,7 @@
     group = "users";
     key = config.sops.secrets.syncthing-key.path;
     configDir = "/home/${user}/.config/syncthing";
-    dataDir = "/home/${user}/";
+    dataDir = "~";
     overrideDevices = true;
     guiAddress = "http://0.0.0.0:8384";
 
