@@ -14,6 +14,11 @@
     ./secrets.nix
   ];
 
+  services.snapserver = {
+    enable = true;
+    openFirewall = true;
+  };
+
   ### Packages
   environment.systemPackages = with pkgs; [
     maliit-keyboard
