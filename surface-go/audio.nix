@@ -8,11 +8,14 @@ let
   tcp = 8050;
 in
 {
-  networking.firewall.allowedUDPPorts = [ mdns ];
-  networking.firewall.allowedTCPPorts = [ tcp ];
+  networking.firewall.allowedUDPPorts = [ mdns 8888 ];
+  networking.firewall.allowedTCPPorts = [ tcp 8888 ];
 
-  environment.systemPackages = with pkgs; [ 
-    spotify 
+  environment.systemPackages = with pkgs; [  
+    gst_all_1.gstreamer
+    gst_all_1.gst-plugins-base
+    gst_all_1.gst-plugins-good
+    gst_all_1.gst-libav
     spotifyd
     tidal-hifi
   ];
@@ -20,7 +23,7 @@ in
   services.spotifyd = {
     enable = true;
     settings.global = {
-      device_name = "homeserver";
+      device_name = "surface-go";
       device_type = "speaker";
       disable_discovery = false;
       zeroconf_port = tcp;

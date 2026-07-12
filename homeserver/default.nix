@@ -24,7 +24,7 @@ in
     ./nginx.nix
     #./restic.nix
     ./secrets.nix
-    ./spotify.nix
+    #./spotify.nix
     ./thelounge.nix
   ];
 
@@ -95,21 +95,6 @@ in
     extraPackages = with pkgs; [
       intel-media-driver
     ];
-  };
-
-  hardware.bluetooth = {
-    enable = true;
-    powerOnBoot = true;
-    settings = {
-      General = {
-        # Shows battery charge of connected devices on supported
-        Experimental = true;
-        FastConnectable = true;
-      };
-      Policy = {
-        AutoEnable = true;
-      };
-    };
   };
 
   programs.kdeconnect.enable = true;

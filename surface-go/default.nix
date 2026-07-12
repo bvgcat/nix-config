@@ -9,18 +9,35 @@
 
 {
   imports = [
+    ./audio.nix
     ./disk-config.nix
     ./hardware-configuration.nix
     ./secrets.nix
   ];
 
-  services.snapserver = {
+  hardware.bluetooth = {
     enable = true;
-    openFirewall = true;
+    powerOnBoot = true;
+    settings = {
+      General = {
+        AlwaysPairable = true;
+        IdleTimeout = 0;
+        Experimental = true;
+        FastConnectable = true;
+        JustWorksRepairing = true;
+      };
+      Policy = {
+        AutoEnable = true;
+        ResumeDelay = 5;
+      };
+    };
   };
 
-  ### Packages
+  services.udev.extraRules = ''
+    ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="0cf3", ATTR{idProduct}=="e302", TEST=="power/control", ATTR{power/control}="on"
+  '';
   environment.systemPackages = with pkgs; [
+    librespot
     maliit-keyboard
   ];
 
@@ -42,7 +59,6 @@
     supportedFilesystems = [ "ntfs" ];
   };
 
-  hardware.bluetooth.enable = true;
   hardware.enableAllFirmware = true;
   hardware.graphics = {
     enable = true;
