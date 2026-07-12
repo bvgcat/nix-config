@@ -33,6 +33,14 @@
     };
   };
 
+  services.pipewire.extraConfig.pipewire."99-bluetooth-buffer" = {
+    "context.properties" = {
+      "default.clock.quantum" = 1024;
+      "default.clock.min-quantum" = 1024;
+      "default.clock.max-quantum" = 2048;
+    };
+  };
+
   services.udev.extraRules = ''
     ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="0cf3", ATTR{idProduct}=="e302", TEST=="power/control", ATTR{power/control}="on"
   '';
