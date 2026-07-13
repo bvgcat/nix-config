@@ -118,13 +118,14 @@ in
           }
           {
             "Pi-hole" = {
-              icon = "pihole.svg";
+              icon = "pi-hole.svg";
               description = "Pi-hole dashboard";
               href = "https://pi.hole.pi";
               ping = "https://pi.hole.pi";              
               widget = {
                 type = "pihole";
                 url = "https://pi.hole.pi";
+                version = 5;
               };
             };
           }
