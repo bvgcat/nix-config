@@ -4,6 +4,22 @@
   services.syncthing.key = config.sops.secrets.syncthing-key.path;
 
   sops.secrets = {
+    nc-adminpass.key = "nc-adminpass";
+    nc-userpass.key = "nc-userpass";
+    restic-password.key = "restic-password";
+    homepage-env.key = "homepage-env";
+    homeserver-rootca-key = {
+      key = "homeserver-rootca-key";
+      path = "/etc/ssl/local-ca/rootca.key";
+    };
+    homeserver-ssl-key = {
+      key = "homeserver-ssl-key";
+      path = "/etc/ssl/local-ca/homeserver.key";
+    };
+    homeserver-ssl-crt = {
+      key = "homeserver-ssl-crt";
+      path = "/etc/ssl/local-ca/homeserver.crt";
+    };
     syncthing-cert = {
       key = "syncthing-cert-homeserver";
       owner = user;
@@ -18,7 +34,6 @@
       mode = "0600";
       path = "/root/.ssh/id_ed25519";
     };
-
     ssh-key-user = {
       key = "ssh-key-homeserver";
       owner = user;

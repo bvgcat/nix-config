@@ -9,11 +9,11 @@ let
 in {
   imports = [
     ./hardware-configuration.nix
+    ./nginx.nix
     ./pi-hole.nix
     ./secrets.nix
     ./wireguard.nix
   ];
-  networking.firewall.allowedTCPPorts = [ 80 443 ];
   environment.systemPackages = with pkgs; [
     libraspberrypi
   ];

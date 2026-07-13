@@ -20,8 +20,7 @@
         upstreams = [ "1.1.1.1" "9.9.9.9" ];
         hosts = [
           "192.168.0.100 pi3b"
-          "192.168.0.100 pi.hole"
-          "192.168.0.100 pi.hole.pi"
+          "192.168.0.100 pi-hole.pi3b"
 
           "192.168.0.112 homeserver"
           "192.168.0.112 immich.homeserver"
@@ -51,6 +50,6 @@
 
   services.pihole-web = {
     enable = true;
-    ports = [ "80s" "443s" ];
+    ports = [ "3424s" ];
   };
 }
