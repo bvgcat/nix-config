@@ -51,6 +51,6 @@
 
   services.pihole-web = {
     enable = true;
-    ports = [ "443s" ];
+    ports = [ "80s" "443s" ];
   };
 }
