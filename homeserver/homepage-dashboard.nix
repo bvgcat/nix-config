@@ -117,6 +117,18 @@ in
             };
           }
           {
+            "Pi-hole" = {
+              icon = "pihole.svg";
+              description = "Pi-hole dashboard";
+              href = "https://pi.hole.pi";
+              ping = "https://pi.hole.pi";              
+              widget = {
+                type = "pihole";
+                url = "https://pi.hole.pi";
+              };
+            };
+          }
+          {
             "Minecraft" = {
               icon = "minecraft.svg";
               description = "Main Minecraft Server";
