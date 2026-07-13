@@ -124,7 +124,7 @@ in
               ping = "https://pi.hole.pi";              
               widget = {
                 type = "pihole";
-                url = "https://pi.hole.pi";
+                url = "http://pi.hole.pi";
                 version = 5;
               };
             };
