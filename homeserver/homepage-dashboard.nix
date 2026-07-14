@@ -125,7 +125,7 @@ in
               widget = {
                 type = "pihole";
                 url = "https://pi-hole.pi3b";
-                version = 5;
+                version = 6;
               };
             };
           }
