@@ -59,7 +59,6 @@
         ./modules
         ./modules/common.nix
         ./modules/settings.nix
-        ./modules/settings.nix
       ];
     };
 

@@ -9,7 +9,6 @@ let
 in {
   imports = [
     ./hardware-configuration.nix
-    ./nginx.nix
     ./pi-hole.nix
     ./secrets.nix
     ./wireguard.nix

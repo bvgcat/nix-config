@@ -36,6 +36,7 @@
         ];
         listenInterface = "all";
       };
+      webserver.tls.cert = "/var/lib/pihole/tls.pem";
     };
 
     lists = [

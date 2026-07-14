@@ -24,7 +24,6 @@
   };
   
   security.pki.certificateFiles = [
-    ../certs/homeserver-rootca.crt
-    ../certs/pi3b-rootca.crt
+    ../certs/rootca.crt
   ];
 }

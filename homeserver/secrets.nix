@@ -8,8 +8,8 @@
     nc-userpass.key = "nc-userpass";
     restic-password.key = "restic-password";
     homepage-env.key = "homepage-env";
-    homeserver-rootca-key = {
-      key = "homeserver-rootca-key";
+    rootca-key = {
+      key = "rootca-key";
       path = "/etc/ssl/local-ca/rootca.key";
     };
     homeserver-ssl-key = {
