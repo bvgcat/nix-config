@@ -120,11 +120,11 @@ in
             "Pi-hole" = {
               icon = "pi-hole.svg";
               description = "Pi-hole dashboard";
-              href = "https://pi.hole.pi";
-              ping = "https://pi.hole.pi";              
+              href = "https://pi-hole.pi3b";
+              ping = "https://pi-hole.pi3b";              
               widget = {
                 type = "pihole";
-                url = "http://pi.hole.pi";
+                url = "https://pi-hole.pi3b";
                 version = 5;
               };
             };
