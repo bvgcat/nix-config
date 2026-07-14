@@ -17,7 +17,7 @@
         sslCertificate = "/etc/ssl/local-ca/pi3b.crt";
         sslCertificateKey = "/etc/ssl/local-ca/pi3b.key";
         locations."/" = {
-          proxyPass = "http://127.0.0.1:3424";
+          proxyPass = "https://127.0.0.1:3424";
           recommendedProxySettings = true;
         };
       };
