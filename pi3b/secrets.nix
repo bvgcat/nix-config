@@ -13,10 +13,16 @@
     pi3b-ssl-key = {
       key = "pi3b-ssl-key";
       path = "/etc/ssl/local-ca/pi3b.key";
+      owner = "nginx";
+      group = "nginx";
+      mode = "0400";
     };
     pi3b-ssl-crt = {
       key = "pi3b-ssl-crt";
       path = "/etc/ssl/local-ca/pi3b.crt";
+      owner = "nginx";
+      group = "nginx";
+      mode = "0444";
     };
     syncthing-cert = {
       key = "syncthing-cert-pi3b";

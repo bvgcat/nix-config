@@ -15,10 +15,16 @@
     homeserver-ssl-key = {
       key = "homeserver-ssl-key";
       path = "/etc/ssl/local-ca/homeserver.key";
+      owner = "nginx";
+      group = "nginx";
+      mode = "0400";
     };
     homeserver-ssl-crt = {
       key = "homeserver-ssl-crt";
       path = "/etc/ssl/local-ca/homeserver.crt";
+      owner = "nginx";
+      group = "nginx";
+      mode = "0444";
     };
     syncthing-cert = {
       key = "syncthing-cert-homeserver";
