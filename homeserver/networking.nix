@@ -47,4 +47,7 @@ in
       interface = wlp;
     };
   };
+
+  allowedUDPPorts = [ 5900 ];
+  allowedTCPPorts = [ 5900 ]; # krdc / krfb
 }
