@@ -14,11 +14,6 @@ in
     ./secrets.nix
   ];
 
-  networking.firewall = {
-    allowedUDPPorts = [ 5901 ];
-    allowedTCPPorts = [ 5901 ]; # krdc / krfb
-  };
-  
   environment.systemPackages = with pkgs; [
     (pkgs.callPackage ../modules/plecs.nix { })
     fprintd
@@ -143,12 +138,19 @@ in
   ];
 
   systemd.user.services.input-leaps-autostart = {
-    description = "Input Leap";
-    after = [ "graphical-session.target" ];
+    description = "Input Leap server";
     wantedBy = [ "graphical-session.target" ];
+    wants = [ "network-online.target" ];
+    after = [
+      "graphical-session.target"
+      "network-online.target"
+    ];
 
     serviceConfig = {
-      ExecStart = "${pkgs.input-leap}/bin/input-leaps -c .config/InputLeap/config.conf";
+      ExecStart =
+        "${pkgs.input-leap}/bin/input-leaps -c /home/${user}/.config/InputLeap/config.conf --no-daemon";
+      Restart = "always";
+      RestartSec = 10;
     };
   };
 

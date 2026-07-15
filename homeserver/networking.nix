@@ -47,9 +47,4 @@ in
       interface = wlp;
     };
   };
-
-  networking.firewall = {
-    allowedUDPPorts = [ 5901 ];
-    allowedTCPPorts = [ 5901 ]; # krdc / krfb
-  };
 }

@@ -1,6 +1,7 @@
 {
   modulesPath,
   pkgs,
+  user,
   ...
 }:
 
@@ -42,6 +43,23 @@ in
     vlc
   ];
   
+  systemd.user.services.input-leapc-autostart = {
+    description = "Input Leap client";
+    wantedBy = [ "graphical-session.target" ];
+    wants = [ "network-online.target" ];
+    after = [
+      "graphical-session.target"
+      "network-online.target"
+    ];
+
+    serviceConfig = {
+      ExecStart =
+        "${pkgs.input-leap}/bin/input-leapc -c /home/${user}/.config/InputLeap/config.conf --no-daemon thinkpad-l14-g2";
+      Restart = "always";
+      RestartSec = 10;
+    };
+  };
+
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
   nix.settings.extra-platforms = [
     "aarch64-linux"
