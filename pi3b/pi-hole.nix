@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 {
   services.pihole-ftl.package = pkgs.pihole-ftl.overrideAttrs (old: {
     nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [
@@ -37,6 +37,7 @@
         listenInterface = "all";
       };
       webserver.tls.cert = "/var/lib/pihole/tls.pem";
+      webserver.api.password = builtins.readFile config.sops.secrets.pi-hole-pass.path;
     };
 
     lists = [

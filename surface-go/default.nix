@@ -24,11 +24,9 @@
         IdleTimeout = 0;
         Experimental = true;
         FastConnectable = true;
-        JustWorksRepairing = true;
       };
       Policy = {
         AutoEnable = true;
-        ResumeDelay = 5;
       };
     };
   };

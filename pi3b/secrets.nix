@@ -1,15 +1,9 @@
 { config, user, ... }:
 
 {
-  services.syncthing.key = config.sops.secrets.syncthing-key.path;
-
   sops.secrets = {
     duckdns.key = "duckdns";
     wg-pi3b.key = "wg-pi3b";
-    rootca-key = {
-      key = "rootca-key";
-      path = "/etc/ssl/local-ca/rootca.key";
-    };
     pi3b-ssl-key = {
       key = "pi3b-ssl-key";
       path = "/etc/ssl/local-ca/pi3b.key";
