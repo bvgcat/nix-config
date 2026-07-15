@@ -54,7 +54,7 @@ in
 
     serviceConfig = {
       ExecStart =
-        "${pkgs.input-leap}/bin/input-leapc -c /home/${user}/.config/InputLeap/config.conf --no-daemon thinkpad-l14-g2";
+        "${pkgs.input-leap}/bin/input-leapc --no-daemon thinkpad-l14-g2";
       Restart = "always";
       RestartSec = 10;
     };
