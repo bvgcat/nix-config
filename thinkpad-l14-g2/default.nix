@@ -13,9 +13,12 @@ in
     ./hardware-configuration.nix
     ./secrets.nix
   ];
-  allowedUDPPorts = [ 5900 ];
-  allowedTCPPorts = [ 5900 ]; # krdc / krfb
 
+  networking.firewall = {
+    allowedUDPPorts = [ 5900 ];
+    allowedTCPPorts = [ 5900 ]; # krdc / krfb
+  };
+  
   environment.systemPackages = with pkgs; [
     (pkgs.callPackage ../modules/plecs.nix { })
     fprintd

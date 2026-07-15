@@ -48,6 +48,8 @@ in
     };
   };
 
-  allowedUDPPorts = [ 5900 ];
-  allowedTCPPorts = [ 5900 ]; # krdc / krfb
+  networking.firewall = {
+    allowedUDPPorts = [ 5900 ];
+    allowedTCPPorts = [ 5900 ]; # krdc / krfb
+  };
 }
