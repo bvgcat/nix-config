@@ -30,7 +30,6 @@ in
   ];
 
   environment.systemPackages = with pkgs; [
-    kdePackages.krdc        ## kdeconnect virtual display
     kdePackages.plasma-browser-integration
     #certbot-full
     curl

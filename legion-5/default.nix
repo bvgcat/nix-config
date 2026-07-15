@@ -74,9 +74,6 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
   services.xserver = {
     xkb.layout = "de";
     xkb.variant = "";
@@ -84,7 +81,6 @@
 
   console.keyMap = "de";
 
-  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;

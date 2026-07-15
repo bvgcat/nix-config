@@ -14,13 +14,9 @@
     hostName = hostname;
     firewall= {
       allowedUDPPorts = [ 51820 ];  # wireguard
-      allowedTCPPorts = [ 24800 ];
+      allowedTCPPorts = [ 24800 ];  # input-leap
     };
     networkmanager.enable = true;
-    nameservers = [
-      "1.1.1.1"
-      "1.0.0.1"
-    ];
   };
   
   security.pki.certificateFiles = [

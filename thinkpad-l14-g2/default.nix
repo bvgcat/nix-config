@@ -21,7 +21,6 @@ in
     libfprint-tod
 
     kdePackages.kdenlive
-    kdePackages.krfb        ## kdeconnect virtual display
     kdePackages.kpmcore
     kdePackages.plasma-browser-integration
     kdePackages.partitionmanager
@@ -114,6 +113,7 @@ in
 
   # for virtualistion
   programs.virt-manager.enable = true;
+  services.spice-vdagentd.enable = true;  # enable copy and paste
   virtualisation = {
     waydroid = {
       enable = true;
