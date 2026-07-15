@@ -49,7 +49,7 @@ in
   };
 
   networking.firewall = {
-    allowedUDPPorts = [ 5900 ];
-    allowedTCPPorts = [ 5900 ]; # krdc / krfb
+    allowedUDPPorts = [ 5901 ];
+    allowedTCPPorts = [ 5901 ]; # krdc / krfb
   };
 }
