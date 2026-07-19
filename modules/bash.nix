@@ -20,5 +20,6 @@
     upgrade-pi = "nixos-rebuild --build-host builder@homeserver --target-host root@pi3b switch --flake github:bvgcat/nix-config#pi3b";
     upgrade-hs = "nixos-rebuild --build-host builder@homeserver --target-host root@homeserver switch --flake github:bvgcat/nix-config#homeserver";
     upgrade-sg = "nixos-rebuild --build-host builder@homeserver --target-host root@surface-go switch --flake github:bvgcat/nix-config#surface-go";
+    upgrade-all = "upgrade-hs && upgrade-me && upgrade-pi && upgrade-sg";
   };
 }
