@@ -37,7 +37,7 @@
         listenInterface = "all";
       };
       webserver.tls.cert = "/var/lib/pihole/tls.pem";
-      webserver.api.password = builtins.readFile config.sops.secrets.pi-hole-pass.path;
+      webserver.api.password = builtins.readFile config.sops.secrets.pihole-pass.path;
     };
 
     lists = [
