@@ -84,7 +84,6 @@ in
 
   boot = {
     kernelParams = [];
-    kernelPackages = pkgs.linuxPackages_latest;
     kernelModules = [];
     supportedFilesystems = [ "ntfs" ];
   };
