@@ -35,7 +35,7 @@ in
     gearlever
     element-desktop
     (pkgs.ffmpeg-full.override { withUnfree = true; })
-    oldPkgs.kicad
+    kicad
     libreoffice
     libvirt
     nextcloud-client
@@ -67,7 +67,7 @@ in
       tor-browser
     ];
   };
-  
+
   programs.bash.shellAliases = {
     update = "sudo nix flake update --flake ./nix-config";
     upgrade = "sudo nixos-rebuild switch --flake ./nix-config";
