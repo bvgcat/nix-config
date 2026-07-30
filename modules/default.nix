@@ -8,13 +8,20 @@
   imports = [
     ../secrets/sops.nix
 
-    ./bash.nix
     ./networking.nix
     ./ssh.nix
     ./syncthing.nix
   ];
+  
+  sops = {
+    age.keyFile = "/var/lib/sops/key.txt";
+    defaultSopsFile = ./secrets.yaml;
+    defaultSopsFormat = "yaml";
+  };
 
   environment.systemPackages = with pkgs; [
+    age
+    sops
     curl
     git
     gnupg
@@ -26,23 +33,9 @@
     usbutils
     wireguard-tools
   ];
-
-  nix = {
-    distributedBuilds = true;
-    buildMachines = [
-      {
-        hostName = "homeserver";
-        sshUser = "builder";
-        sshKey = "/root/.ssh/id_ed25519";
-        system = "x86_64-linux";
-        protocol = "ssh-ng";
-        maxJobs = 8;
-        supportedFeatures = [ "kvm" "big-parallel" ];
-      }
-    ];
-    settings = {
-      trusted-users = [ user ];
-      builders-use-substitutes = true;
-    };
+  
+  programs.bash.shellAliases = {
+    rkde = "kstart5 plasmashell";
+    clean = "sudo nix-collect-garbage -v -d && sudo nix-store -v --gc && sudo nix-store -v --optimise";
   };
 }

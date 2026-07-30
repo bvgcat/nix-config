@@ -58,6 +58,7 @@
         ./secrets/sops.nix
         ./modules
         ./modules/common.nix
+        ./modules/client.nix
         ./modules/settings.nix
       ];
     };
@@ -77,6 +78,7 @@
         ./thinkpad-l14-g2
         ./secrets/sops.nix
         ./modules
+        ./modules/client.nix
         ./modules/settings.nix
         ./modules/common.nix
       ];
@@ -98,6 +100,7 @@
         ./pi3b
         ./secrets/sops.nix
         ./modules
+        ./modules/client.nix
       ];
     };
     
@@ -116,6 +119,7 @@
         ./secrets/sops.nix
         ./modules
         ./modules/common.nix
+        ./modules/client.nix
         ./modules/settings.nix
       ];
     };
