@@ -2,10 +2,14 @@
   inputs = {
     nixpkgs-old.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
+    nixpkgs-hardware.url = "github:NixOS/nixpkgs/a9cf7546a938c737b079e738de73934a13de9784";
+    nixos-hardware = {
+      url = "github:NixOS/nixos-hardware";
+      inputs.nixpkgs.follows = "nixpkgs-hardware";
+    };
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
-    nixos-hardware.url = "github:NixOS/nixos-hardware/a9cf7546a938c737b079e738de73934a13de9784";
     sops-nix.url = "github:Mic92/sops-nix";
   };
 
