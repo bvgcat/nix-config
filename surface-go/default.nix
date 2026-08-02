@@ -51,18 +51,7 @@
     };  
   };
 
-  boot = {
-    kernelModules = [ "snd_hda_intel" ];
-    supportedFilesystems = [ "ntfs" ];
-  };
-
-  hardware.enableAllFirmware = true;
-  hardware.graphics = {
-    enable = true;
-    extraPackages = with pkgs; [
-      vpl-gpu-rt # for newer GPUs on NixOS <= 24.05
-    ];
-  };
+  boot.supportedFilesystems = [ "ntfs" ];
   services = {
     thermald.enable = true;
     power-profiles-daemon = {

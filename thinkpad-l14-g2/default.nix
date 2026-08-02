@@ -64,6 +64,13 @@ in
       "disk"
     ];
     packages = with pkgs; [
+      keepassxc
+      marksman
+      nixd
+      nixfmt
+      ntfs3g
+      obsidian
+      proton-authenticator
       tor-browser
     ];
   };
