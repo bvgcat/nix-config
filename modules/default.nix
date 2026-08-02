@@ -14,8 +14,6 @@
   ];
   
   environment.systemPackages = with pkgs; [
-    age
-    sops
     curl
     git
     gnupg
