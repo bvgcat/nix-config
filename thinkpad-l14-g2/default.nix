@@ -41,6 +41,8 @@ in
     nextcloud-client
     nixos-anywhere
     freecad
+    openrazer-daemon
+    polychromatic
     prismlauncher
     qemu
     signal-desktop
@@ -62,6 +64,7 @@ in
       "qemu-libvirtd"
       "libvirtd"
       "disk"
+      "openrazer"
     ];
     packages = with pkgs; [
       keepassxc
@@ -118,6 +121,7 @@ in
     graphics.enable = true;
     bluetooth.enable = true;
     enableAllFirmware = true;
+    openrazer.enable = true;
   };
   services = {
     thermald.enable = true;
