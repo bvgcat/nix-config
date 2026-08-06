@@ -32,6 +32,7 @@ in
 
     brave
     discord
+    distrobox
     gearlever
     element-desktop
     (pkgs.ffmpeg-full.override { withUnfree = true; })
@@ -135,6 +136,10 @@ in
   programs.virt-manager.enable = true;
   services.spice-vdagentd.enable = true;  # enable copy and paste
   virtualisation = {
+    podman = {
+      enable = true;
+      dockerCompat = true;
+    };
     waydroid = {
       enable = true;
       package = pkgs.waydroid-nftables;
