@@ -16,6 +16,7 @@
   ];
 
   environment.systemPackages = with pkgs; [
+    kdePackages.plasma-bigscreen
     librespot
     maliit-keyboard
   ];
