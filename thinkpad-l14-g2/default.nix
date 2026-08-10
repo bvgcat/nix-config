@@ -66,6 +66,7 @@ in
       "qemu-libvirtd"
       "libvirtd"
       "disk"
+      "dialout" # MATLAB
       "openrazer"
     ];
     packages = with pkgs; [
