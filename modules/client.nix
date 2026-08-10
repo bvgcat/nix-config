@@ -15,7 +15,10 @@
         system = "x86_64-linux";
         protocol = "ssh-ng";
         maxJobs = 8;
-        supportedFeatures = [ "kvm" "big-parallel" ];
+        supportedFeatures = [
+          "kvm"
+          "big-parallel"
+        ];
       }
     ];
     settings = {

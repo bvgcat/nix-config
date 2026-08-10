@@ -5,30 +5,38 @@
     sops-nix.url = "github:Mic92/sops-nix";
   };
 
-  outputs = { self, nixpkgs, nixos-hardware, sops-nix, ... }:
-  let
-    system = "aarch64-linux";
-  in {
-    nixosConfigurations.pi3b = nixpkgs.lib.nixosSystem {
-      inherit system;
+  outputs =
+    {
+      self,
+      nixpkgs,
+      nixos-hardware,
+      sops-nix,
+      ...
+    }:
+    let
+      system = "aarch64-linux";
+    in
+    {
+      nixosConfigurations.pi3b = nixpkgs.lib.nixosSystem {
+        inherit system;
 
-      modules = [        
-        ({ ... }: {
-          _module.args = {
-            user = "m";
-            hostname = "pi3b";
-          };
-          nixpkgs.hostPlatform = system;
-          sdImage.compressImage = false;
-        })
-        nixos-hardware.nixosModules.raspberry-pi-3
-        sops-nix.nixosModules.sops
-        ./default.nix
-        ../secrets/sops.nix
-        ../modules
+        modules = [
+          ({ ... }: {
+            _module.args = {
+              user = "m";
+              hostname = "pi3b";
+            };
+            nixpkgs.hostPlatform = system;
+            sdImage.compressImage = false;
+          })
+          nixos-hardware.nixosModules.raspberry-pi-3
+          sops-nix.nixosModules.sops
+          ./default.nix
+          ../secrets/sops.nix
+          ../modules
 
-        "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
-      ];
+          "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
+        ];
+      };
     };
-  };
 }

@@ -13,12 +13,14 @@
       "nix.serverPath": "nixd",
       }
       EOF
-      ${pkgs.vscode-with-extensions.override {
-        vscode = pkgs.vscodium;
-        vscodeExtensions = with pkgs.vscode-extensions; [
-          jnoortheen.nix-ide
-        ];
-      }}/bin/codium --user-data-dir "$dir" "$@"
+      ${
+        pkgs.vscode-with-extensions.override {
+          vscode = pkgs.vscodium;
+          vscodeExtensions = with pkgs.vscode-extensions; [
+            jnoortheen.nix-ide
+          ];
+        }
+      }/bin/codium --user-data-dir "$dir" "$@"
     '')
   ];
 }

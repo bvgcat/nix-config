@@ -3,7 +3,7 @@
   ...
 }:
 
-# You might want to view the list of all available server properties for the vanilla server. 
+# You might want to view the list of all available server properties for the vanilla server.
 # https://minecraft.wiki/w/Server.properties#Keys
 {
   services.minecraft-server = {

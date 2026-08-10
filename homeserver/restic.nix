@@ -1,15 +1,23 @@
-{ config, pkgs, user, ... }:
+{
+  config,
+  pkgs,
+  user,
+  ...
+}:
 
-let 
+let
   repo_path = "/run/media/${user}/trans_ext4/homeserver";
-in 
+in
 {
   # Restic backup service
   services.restic.backups.local_ssd = {
     initialize = true;
     repository = repo_path;
     passwordFile = config.sops.secrets.restic-password.path;
-    paths = [ "/home/${user}" "/run/media/${user}/sdcard" ];
+    paths = [
+      "/home/${user}"
+      "/run/media/${user}/sdcard"
+    ];
 
     timerConfig = {
       OnCalendar = "weekly";
@@ -24,7 +32,11 @@ in
   };
 
   # System packages for Backrest
-  environment.systemPackages = with pkgs; [ backrest nodejs restic ];
+  environment.systemPackages = with pkgs; [
+    backrest
+    nodejs
+    restic
+  ];
 
   # Environment variables for Backrest
   environment.variables = {
@@ -51,4 +63,3 @@ in
     wantedBy = [ "multi-user.target" ];
   };
 }
-

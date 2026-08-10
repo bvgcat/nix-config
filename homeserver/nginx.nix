@@ -1,14 +1,15 @@
 { config, ... }:
 
 {
-  networking.firewall.allowedTCPPorts = [ 
-    80 
-    443 
-    config.services.immich.port 
-    8082 
+  networking.firewall.allowedTCPPorts = [
+    80
+    443
+    config.services.immich.port
+    8082
     config.services.home-assistant.config.http.server_port
     8384
-    9000 ];
+    9000
+  ];
 
   services.nginx = {
     enable = true;
@@ -79,4 +80,3 @@
     };
   };
 }
-

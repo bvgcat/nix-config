@@ -1,5 +1,5 @@
- {}:
- {
+{ ... }:
+{
   services.udev.extraRules = ''
     # Texas Instruments USB devices
     SUBSYSTEM=="usb",ENV{DEVTYPE}=="usb_device",ATTRS{idVendor}=="0403",ATTRS{idProduct}=="a6d0",MODE:="0666"
@@ -30,4 +30,4 @@
     SUBSYSTEM=="usb", ATTR{idVendor}=="0c55" ,ATTR{idProduct}=="0562",MODE="0666"
     SUBSYSTEM=="usb", ATTR{idVendor}=="0c55" ,ATTR{idProduct}=="0566",MODE="0666"
   '';
- }
+}

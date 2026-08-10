@@ -10,15 +10,21 @@ let
   port = 2283;
 in
 {
-  networking.firewall.allowedTCPPorts = [ port 3003 ];
-  users.users.immich.extraGroups = [ "video" "render" ];
+  networking.firewall.allowedTCPPorts = [
+    port
+    3003
+  ];
+  users.users.immich.extraGroups = [
+    "video"
+    "render"
+  ];
 
   systemd.services.immich-machine-learning = {
     environment = {
-      HF_HOME      = "/var/lib/immich/.cache/huggingface";
+      HF_HOME = "/var/lib/immich/.cache/huggingface";
     };
   };
-  
+
   services = {
     immich = {
       enable = true;
@@ -30,7 +36,7 @@ in
       redis.enable = true;
       accelerationDevices = null; # enable all
       mediaLocation = "/var/lib/immich";
-      
+
       #  https://immich.app/docs/install/config-file/
       #settings = ;
 
@@ -40,7 +46,7 @@ in
       };
       machine-learning = {
         enable = true;
-        environment = {};
+        environment = { };
       };
     };
   };

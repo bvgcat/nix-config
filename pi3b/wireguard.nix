@@ -39,7 +39,10 @@
 
   networking.firewall = {
     enable = true;
-    allowedUDPPorts = [ 51820 52000 ];
+    allowedUDPPorts = [
+      51820
+      52000
+    ];
     trustedInterfaces = [ "wg0" ];
     interfaces.wg0.allowedUDPPorts = [ 53 ];
     interfaces.wg0.allowedTCPPorts = [ 53 ];
@@ -47,5 +50,5 @@
     extraCommands = ''
       iptables -t nat -A PREROUTING -p udp --dport 52000 -j REDIRECT --to-ports 51820
     '';
-  };  
+  };
 }

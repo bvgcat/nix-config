@@ -8,7 +8,7 @@ let
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBEFVUaUD6qmIdaA1j+0sR7nadUqdMD5L8n1MMbdsMyD nixos@surface-go"
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKxm/hekk06/1veUx/0OXXzjWbE6RMV8M3bzNa4fmtmB nixos@pi3b"
   ];
-in 
+in
 {
   users.users = {
     builder = {

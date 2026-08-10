@@ -49,8 +49,9 @@ in
     # https://gethomepage.dev/latest/configs/services/
     services = [
       {
-      "Calendars" = [          {
-          "Agenda" = {
+        "Calendars" = [
+          {
+            "Agenda" = {
               widget = {
                 type = "calendar";
                 view = "agenda";
@@ -68,7 +69,7 @@ in
             };
           }
           {
-          "Calender" = {
+            "Calender" = {
               widget = {
                 type = "calendar";
                 firstDayInWeek = "monday";
@@ -107,7 +108,7 @@ in
               icon = "nextcloud.svg";
               description = "My Nextlcloud instance :)";
               href = "https://cloud.homeserver";
-              ping = "https://cloud.homeserver";              
+              ping = "https://cloud.homeserver";
               widget = {
                 type = "nextcloud";
                 url = "https://cloud.homeserver";
@@ -121,7 +122,7 @@ in
               icon = "pi-hole.svg";
               description = "Pi-hole dashboard";
               href = "https://pi-hole.pi3b";
-              ping = "https://pi-hole.pi3b";              
+              ping = "https://pi-hole.pi3b";
               widget = {
                 type = "pihole";
                 url = "https://pi-hole.pi3b";

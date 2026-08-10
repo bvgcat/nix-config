@@ -41,7 +41,7 @@ in
     qdirstat
     vlc
   ];
-  
+
   programs.bash.shellAliases = {
     upgrade = "sudo nixos-rebuild switch --refresh --flake github:bvgcat/nix-config";
     upgrade-tp = "nixos-rebuild --target-host root@thinkpad-l14-g2 switch --flake github:bvgcat/nix-config#thinkpad-l14-g2";
@@ -59,8 +59,7 @@ in
     ];
 
     serviceConfig = {
-      ExecStart =
-        "${pkgs.input-leap}/bin/input-leapc --no-daemon thinkpad-l14-g2";
+      ExecStart = "${pkgs.input-leap}/bin/input-leapc --no-daemon thinkpad-l14-g2";
       Restart = "always";
       RestartSec = 10;
     };
@@ -70,7 +69,7 @@ in
   nix.settings.extra-platforms = [
     "aarch64-linux"
   ];
-  
+
   system.autoUpgrade = {
     enable = true;
     operation = "switch";
@@ -104,7 +103,7 @@ in
       variant = "";
     };
   };
-  
+
   systemd.sleep.settings.Sleep = {
     AllowSuspend = false;
     AllowHibernation = false;
@@ -113,7 +112,9 @@ in
   };
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; }; # Optionally, set the environment variable
+  environment.sessionVariables = {
+    LIBVA_DRIVER_NAME = "iHD";
+  }; # Optionally, set the environment variable
   hardware.graphics = {
     enable = true;
     extraPackages = with pkgs; [

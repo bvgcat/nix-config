@@ -24,11 +24,14 @@
     config = {
       http = {
         server_host = "::1";
-        trusted_proxies = [ "::1" "127.0.0.1" ];
+        trusted_proxies = [
+          "::1"
+          "127.0.0.1"
+        ];
         use_x_forwarded_for = true;
       };
 
-      default_config = {};
+      default_config = { };
     };
   };
 }

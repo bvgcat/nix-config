@@ -6,9 +6,9 @@
   ...
 }:
 
-let 
+let
   port = 8112;
-in 
+in
 {
   services.deluge = {
     enable = true;
@@ -17,6 +17,6 @@ in
       enable = true;
       port = port;
       openFirewall = true;
-    }; 
+    };
   };
 }

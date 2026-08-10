@@ -1,4 +1,11 @@
-{ stdenv, fetchzip, makeWrapper, autoPatchelfHook, pkgs, lib }:
+{
+  stdenv,
+  fetchzip,
+  makeWrapper,
+  autoPatchelfHook,
+  pkgs,
+  lib,
+}:
 
 let
   pname = "plecs";
@@ -16,7 +23,7 @@ let
     name = pname;
     desktopName = appname;
     comment = "PLECS (Piecewise Linear Electrical Circuit Simulation) software";
-    icon = "plecs";   # TODO: find the logo somewhere
+    icon = "plecs"; # TODO: find the logo somewhere
     exec = "plecs %f";
     categories = [ "Science" ];
     mimeTypes = [
@@ -39,8 +46,12 @@ stdenv.mkDerivation {
 
   dontWrapQtApps = true;
 
-  nativeBuildInputs = [ makeWrapper autoPatchelfHook pkgs.kdePackages.wrapQtAppsHook ];
-  
+  nativeBuildInputs = [
+    makeWrapper
+    autoPatchelfHook
+    pkgs.kdePackages.wrapQtAppsHook
+  ];
+
   buildInputs = with pkgs; [
     glibc
     libGL
@@ -66,11 +77,11 @@ stdenv.mkDerivation {
     xcbutilkeysyms
     xcbutilrenderutil
 
-    qt6.qtbase    
+    qt6.qtbase
     qt6.qtdeclarative
     qt6.qttools
     qt6.qtwebengine
-];
+  ];
 
   installPhase = ''
     mkdir -p $out/opt/plecs

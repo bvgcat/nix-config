@@ -7,9 +7,12 @@
   ...
 }:
 
-let 
-  ports = [ 80 443 ];
-in 
+let
+  ports = [
+    80
+    443
+  ];
+in
 {
   networking.firewall.allowedTCPPorts = ports;
 
@@ -18,7 +21,7 @@ in
       enable = true;
       hostName = "cloud.homeserver";
       datadir = "/var/lib/nextcloud";
-        
+
       # Need to manually increment with every major upgrade.
       package = pkgs.nextcloud33;
 
@@ -43,8 +46,12 @@ in
       };
 
       settings = {
-        default_phone_region = "DE";    
-        trusted_domains = [ "cloud.homeserver" "localhost" "homeserver" ];
+        default_phone_region = "DE";
+        trusted_domains = [
+          "cloud.homeserver"
+          "localhost"
+          "homeserver"
+        ];
         overwrite.cli.url = "http://cloud.homeserver";
         enabledPreviewProviders = [
           "OC\\Preview\\BMP"

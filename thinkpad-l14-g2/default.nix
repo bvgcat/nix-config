@@ -27,7 +27,7 @@ in
     kdePackages.partitionmanager
     kdePackages.qtwebengine
     kdePackages.wacomtablet
-    
+
     android-tools
     scrcpy
 
@@ -56,7 +56,7 @@ in
     vscodium
     OVMFFull
   ];
-  
+
   users.users.${user} = {
     isNormalUser = true;
     description = "h";
@@ -105,8 +105,8 @@ in
   };
 
   boot = {
-    kernelParams = [];
-    kernelModules = [];
+    kernelParams = [ ];
+    kernelModules = [ ];
     supportedFilesystems = [ "ntfs" ];
   };
 
@@ -135,7 +135,7 @@ in
 
   # for virtualistion
   programs.virt-manager.enable = true;
-  services.spice-vdagentd.enable = true;  # enable copy and paste
+  services.spice-vdagentd.enable = true; # enable copy and paste
   virtualisation = {
     podman = {
       enable = true;
@@ -173,8 +173,7 @@ in
     ];
 
     serviceConfig = {
-      ExecStart =
-        "${pkgs.input-leap}/bin/input-leaps -c /home/${user}/.config/InputLeap/config.conf --no-daemon";
+      ExecStart = "${pkgs.input-leap}/bin/input-leaps -c /home/${user}/.config/InputLeap/config.conf --no-daemon";
       Restart = "always";
       RestartSec = 10;
     };

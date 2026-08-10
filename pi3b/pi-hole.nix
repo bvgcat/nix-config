@@ -5,8 +5,7 @@
       pkgs.lld
       pkgs.autoPatchelfHook
     ];
-    NIX_CFLAGS_LINK = (old.NIX_CFLAGS_LINK or "")
-      + " -fuse-ld=lld -Wl,--fix-cortex-a53-843419";
+    NIX_CFLAGS_LINK = (old.NIX_CFLAGS_LINK or "") + " -fuse-ld=lld -Wl,--fix-cortex-a53-843419";
   });
 
   services.pihole-ftl = {
@@ -17,7 +16,10 @@
 
     settings = {
       dns = {
-        upstreams = [ "1.1.1.1" "9.9.9.9" ];
+        upstreams = [
+          "1.1.1.1"
+          "9.9.9.9"
+        ];
         hosts = [
           "192.168.0.100 pi3b"
           "192.168.0.100 pi-hole.pi3b"

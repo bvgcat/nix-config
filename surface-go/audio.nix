@@ -8,10 +8,16 @@ let
   tcp = 8050;
 in
 {
-  networking.firewall.allowedUDPPorts = [ mdns 8888 ];
-  networking.firewall.allowedTCPPorts = [ tcp 8888 ];
+  networking.firewall.allowedUDPPorts = [
+    mdns
+    8888
+  ];
+  networking.firewall.allowedTCPPorts = [
+    tcp
+    8888
+  ];
 
-  environment.systemPackages = with pkgs; [  
+  environment.systemPackages = with pkgs; [
     gst_all_1.gstreamer
     gst_all_1.gst-plugins-base
     gst_all_1.gst-plugins-good

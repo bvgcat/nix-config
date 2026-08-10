@@ -1,4 +1,12 @@
-{ stdenv, fetchzip, unzip, makeWrapper, autoPatchelfHook, pkgs, lib }:
+{
+  stdenv,
+  fetchzip,
+  unzip,
+  makeWrapper,
+  autoPatchelfHook,
+  pkgs,
+  lib,
+}:
 
 stdenv.mkDerivation rec {
   pname = "ccstudio";
@@ -9,7 +17,11 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-oKjyTJP5ZiXwap//ayEz1hrWneHUD9Uk4yMgUEc3W/Q=";
   };
 
-  nativeBuildInputs = [ unzip makeWrapper autoPatchelfHook ];
+  nativeBuildInputs = [
+    unzip
+    makeWrapper
+    autoPatchelfHook
+  ];
 
   buildInputs = with pkgs; [
     zlib
@@ -32,26 +44,26 @@ stdenv.mkDerivation rec {
 
   unpackPhase = ''
     runHook preUnpack
-    
+
     # Extract the main zip
     unzip $src -d ccstudio-source
-    
+
     # Find and extract the .run file (which is often a self-extracting archive)
     RUN_FILE=$(find ccstudio-source -name "*.run" | head -1)
-    
+
     if [ -z "$RUN_FILE" ]; then
       echo "Error: No .run file found in the archive"
       find ccstudio-source -type f
       exit 1
     fi
-    
+
     echo "Found installer: $RUN_FILE"
     chmod +x "$RUN_FILE"
-    
+
     # Try to extract the .run file (many .run files are actually shell scripts that extract archives)
     mkdir extracted-installer
     cd extracted-installer
-    
+
     # Try different extraction methods
     if "$RUN_FILE" --help 2>&1 | grep -q "extract"; then
       "$RUN_FILE" --extract ./ || true
@@ -63,13 +75,13 @@ stdenv.mkDerivation rec {
       "$RUN_FILE" --noexec --target ./ || \
       { echo "Could not extract installer"; exit 1; }
     fi
-    
+
     runHook postUnpack
   '';
 
   installPhase = ''
     runHook preInstall
-    
+
     # Look for the actual application files in the extracted contents
     if [ -d "ccs" ]; then
       echo "Found extracted CCS directory"
@@ -92,7 +104,7 @@ stdenv.mkDerivation rec {
       ls -la
       exit 1
     fi
-    
+
     runHook postInstall
   '';
 

@@ -3,7 +3,7 @@
   ...
 }:
 {
- 
+
   networking = {
     firewall.allowedUDPPorts = [ 51820 ];
     wireguard.interfaces.wg0 = {

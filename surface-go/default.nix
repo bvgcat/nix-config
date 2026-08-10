@@ -49,7 +49,7 @@
     xkb = {
       layout = "gb";
       variant = "";
-    };  
+    };
   };
 
   boot.supportedFilesystems = [ "ntfs" ];
@@ -61,11 +61,10 @@
     };
   };
 
-
   swapDevices = [
     {
       device = "/swapfile";
-      size = 1024*4;
+      size = 1024 * 4;
     }
   ];
 

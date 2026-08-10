@@ -4,9 +4,10 @@
   hostname,
   ...
 }:
-let 
+let
   pwd = "$y$j9T$H801xAtifzZymLFhYfTPE.$OyXSj2K8JCGGwkvDEFuAV0KhW7Gn59uobxBLDxFuK/4";
-in {
+in
+{
   imports = [
     ./hardware-configuration.nix
     ./pi-hole.nix
@@ -31,7 +32,7 @@ in {
         "networkmanager"
         "wheel"
         "disk"
-      ]; 
+      ];
     };
   };
 
@@ -67,13 +68,13 @@ in {
     };
   };
 
-  i18n.defaultLocale = "en_US.UTF-8";  # base locale (for LANG)
+  i18n.defaultLocale = "en_US.UTF-8"; # base locale (for LANG)
   i18n.extraLocaleSettings = {
     LC_CTYPE = "de_DE.UTF-8";
     LC_ADDRESS = "de_DE.UTF-8";
     LC_IDENTIFICATION = "de_DE.UTF-8";
     LC_MEASUREMENT = "de_DE.UTF-8";
-    LC_MESSAGES = "en_US.UTF-8";  # Keep messages in English
+    LC_MESSAGES = "en_US.UTF-8"; # Keep messages in English
     LC_MONETARY = "de_DE.UTF-8";
     LC_NAME = "de_DE.UTF-8";
     LC_NUMERIC = "de_DE.UTF-8";
@@ -82,6 +83,6 @@ in {
     LC_TIME = "de_DE.UTF-8";
     LC_COLLATE = "de_DE.UTF-8";
   };
-  
+
   system.stateVersion = "26.05"; # Did you read the comment?
 }
