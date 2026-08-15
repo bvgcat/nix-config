@@ -85,10 +85,10 @@ in
     update = "sudo nix flake update --flake ./nix-config";
     upgrade = "sudo nixos-rebuild switch --flake ./nix-config";
     upgrade-git = "sudo nixos-rebuild switch --refresh --flake github:bvgcat/nix-config";
-    upgrade-tp = "ssh builder@homeserver 'nixos-rebuild --target-host root@thinkpad-l14-g2 switch --flake github:bvgcat/nix-config#thinkpad-l14-g2'";
-    upgrade-pi = "ssh builder@homeserver 'nixos-rebuild --target-host root@pi3b switch --flake github:bvgcat/nix-config#pi3b'";
+    upgrade-tp = "ssh root@homeserver 'nixos-rebuild --target-host root@thinkpad-l14-g2 switch --flake github:bvgcat/nix-config#thinkpad-l14-g2'";
+    upgrade-pi = "ssh root@homeserver 'nixos-rebuild --target-host root@pi3b switch --flake github:bvgcat/nix-config#pi3b'";
     upgrade-hs = "ssh root@homeserver 'nixos-rebuild switch --flake github:bvgcat/nix-config#homeserver'";
-    upgrade-sg = "ssh builder@homeserver 'nixos-rebuild --target-host root@surface-go switch --flake github:bvgcat/nix-config#surface-go'";
+    upgrade-sg = "ssh root@homeserver 'nixos-rebuild --target-host root@surface-go switch --flake github:bvgcat/nix-config#surface-go'";
   };
 
   programs = {
