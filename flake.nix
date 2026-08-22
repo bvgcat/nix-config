@@ -1,25 +1,27 @@
 {
   inputs = {
-    nixpkgs-old.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
-    nixpkgs-hardware.url = "github:NixOS/nixpkgs/a9cf7546a938c737b079e738de73934a13de9784";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    
+    nixpkgs-frozen.url = "github:NixOS/nixpkgs/a9cf7546a938c737b079e738de73934a13de9784";
     nixos-hardware = {
       url = "github:NixOS/nixos-hardware";
-      inputs.nixpkgs.follows = "nixpkgs-hardware";
+      inputs.nixpkgs.follows = "nixpkgs-frozen";
     };
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-    disko.url = "github:nix-community/disko";
-    disko.inputs.nixpkgs.follows = "nixpkgs";
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs-frozen";
+    };
     sops-nix.url = "github:Mic92/sops-nix";
   };
 
   outputs =
     {
-      nixpkgs-old,
       nixpkgs,
       nixpkgs-unstable,
-      disko,
+      nixpkgs-frozen,
       nixos-hardware,
+      disko,
       sops-nix,
       ...
     }:
@@ -45,7 +47,7 @@
         ];
       };
 
-      nixosConfigurations.surface-go = nixpkgs-unstable.lib.nixosSystem {
+      nixosConfigurations.surface-go = nixpkgs-frozen.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           ({ ... }: {
@@ -73,7 +75,6 @@
             _module.args = {
               user = "h";
               hostname = "thinkpad-l14-g2";
-              nixpkgs-old = nixpkgs-old;
             };
           })
           nixos-hardware.nixosModules.lenovo-thinkpad-l14-amd
@@ -87,7 +88,7 @@
         ];
       };
 
-      nixosConfigurations.pi3b = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.pi3b = nixpkgs-frozen.lib.nixosSystem {
         system = "x86_64-linux"; # build machine
 
         modules = [
