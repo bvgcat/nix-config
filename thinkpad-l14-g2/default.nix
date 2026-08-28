@@ -31,26 +31,17 @@ in
     android-tools
     scrcpy
 
-    brave
-    discord
     distrobox
-    gearlever
-    element-desktop
     (pkgs.ffmpeg-full.override { withUnfree = true; })
-    kicad
-    libreoffice
     libvirt
-    nextcloud-client
     nixos-anywhere
-    freecad
+    ntfs3g
     openrazer-daemon
     polychromatic
     prismlauncher
     qemu
-    signal-desktop
     spice-vdagent
     texliveFull
-    thunderbird
     virt-manager
     vscode
     vscodium
@@ -70,13 +61,23 @@ in
       "openrazer"
     ];
     packages = with pkgs; [
+      brave
+      discord
+      gearlever
+      element-desktop
+      freecad
       keepassxc
+      kicad
+      libreoffice
       marksman
+      nextcloud-client
       nixd
       nixfmt
-      ntfs3g
+      nuclear
       obsidian
       proton-authenticator
+      signal-desktop
+      thunderbird
       tor-browser
     ];
   };
