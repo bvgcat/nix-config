@@ -5,9 +5,6 @@
   ...
 }:
 
-let
-  oldPkgs = nixpkgs-old.legacyPackages.${pkgs.system};
-in
 {
   imports = [
     ./hardware-configuration.nix

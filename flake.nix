@@ -5,7 +5,7 @@
     
     nixpkgs-frozen.url = "github:NixOS/nixpkgs/3497aa5c9457a9d88d71fa93a4a8368816fbeeba";
     nixos-hardware = {
-      url = "github:NixOS/nixos-hardware";
+      url = "github:NixOS/nixos-hardware/a9cf7546a938c737b079e738de73934a13de9784";
       inputs.nixpkgs.follows = "nixpkgs-frozen";
     };
     disko = {
