@@ -42,6 +42,10 @@ in
     vlc
   ];
 
+  nixpkgs.config.permittedInsecurePackages = [
+    "immich-2.7.5"
+  ];
+              
   programs.bash.shellAliases = {
     upgrade = "sudo nixos-rebuild switch --refresh --flake github:bvgcat/nix-config";
     upgrade-tp = "nixos-rebuild --target-host root@thinkpad-l14-g2 switch --flake github:bvgcat/nix-config#thinkpad-l14-g2";
