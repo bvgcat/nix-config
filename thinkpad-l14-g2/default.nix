@@ -9,7 +9,7 @@
   imports = [
     ./hardware-configuration.nix
     ./secrets.nix
-    ./ccs-udev.nix
+    ./udev.nix
   ];
 
   environment.systemPackages = with pkgs; [
