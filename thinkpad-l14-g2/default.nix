@@ -36,6 +36,7 @@
     openrazer-daemon
     polychromatic
     prismlauncher
+    pulseview
     qemu
     spice-vdagent
     texliveFull
