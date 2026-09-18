@@ -1,7 +1,7 @@
 { ... }:
 {
   services.udev.extraRules = ''
-    # Texas Instruments USB devices
+        # Texas Instruments USB devices
     SUBSYSTEM=="usb",ENV{DEVTYPE}=="usb_device",ATTRS{idVendor}=="0403",ATTRS{idProduct}=="a6d0",MODE:="0666"
     SUBSYSTEM=="usb",ENV{DEVTYPE}=="usb_device",ATTRS{idVendor}=="0403",ATTRS{idProduct}=="a6d1",MODE:="0666"
     SUBSYSTEM=="usb",ENV{DEVTYPE}=="usb_device",ATTRS{idVendor}=="0403",ATTRS{idProduct}=="6010",MODE:="0666"
@@ -23,11 +23,18 @@
     ACTION=="add",ATTRS{idVendor}=="0403",ATTRS{idProduct}=="a6d1",RUN+="/sbin/modprobe ftdi_sio",RUN+="/bin/sh -c 'echo 0403 a6d1 > /sys/bus/usb-serial/drivers/ftdi_sio/new_id'"
     KERNEL=="hidraw*",ATTRS{idVendor}=="0451",ATTRS{idProduct}=="bef3",MODE:="0666"
     KERNEL=="hidraw*",ATTRS{idVendor}=="0451",ATTRS{idProduct}=="bef4",MODE:="0666"
+    # Spectrum Digital USB devices 
+    SUBSYSTEM=="usb", ATTR{idVendor}=="0c55" ,ATTR{idProduct}=="0540", ATTR{manufacturer}=="Spectrum Digital Inc.",MODE="0666"
+    SUBSYSTEM=="usb", ATTR{idVendor}=="0c55" ,ATTR{idProduct}=="0510", ATTR{manufacturer}=="Spectrum Digital, Inc.",MODE="0666"
+    SUBSYSTEM=="usb", ATTR{idVendor}=="0c55" ,ATTR{idProduct}=="2000", ATTR{manufacturer}=="Spectrum Digital, Inc.",MODE="0666"
+    SUBSYSTEM=="usb", ATTR{idVendor}=="0c55" ,ATTR{idProduct}=="0562",MODE="0666"
+    SUBSYSTEM=="usb", ATTR{idVendor}=="0c55" ,ATTR{idProduct}=="0566",MODE="0666"
 
-    # Saleae Logic clone (Lakeview Research)
-    SUBSYSTEM=="usb", ATTRS{idVendor}=="0925", ATTRS{idProduct}=="3881", MODE="0666"
+    # Serial devices
+    KERNEL=="ttyACM[0-9]*", MODE:="0666"
 
-    # Also add hidraw rule if it creates a hidraw device
-    KERNEL=="hidraw*", ATTRS{idVendor}=="0925", ATTRS{idProduct}=="3881", MODE="0666"
+    # Saleae Logic clone (Lakeview Research) - FIXED: Added colon to MODE
+    SUBSYSTEM=="usb", ATTRS{idVendor}=="0925", ATTRS{idProduct}=="3881", MODE:="0666"
+    KERNEL=="hidraw*", ATTRS{idVendor}=="0925", ATTRS{idProduct}=="3881", MODE:="0666"
   '';
 }
