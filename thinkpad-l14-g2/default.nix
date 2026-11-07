@@ -31,6 +31,7 @@
     distrobox
     (pkgs.ffmpeg-full.override { withUnfree = true; })
     libvirt
+    networkmanager-openconnect
     nixos-anywhere
     ntfs3g
     openrazer-daemon
