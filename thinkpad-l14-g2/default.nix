@@ -60,7 +60,6 @@
       "openrazer"
     ];
     packages = with pkgs; [
-      brave
       discord
       gearlever
       element-desktop
