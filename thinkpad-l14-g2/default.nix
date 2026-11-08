@@ -31,20 +31,21 @@
     distrobox
     (pkgs.ffmpeg-full.override { withUnfree = true; })
     libvirt
-    networkmanager-openconnect
     nixos-anywhere
     ntfs3g
     openrazer-daemon
+    openconnect
+    OVMFFull
     polychromatic
     prismlauncher
     pulseview
     qemu
+    remmina
     spice-vdagent
     texliveFull
     virt-manager
-    vscode
     vscodium
-    OVMFFull
+    xrdp
   ];
 
   users.users.${user} = {
@@ -119,6 +120,13 @@
     ];
   };
 
+  networking.networkmanager = {
+    enable = true;
+    plugins = with pkgs; [
+      networkmanager-openconnect
+    ];
+  };
+
   hardware = {
     graphics.enable = true;
     bluetooth.enable = true;
@@ -130,6 +138,11 @@
     power-profiles-daemon = {
       enable = true;
       package = pkgs.power-profiles-daemon;
+    };
+    xrdp = {
+      enable = true;
+      defaultWindowManager = "startplasma-wayland";
+      openFirewall = true;
     };
   };
 
